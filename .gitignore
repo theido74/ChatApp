@@ -1,0 +1,38 @@
+# IDE and editors
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.swo
+*~
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+*.exe
+*.dll
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Database and logs
+*.odb
+*.ora
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+~*
+*.bak
