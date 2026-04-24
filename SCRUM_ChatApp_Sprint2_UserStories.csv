@@ -1,0 +1,11 @@
+ID,Titre,Description,Dev,Estimation (h),Statut,Critères d'acceptation,Dépendances
+US-01,Hachage SHA-256,Implémenter PasswordHasher avec salt,Dev A,3,En cours,Tests passent + salt unique,Aucune
+US-02,Procédures Oracle,sp_AuthenticateUser + sp_ValidateSession + sp_LogoutUser,Dev A,3,Planifié,3 SP testées et documentées,Aucune
+US-03,AuthenticationService,Logique d'authentification côté métier,Dev A,3,Planifié,Tests intégration passent,US-01 + US-02
+US-04,Validation des entrées,InputValidator + ClientValidator,Dev A+B,3,Planifié,Tests sécurité: no injection SQL,Aucune
+US-05,LoginForm UI,Interface de connexion WinForms,Dev B,3,Planifié,Formulaire fonctionnel + validation client,US-03
+US-06,MainForm & Navigation,Menu principal et navigation,Dev B,2,Planifié,Menu clickable + pas de crash,US-05
+US-07,SessionManager,Gestion des sessions actives,Dev B,2,Planifié,Singleton pattern + timeout 1h,US-03
+US-08,Tests Unitaires,PasswordHasher + AuthService tests,Dev C,3,Planifié,80%+ code coverage,US-01 + US-03
+US-09,Tests Intégration,Login -> BD -> Session,Dev C,2,Planifié,Flux complet validé,US-02 + US-03 + US-05
+US-10,Tests Sécurité,Injection SQL + brute-force + sessions,Dev C,3,Planifié,Tous scénarios passed,US-04 + US-05
