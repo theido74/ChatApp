@@ -1,0 +1,216 @@
+------------------------------------------------
+--Script : ESS.sql
+--Objet  : Insert des data au tables 
+--Authors: Ayman El Hadaoui, Arnaud Poncet, Damien Ryser
+--Version    Visa       Date       Commentaires
+--------- --------- ------------  -----------------
+-- 1.1    FR        27/04/26     
+-------------------------------------------------
+
+-- SUPPRESSION DES TABLES
+DROP TABLE ess_logs;
+DROP TABLE ess_userAct;
+DROP TABLE ess_session;
+DROP TABLE ess_message;
+DROP TABLE ess_forum;
+DROP TABLE ess_eleve;
+DROP TABLE ess_personne;
+
+-- CREATION DES TABLES
+CREATE TABLE ess_personne (
+   per_id NUMBER(5) PRIMARY KEY, 
+   per_username VARCHAR2(50) NOT NULL UNIQUE,
+   per_nom VARCHAR2(50) NOT NULL, 
+   per_prenom VARCHAR2(50) NOT NULL, 
+   per_dateNaissance DATE,
+   per_email VARCHAR2(100) NOT NULL UNIQUE, 
+   per_mdpHashed VARCHAR2(255) NOT NULL,
+   per_dateCreation DATE DEFAULT SYSDATE,
+   per_isActive NUMBER(1) DEFAULT 1, -- 1=actif, 0=inactif
+   per_chatStatut VARCHAR2(50)
+);
+
+CREATE TABLE ess_eleve (
+   ele_per_id NUMBER(5) PRIMARY KEY,
+   ele_niveau NUMBER(3),
+   ele_nbPoints NUMBER(5),
+   ele_classe VARCHAR2(50),
+   CONSTRAINT fk_per_ele FOREIGN KEY (ele_per_id) REFERENCES ess_personne (per_id)
+);
+
+CREATE TABLE ess_forum (
+   for_id NUMBER(5) PRIMARY KEY,
+   for_nom VARCHAR2(50) NOT NULL,
+   for_description VARCHAR2(100),
+   for_dateCreation DATE DEFAULT SYSDATE,
+   for_estActif NUMBER(1) DEFAULT 1 -- 1=actif, 0=inactif
+);
+
+CREATE TABLE ess_message (
+   mes_id NUMBER(5) PRIMARY KEY,
+   mes_per_id_emm NUMBER(5),
+   mes_per_id_rec NUMBER(5),
+   mes_for_id NUMBER(5),
+   mes_contenu VARCHAR2(1000) NOT NULL,
+   mes_timeStamp DATE DEFAULT SYSDATE,
+   mes_estPrive NUMBER(1) DEFAULT 0, -- 1=actif, 0=inactif
+   mes_estSupprime NUMBER(1) DEFAULT 0, -- 1=actif, 0=inactif
+   CONSTRAINT fk_emmeteur FOREIGN KEY (mes_per_id_emm) REFERENCES ess_personne (per_id),
+   CONSTRAINT fk_recepteur FOREIGN KEY (mes_per_id_rec) REFERENCES ess_personne (per_id),
+   CONSTRAINT fk_for_id FOREIGN KEY (mes_for_id) REFERENCES ess_forum (for_id),
+   CONSTRAINT chk_message_type CHECK ((mes_estPrive = 1 AND mes_for_id IS NULL) OR (mes_estPrive = 0 AND mes_for_id IS NOT NULL))
+);
+
+CREATE TABLE ess_session (
+   ses_id VARCHAR2(50) PRIMARY KEY,
+   ses_per_id NUMBER(5) NOT NULL UNIQUE, 
+   ses_tempsDerActivite DATE DEFAULT SYSDATE,
+   ses_estActif NUMBER(1) DEFAULT 1,  -- 1=session valide, 0=session expirée
+   CONSTRAINT fk_per_id FOREIGN KEY (ses_per_id) REFERENCES ess_personne (per_id)
+);
+
+CREATE TABLE ess_userAct (
+    act_id NUMBER(5) PRIMARY KEY,
+    act_per_id NUMBER(5) NOT NULL,
+    act_lastPingTime DATE DEFAULT SYSDATE,  -- Dernière activité
+    act_status VARCHAR2(20) DEFAULT 'online',  -- 'online' ou 'offline'
+    CONSTRAINT fk_act_per_id FOREIGN KEY (act_per_id) REFERENCES ess_personne (per_id)
+);
+
+CREATE TABLE ess_logs (
+    log_id NUMBER(5) PRIMARY KEY,
+    log_per_id NUMBER(5),  -- NULL si action système
+    log_action VARCHAR2(50),  -- 'LOGIN', 'SEND_MESSAGE', 'DELETE_MESSAGE', 'ERROR', etc.
+    log_timestamp DATE DEFAULT SYSDATE,
+    log_details VARCHAR2(1000),  -- Détails supplémentaires
+    log_errorMessage VARCHAR2(1000),  -- Si c'est une erreur
+    CONSTRAINT fk_log_per_id FOREIGN KEY (log_per_id) REFERENCES ess_personne (per_id)
+);
+
+COMMIT;
+
+-- DROP DES SÉQUENCES
+DROP SEQUENCE seq_logs;
+DROP SEQUENCE seq_userAct;
+DROP SEQUENCE seq_session;
+DROP SEQUENCE seq_message;
+DROP SEQUENCE seq_forum;
+DROP SEQUENCE seq_personne;
+
+-- CRÉATION DES SÉQUENCES
+CREATE SEQUENCE seq_personne START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_forum START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_message START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_session START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_userAct START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_logs START WITH 1 INCREMENT BY 1;
+
+COMMIT;
+
+-- DELETE DES DONNÉES
+DELETE FROM ess_logs;
+DELETE FROM ess_userAct;
+DELETE FROM ess_session;
+DELETE FROM ess_message;
+DELETE FROM ess_forum;
+DELETE FROM ess_eleve;
+DELETE FROM ess_personne;
+
+-- INSERT DES DONNÉES
+INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'damiens', 'Ryser', 'Damien', DATE '1993-05-12', 'damien@mail.com', 'hash1', SYSDATE, 1, 'online');
+INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'alice01', 'Dupont', 'Alice', DATE '2000-03-22', 'alice@mail.com', 'hash2', SYSDATE, 1, 'offline');
+INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'bob02', 'Martin', 'Bob', DATE '1998-11-02', 'bob@mail.com', 'hash3', SYSDATE, 1, 'online');
+INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'charlie', 'Durand', 'Charlie', DATE '1995-07-18', 'charlie@mail.com', 'hash4', SYSDATE, 1, 'offline');
+
+-- ⚠️ On suppose ici que rien n'a été inséré avant dans la session
+-- sinon les IDs ne seront pas 1,2,3,4
+
+-- ELEVE (on utilise CURRVAL - 3, etc. ❌ PAS FIABLE)
+-- 👉 donc on force une méthode propre :
+
+-- On récupère les IDs en les relisant
+
+INSERT INTO ess_eleve 
+SELECT per_id, 3, 1200, '3A' FROM ess_personne WHERE per_username = 'damiens';
+
+INSERT INTO ess_eleve 
+SELECT per_id, 2, 800, '2B' FROM ess_personne WHERE per_username = 'alice01';
+
+INSERT INTO ess_eleve 
+SELECT per_id, 1, 300, '1C' FROM ess_personne WHERE per_username = 'bob02';
+
+INSERT INTO ess_forum VALUES (seq_forum.NEXTVAL, 'General', 'Discussion générale', SYSDATE, 1);
+INSERT INTO ess_forum VALUES (seq_forum.NEXTVAL, 'Programmation', 'Aide en dev', SYSDATE, 1);
+INSERT INTO ess_forum VALUES (seq_forum.NEXTVAL, 'Jeux vidéo', 'Parlons gaming', SYSDATE, 1);
+
+INSERT INTO ess_message 
+VALUES (seq_message.NEXTVAL,
+        (SELECT per_id FROM ess_personne WHERE per_username='damiens'),
+        (SELECT per_id FROM ess_personne WHERE per_username='alice01'),
+        NULL,
+        'Salut Alice !',
+        SYSDATE, 1, 0);
+
+INSERT INTO ess_message 
+VALUES (seq_message.NEXTVAL,
+        (SELECT per_id FROM ess_personne WHERE per_username='alice01'),
+        (SELECT per_id FROM ess_personne WHERE per_username='damiens'),
+        NULL,
+        'Salut Damien !',
+        SYSDATE, 1, 0);
+
+INSERT INTO ess_message 
+VALUES (seq_message.NEXTVAL,
+        (SELECT per_id FROM ess_personne WHERE per_username='damiens'),
+        NULL,
+        (SELECT for_id FROM ess_forum WHERE for_nom='General'),
+        'Bienvenue sur le forum !',
+        SYSDATE, 0, 0);
+
+INSERT INTO ess_message 
+VALUES (seq_message.NEXTVAL,
+        (SELECT per_id FROM ess_personne WHERE per_username='bob02'),
+        NULL,
+        (SELECT for_id FROM ess_forum WHERE for_nom='Programmation'),
+        'Quelqu’un peut m’aider en Java ?',
+        SYSDATE, 0, 0);
+
+INSERT INTO ess_message 
+VALUES (seq_message.NEXTVAL,
+        (SELECT per_id FROM ess_personne WHERE per_username='alice01'),
+        NULL,
+        (SELECT for_id FROM ess_forum WHERE for_nom='Programmation'),
+        'Oui bien sûr 👍',
+        SYSDATE, 0, 0);
+
+INSERT INTO ess_session 
+VALUES ('sess1', (SELECT per_id FROM ess_personne WHERE per_username='damiens'), SYSDATE, 1);
+
+INSERT INTO ess_session 
+VALUES ('sess2', (SELECT per_id FROM ess_personne WHERE per_username='alice01'), SYSDATE, 1);
+
+INSERT INTO ess_session 
+VALUES ('sess3', (SELECT per_id FROM ess_personne WHERE per_username='bob02'), SYSDATE - 1/24, 0);
+
+INSERT INTO ess_userAct 
+VALUES (seq_userAct.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='damiens'), SYSDATE, 'online');
+
+INSERT INTO ess_userAct 
+VALUES (seq_userAct.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='alice01'), SYSDATE - 1/24, 'offline');
+
+INSERT INTO ess_userAct 
+VALUES (seq_userAct.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='bob02'), SYSDATE, 'online');
+
+INSERT INTO ess_logs 
+VALUES (seq_logs.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='damiens'), 'LOGIN', SYSDATE, 'Connexion réussie', NULL);
+
+INSERT INTO ess_logs 
+VALUES (seq_logs.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='alice01'), 'SEND_MESSAGE', SYSDATE, 'Message envoyé à Damien', NULL);
+
+INSERT INTO ess_logs 
+VALUES (seq_logs.NEXTVAL, (SELECT per_id FROM ess_personne WHERE per_username='bob02'), 'SEND_MESSAGE', SYSDATE, 'Message forum', NULL);
+
+INSERT INTO ess_logs 
+VALUES (seq_logs.NEXTVAL, NULL, 'ERROR', SYSDATE, 'Erreur système', 'NullPointerException');
+
+COMMIT;
