@@ -1,7 +1,0 @@
-ID,Risque,Impact,Probabilité,Mitigation,Owner
-R1,Oracle BD indisponible,Critique,Moyen,Tester en local + mock BD pour tests,Dev A
-R2,Faille sécurité injection SQL,Critique,Moyen,Tests sécurité obligatoires + code review,Dev C
-R3,Performance des queries,Moyen,Bas,Ajouter indexes dès le départ,Dev A
-R4,Retard intégration UI-BD,Moyen,Moyen,Interfaces bien définies + tests d'intégration tôt,Dev B+A
-R5,Surcharge Dev C,Moyen,Moyen,Prévoir tests automatisés + aide si besoin,Dev C+A
-R6,Manque de documentation,Bas,Moyen,Documentation simultanée au code,Tous
