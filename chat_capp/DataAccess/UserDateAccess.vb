@@ -1,5 +1,4 @@
-﻿Imports Oracle.DataAccess.Client
-Imports Oracle.ManagedDataAccess.Client
+﻿Imports Oracle.ManagedDataAccess.Client
 Public Class UserDateAccess
     Public Function GetEleveByUsername(username As String) As Eleve
         Dim e As New Eleve()

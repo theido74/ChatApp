@@ -1,23 +1,20 @@
-﻿Imports Oracle.DataAccess.Client
-Imports Oracle.ManagedDataAccess.Client
+﻿Imports Oracle.ManagedDataAccess.Client
+Imports System.Configuration
 
 Public Class DatabaseConnection
-    ' ⚠️ À ADAPTER avec vos paramètres Oracle !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Private Shared _connectionString As String =
-        "Data Source=localhost:1521/xe;" &
-        "User Id=YourUsername;" &
-        "Password=YourPassword;"
+    Private Shared ReadOnly _connectionString As String = ConfigurationManager.ConnectionStrings("OracleConnectionString")?.ConnectionString
 
     Public Shared Function GetConnection() As OracleConnection
+        If String.IsNullOrEmpty(_connectionString) Then
+            Throw New InvalidOperationException("Chaîne de connexion 'OracleConnectionString' introuvable dans App.config.")
+        End If
         Return New OracleConnection(_connectionString)
     End Function
 
-    ' Vérifier la connexion
     Public Shared Function TestConnection() As Boolean
         Try
             Using conn As OracleConnection = GetConnection()
                 conn.Open()
-                ' Si aucune exception, c'est bon
                 conn.Close()
                 Return True
             End Using
