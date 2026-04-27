@@ -28,5 +28,25 @@ Public Class PasswordHasher
         End Using
     End Function
 
+    Public Shared Function VerifierMotDePasse(motdepasse As String, hash As String) As Boolean
+        Try
+            'Décoder le hash BASE64
+            Dim hashByte As Byte() = Convert.FromBase64String(hash)
+
+            'Extraire le SALT
+            Dim saltbytes As Byte() = New Byte(SALT_SIZE - 1) {}
+            Buffer.BlockCopy(hashByte, 0, saltbytes, 0, SALT_SIZE)
+
+            'Extraire le hash Stocké
+            Dim storedHashBytes As Byte() = New Byte(hashByte.Length - SALT_SIZE - 1) {}
+            Buffer.BlockCopy(hashByte, SALT_SIZE, storedHashBytes, 0, storedHashBytes.Length)
+
+
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
 
 End Class

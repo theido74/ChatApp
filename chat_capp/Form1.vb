@@ -15,7 +15,7 @@
                 ' Tester aussi la requête
                 Dim userAccess As New UserDateAccess()
                 ' Supposant qu'il y a au moins 1 utilisateur
-                Dim e As Eleve = userAccess.GetEleveByID(1)
+                Dim e As Eleve = userAccess.GetEleveByID(3)
 
                 If e IsNot Nothing Then
                     MessageBox.Show("✅ Utilisateur trouvé: " & e.Nom, "Succès")
