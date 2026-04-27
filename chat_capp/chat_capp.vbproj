@@ -119,6 +119,7 @@
     <Compile Include="BuisinessLogic\Models\Session.vb" />
     <Compile Include="BuisinessLogic\Models\User.vb" />
     <Compile Include="DataAccess\DataBaseConnection.vb" />
+    <Compile Include="DataAccess\UserDateAccess.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
