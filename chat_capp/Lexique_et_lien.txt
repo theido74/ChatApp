@@ -1,0 +1,3 @@
+BASE 64 = https://fr.wikipedia.org/wiki/Base64
+SALT pour HASH = https://fr.wikipedia.org/wiki/Salage_(cryptographie)
+HASH = https://fr.wikipedia.org/wiki/Fonction_de_hachage

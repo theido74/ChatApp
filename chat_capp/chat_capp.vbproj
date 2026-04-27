@@ -122,6 +122,7 @@
     <Compile Include="BuisinessLogic\Models\Message.vb" />
     <Compile Include="BuisinessLogic\Models\Session.vb" />
     <Compile Include="BuisinessLogic\Models\User.vb" />
+    <Compile Include="BuisinessLogic\Services\PasswordHasher.vb" />
     <Compile Include="DataAccess\DataBaseConnection.vb" />
     <Compile Include="DataAccess\UserDateAccess.vb" />
     <Compile Include="Form1.vb">
@@ -148,6 +149,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -175,7 +179,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BuisinessLogic\Services\" />
     <Folder Include="Presentation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
