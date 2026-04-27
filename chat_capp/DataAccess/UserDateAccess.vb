@@ -2,7 +2,7 @@
 Imports Oracle.ManagedDataAccess.Client
 Public Class UserDateAccess
     Public Function GetUserByUsername(username As String) As User
-        Dim user As New User()
+        Dim e As New Eleve()
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.open()
@@ -12,29 +12,25 @@ Public Class UserDateAccess
 
                 Using reader As OracleDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
-                        user.UserID = CInt(reader("per_id"))
-                        user.Nom = reader("per_nom").ToString()
-                        user.Prenom = reader("per_prenom").ToString()
-                        user.DateDeNaissance = CDate(reader("dateDeNaissance"))
-                        user.email = reader("per_email").ToString()
-                        user.MdpHashed = reader("per_motDePasse").ToString()
-                        user.DateCreation = CDate(reader("dateCreation"))
-                        user.IsActive = CBool(reader("isActive"))
-                        user.ChatStatut = reader("chatStatus").ToString()
-
-
-
-
-
-
-
-
+                        e.UserID = CInt(reader("per_id"))
+                        e.Nom = reader("per_nom").ToString()
+                        e.Prenom = reader("per_prenom").ToString()
+                        e.DateDeNaissance = CDate(reader("dateDeNaissance"))
+                        e.Email = reader("per_email").ToString()
+                        e.MdpHashed = reader("per_motDePasse").ToString()
+                        e.DateCreation = CDate(reader("dateCreation"))
+                        e.IsActive = CBool(reader("isActive"))
+                        e.ChatStatut = reader("chatStatus").ToString()
+                        e.Niveau = reader("ele_niveau").ToString()
+                        e.NbPoints = CInt(reader("ele_nbPoints"))
+                        e.Classe = reader("ele_classe").ToString()
+                        Return e
                     End If
                 End Using
-
             End Using
         Catch ex As Exception
-
+            MessageBox.Show("Erreur BD")
         End Try
+        Return Nothing
     End Function
 End Class
