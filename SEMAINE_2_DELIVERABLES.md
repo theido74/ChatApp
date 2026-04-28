@@ -1,10 +1,10 @@
-# 📦 Livrables Sprint 2 - Semaine 2
+# 📦 Livrables Sprint 2 - Semaine 2 (SIMPLIFIÉ - Sans Sessions)
 
 ## 📅 Sprint 2: Authentification & Interface Login
 
-**Durée**: 4 heures session + 20-40h travail  
+**Durée**: 4 heures session + 15-30h travail (RÉDUIT de 6h)  
 **Équipe**: Dev A (Backend), Dev B (Frontend), Dev C (QA/Tests 50%)  
-**Objectif**: Implémenter le login sécurisé avec interface WinForms  
+**Objectif**: Implémenter le login sécurisé avec interface WinForms (sans gestion de sessions)  
 
 ---
 
