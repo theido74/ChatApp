@@ -44,17 +44,30 @@ Public Class PasswordHasher
             Dim storedHashBytes As Byte() = New Byte(hashByte.Length - SALT_SIZE - 1) {}
             Buffer.BlockCopy(hashByte, SALT_SIZE, storedHashBytes, 0, storedHashBytes.Length)
 
-            
-			'Hacher le password saisi avec le MÊME salt
-             Using pbkdf2 As New Rfc2898DeriveBytes(password, saltBytes, HASH_ITERATIONS, HashAlgorithmName.SHA256)
-             Dim computedHashBytes As Byte() = pbkdf2.GetBytes(32)      
-             'Comparer les deux hashs byte-by-byte
-             Return CompareHashes(storedHashBytes, computedHashBytes)
+
+            'Hacher le password saisi avec le MÊME salt
+            Using pbkdf2 As New Rfc2898DeriveBytes(motdepasse, saltbytes, HASH_ITERATIONS, HashAlgorithmName.SHA256)
+                Dim computedHashBytes As Byte() = pbkdf2.GetBytes(32)
+                'Comparer les deux hashs byte-by-byte
+                Return CompareHashes(storedHashBytes, computedHashBytes)
             End Using
         Catch ex As Exception
             ' Si erreur de décodage, le password est invalide
             Return False
         End Try
+    End Function
+    Private Shared Function CompareHashes(hash1 As Byte(), hash2 As Byte()) As Boolean
+        If hash1.Length <> hash2.Length Then
+            Return False
+        End If
+
+        Dim result As Integer = 0
+        For i As Integer = 0 To hash1.Length - 1
+            ' XOR compares sans court-circuiter
+            result = result Or (hash1(i) Xor hash2(i))
+        Next
+
+        Return result = 0
     End Function
 
 
