@@ -4,7 +4,7 @@
 -- ============================================
 
 CREATE OR REPLACE PROCEDURE sp_AuthUser(
-	p_per_nom in VARCHAR2,
+	p_per_nom in VARCHAR2 --ARGUMENTS DONNES A LA PROCEDURE
 	p_per_motDePasse in VARCHAR2,
 	p_per_id OUT NUMBER, --OUT REPRESENTE LES VARIABLES RETOURNER PAR LA PROCEDURE
 	p_result OUT VARCHAR2
@@ -15,8 +15,8 @@ IS --DECLARE LE DEBUT DE LA PROCEDURE, LES VARIABLES CI DESSOUS SONT LOCALE
 
 BEGIN
 
-	p_result = ERROR;
-	p_per_id = NULL;
+	p_result := ERROR;
+	p_per_id := NULL;
 
 --CHERCHER PERSONNE PAR Username
 	SELECT per_id, per_mdpHashed
