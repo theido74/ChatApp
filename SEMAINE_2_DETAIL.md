@@ -784,132 +784,6 @@ Public Class LoginForm
 End Class
 ```
     
-    Public Sub New()
-        InitializeComponent()
-    End Sub
-    
-    Private Sub InitializeComponent()
-        ' Configuration du formulaire
-        Me.Text = "ChatApp - Connexion"
-        Me.Width = 400
-        Me.Height = 300
-        Me.StartPosition = FormStartPosition.CenterScreen
-        Me.FormBorderStyle = FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        
-        ' Label Username
-        lblUsernameLabel.Text = "Nom d'utilisateur:"
-        lblUsernameLabel.Location = New Point(20, 20)
-        lblUsernameLabel.AutoSize = True
-        Me.Controls.Add(lblUsernameLabel)
-        
-        ' TextBox Username
-        txtUsername.Location = New Point(20, 40)
-        txtUsername.Width = 340
-        txtUsername.Height = 25
-        Me.Controls.Add(txtUsername)
-        
-        ' Label Password
-        lblPasswordLabel.Text = "Mot de passe:"
-        lblPasswordLabel.Location = New Point(20, 75)
-        lblPasswordLabel.AutoSize = True
-        Me.Controls.Add(lblPasswordLabel)
-        
-        ' TextBox Password
-        txtPassword.Location = New Point(20, 95)
-        txtPassword.Width = 340
-        txtPassword.Height = 25
-        txtPassword.PasswordChar = "*"c
-        Me.Controls.Add(txtPassword)
-        
-        ' Label Message (erreurs)
-        lblMessage.Location = New Point(20, 130)
-        lblMessage.Width = 340
-        lblMessage.Height = 40
-        lblMessage.ForeColor = Color.Red
-        lblMessage.AutoSize = False
-        Me.Controls.Add(lblMessage)
-        
-        ' Button Se Connecter
-        btnLogin.Text = "Se connecter"
-        btnLogin.Location = New Point(150, 180)
-        btnLogin.Width = 100
-        Me.Controls.Add(btnLogin)
-        
-        ' Button Quitter
-        btnQuit.Text = "Quitter"
-        btnQuit.Location = New Point(260, 180)
-        btnQuit.Width = 100
-        Me.Controls.Add(btnQuit)
-    End Sub
-    
-    ''' <summary>
-    ''' Événement Login (clic bouton ou Enter en password)
-    ''' </summary>
-    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        PerformLogin()
-    End Sub
-    
-    ''' <summary>
-    ''' Permettre Enter dans password pour lancer login
-    ''' </summary>
-    Private Sub TxtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
-        If e.KeyChar = Chr(13) Then ' Touche Enter
-            e.Handled = True
-            PerformLogin()
-        End If
-    End Sub
-    
-    ''' <summary>
-    ''' Logique de login
-    ''' </summary>
-    Private Sub PerformLogin()
-        ' Récupérer les valeurs
-        Dim username As String = txtUsername.Text
-        Dim password As String = txtPassword.Text
-        
-        ' Valider côté client d'abord
-        If Not clientValidator.ValidateUsername(username) Then
-            lblMessage.Text = "Nom d'utilisateur invalide (4-20 caractères)"
-            Return
-        End If
-        
-        If Not clientValidator.ValidatePassword(password) Then
-            lblMessage.Text = "Mot de passe invalide (8-50 caractères)"
-            Return
-        End If
-        
-        ' Appeler le service d'authentification
-        Try
-            Dim sessionInfo As SessionInfo = authService.Authenticate(username, password)
-            
-            If sessionInfo.IsValid Then
-                ' Login réussi - ouvrir MainForm
-                lblMessage.Text = "Connexion réussie..."
-                
-                ' Créer la MainForm avec la session
-                Dim mainForm As New MainForm(sessionInfo)
-                Me.Hide()
-                mainForm.Show()
-            End If
-        Catch ex As UnauthorizedAccessException
-            lblMessage.Text = ex.Message
-            txtPassword.Clear()
-        Catch ex As Exception
-            lblMessage.Text = "Erreur lors de la connexion"
-            ' Ne pas révéler les détails à l'utilisateur
-        End Try
-    End Sub
-    
-    ''' <summary>
-    ''' Événement Quitter
-    ''' </summary>
-    Private Sub BtnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
-        Application.Exit()
-    End Sub
-End Class
-```
 
 #### Tâche 2.2: Créer le MainForm (écran après connexion)
 - Créer `MainForm.vb` (formulaire principal)
@@ -1215,8 +1089,6 @@ End Class
 - Tester:
   - Authentification avec credentials valides
   - Rejet credentials invalides
-  - Gestion des sessions
-  - Validation logout
   - Gestion des erreurs BD (déjà accessible)
 - Utiliser mocks pour la BD
 - **Livrables**: Test class complète pour AuthenticationService
@@ -1243,7 +1115,7 @@ Public Class AuthenticationServiceTests
     End Sub
     
     <Test>
-    Public Sub Authenticate_ValidCredentials_ReturnsSessionInfo()
+    Public Sub Authenticate_ValidCredentials_ReturnsTrue()
         ' Arrange
         Dim username As String = "john_doe"
         Dim password As String = "MySecurePass@123"
@@ -1253,17 +1125,11 @@ Public Class AuthenticationServiceTests
         mockPasswordHasher.Setup(Function(ph) ph.HashPassword(password)) _
             .Returns("hashedvalue")
         
-        mockDbAccess.Setup(Sub(da) da.CallAuthenticateUserProcedure(username, "hashedvalue", It.IsAny(Of SessionInfo))) _
-            .Callback(Of String, String, SessionInfo)(
-                Sub(un, ph, si)
-                    si.UserID = 1
-                    si.SessionID = expectedSessionID
-                    si.Result = "SUCCESS"
-                End Sub
-            )
+        mockDbAccess.Setup(Function(da) da.GetUserByUsername(username)) _
+            .Returns(user)
         
         ' Act
-        Dim result As SessionInfo = authService.Authenticate(username, password)
+        Dim result As Boolean = authService.Authenticate(username, password)
         
         ' Assert
         Assert.IsNotNull(result)
@@ -1278,12 +1144,11 @@ Public Class AuthenticationServiceTests
         Dim username As String = "john_doe"
         Dim password As String = "WrongPassword@123"
         
-        mockDbAccess.Setup(Sub(da) da.CallAuthenticateUserProcedure(It.IsAny(Of String), It.IsAny(Of String), It.IsAny(Of SessionInfo))) _
-            .Callback(Of String, String, SessionInfo)(
-                Sub(un, ph, si)
-                    si.Result = "INVALID_CREDENTIALS"
-                End Sub
-            )
+        mockDbAccess.Setup(Function(da) da.GetUserByUsername(username)) _
+            .Returns(user)
+        
+        mockPasswordHasher.Setup(Function(ph) ph.VerifyPassword(password, "hashedvalue")) _
+            .Returns(False)
         
         ' Act & Assert
         Assert.Throws(Of UnauthorizedAccessException)(
@@ -1304,46 +1169,6 @@ Public Class AuthenticationServiceTests
     End Sub
     
     <Test>
-    Public Sub ValidateSession_ActiveSession_ReturnsTrue()
-        ' Arrange
-        Dim sessionID As String = Guid.NewGuid().ToString()
-        mockDbAccess.Setup(Function(da) da.CallValidateSessionProcedure(sessionID)) _
-            .Returns(1)
-        
-        ' Act
-        Dim result As Boolean = authService.ValidateSession(sessionID)
-        
-        ' Assert
-        Assert.IsTrue(result)
-    End Sub
-    
-    <Test>
-    Public Sub ValidateSession_ExpiredSession_ReturnsFalse()
-        ' Arrange
-        Dim sessionID As String = Guid.NewGuid().ToString()
-        mockDbAccess.Setup(Function(da) da.CallValidateSessionProcedure(sessionID)) _
-            .Returns(0)
-        
-        ' Act
-        Dim result As Boolean = authService.ValidateSession(sessionID)
-        
-        ' Assert
-        Assert.IsFalse(result)
-    End Sub
-    
-    <Test>
-    Public Sub Logout_ValidSessionID_ReturnsTrue()
-        ' Arrange
-        Dim sessionID As String = Guid.NewGuid().ToString()
-        mockDbAccess.Setup(Function(da) da.CallLogoutUserProcedure(sessionID)) _
-            .Returns("SUCCESS")
-        
-        ' Act
-        Dim result As Boolean = authService.Logout(sessionID)
-        
-        ' Assert
-        Assert.IsTrue(result)
-    End Sub
 End Class
 ```
 
@@ -1661,9 +1486,9 @@ End Class
   - password: "ValidPass@123"
 - **Étapes**:
   1. Appeler AuthenticationService.Authenticate(username, password)
-  2. Vérifier SessionInfo retourné
+  2. Vérifier UserID retourné
   3. Vérifier que UserID et SessionID ne sont pas null
-- **Résultat attendu**: ✅ SessionInfo valide avec UserID et SessionID
+- **Résultat attendu**: ✅ UserID et Email de l'utilisateur
 
 ### TC-2.1.2: Login avec username inexistant
 - **Objectif**: Rejeter un login avec username inexistant
@@ -1725,7 +1550,7 @@ End Class
 - **Données d'entrée**: SessionID d'une session fraîche
 - **Étapes**:
   1. Créer une session via Authenticate
-  2. Appeler AuthenticationService.ValidateSession(sessionID)
+  2. Appeler AuthenticationService.GetUserByUsername(username)
   3. Vérifier le résultat
 - **Résultat attendu**: ✅ Retourne true
 
@@ -1736,7 +1561,7 @@ End Class
   1. Créer une session
   2. Appeler AuthenticationService.Logout(sessionID)
   3. Essayer de valider la session à nouveau
-- **Résultat attendu**: ✅ Logout réussit, ValidateSession retourne false
+- **Résultat attendu**: ✅ Logout réussit, connexion est refusée
 
 ## 5. TESTS UI - LOGINFORM
 
@@ -1774,9 +1599,9 @@ End Class
 
 ### TC-6.1.1: Affichage bienvenue utilisateur
 - **Objectif**: Vérifier que MainForm affiche l'ID utilisateur
-- **Données d'entrée**: SessionInfo avec UserID = 42
+- **Données d'entrée**: UserID = 42
 - **Étapes**:
-  1. Ouvrir MainForm avec SessionInfo
+  1. Ouvrir MainForm avec UserID
   2. Vérifier le label "Bienvenue"
 - **Résultat attendu**: ✅ Label affiche "Bienvenue, Utilisateur #42"
 
@@ -1889,7 +1714,7 @@ End Class
 - ✅ `ClientValidator.vb` - Validation côté client
 - ✅ `LoginForm.vb` - Interface de connexion
 - ✅ `MainForm.vb` - Écran principal (menu navigable)
-- ✅ Procédures stockées Oracle (sp_AuthenticateUser, sp_ValidateSession, sp_LogoutUser)
+- ✅ Procédures stockées Oracle (sp_AuthenticateUser, sp_ValidateSession)
 
 ### Tests
 - ✅ `PasswordHasherTests.vb` - Tests unitaires du hachage
