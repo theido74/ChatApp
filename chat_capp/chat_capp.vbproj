@@ -176,6 +176,7 @@
     <Compile Include="BuisinessLogic\Services\authService.vb" />
     <Compile Include="BuisinessLogic\Services\PasswordHasher.vb" />
     <Compile Include="BuisinessLogic\Services\PasswordHasherTests.vb" />
+    <Compile Include="ClientValidator.vb" />
     <Compile Include="DataAccess\DataBaseConnection.vb" />
     <Compile Include="DataAccess\UserDateAccess.vb" />
     <Compile Include="Form1.vb">
@@ -185,10 +186,19 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Login.Designer.vb" />
+    <Compile Include="Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.vb" />
+    <Compile Include="Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -205,6 +215,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx" />
+    <EmbeddedResource Include="Main.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
