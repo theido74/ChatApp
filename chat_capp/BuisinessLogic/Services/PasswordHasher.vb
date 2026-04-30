@@ -70,5 +70,4 @@ Public Class PasswordHasher
         Return result = 0
     End Function
 
-
 End Class

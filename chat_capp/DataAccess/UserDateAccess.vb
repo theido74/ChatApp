@@ -2,6 +2,7 @@
 Imports Oracle.ManagedDataAccess.Client
 
 Public Class UserDateAccess
+
     Public Function GetEleveByUsername(username As String) As Eleve
         Dim e As New Eleve()
         Try
@@ -32,6 +33,7 @@ Public Class UserDateAccess
                         End If
                     End Using
                 End Using
+
             End Using
         Catch ex As Exception
             MessageBox.Show("Erreur BD: " & ex.Message)
@@ -62,7 +64,7 @@ Public Class UserDateAccess
                 End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show("Erreur DB: " & ex.Message)
+            MessageBox.Show("Erreur DB")
         End Try
         Return Nothing
     End Function

@@ -122,14 +122,6 @@ INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'alice01', 'Dupont', 'Ali
 INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'bob02', 'Martin', 'Bob', DATE '1998-11-02', 'bob@mail.com', 'hash3', SYSDATE, 1, 'online');
 INSERT INTO ess_personne VALUES (seq_personne.NEXTVAL, 'charlie', 'Durand', 'Charlie', DATE '1995-07-18', 'charlie@mail.com', 'hash4', SYSDATE, 1, 'offline');
 
--- ⚠️ On suppose ici que rien n'a été inséré avant dans la session
--- sinon les IDs ne seront pas 1,2,3,4
-
--- ELEVE (on utilise CURRVAL - 3, etc. ❌ PAS FIABLE)
--- 👉 donc on force une méthode propre :
-
--- On récupère les IDs en les relisant
-
 INSERT INTO ess_eleve 
 SELECT per_id, 3, 1200, '3A' FROM ess_personne WHERE per_username = 'damiens';
 
