@@ -1,30 +1,30 @@
 ﻿Public Class AuthenticationService
-    Private dbAccess As UserDateAccess
-    Private passwordHasher As PasswordHasher
+    Private dbAccess As New UserDateAccess()
+    Private passwordHasher As New PasswordHasher()
 
-    '''Authentifie un utilisateur avec username et password
+    ''' Authentifie un utilisateur avec username et password
 
     Public Function Authenticate(username As String, password As String) As Boolean
 
         ' Trim des entrées POUR EVITER FICHIER SQL
-        username = If(username, "").Trim()
-        password = If(password, "").Trim()
+        username = username.Trim()
+        password = password.Trim()
 
         Try
             ' Récupérer l'eleve de la BD
-            Dim u As User = dbAccess.GetEleveByUsername(username)
-            If u Is Nothing Then
+            Dim e As Eleve = dbAccess.GetEleveByUsername(username)
+            If e Is Nothing Then
                 Throw New UnauthorizedAccessException("Utilisateur non trouvé")
             End If
 
             ' Vérifier le password
-            If Not passwordHasher.VerifierMotDePasse(password, u.MdpHashed) Then
+            If Not passwordHasher.VerifierMotDePasse(password, e.MdpHashed) Then
                 LogError("Authenticate", $"Echec de connexion {username}")
                 Throw New UnauthorizedAccessException("Nom d'utilisateur ou mot de passe incorrect")
             End If
 
             ' Login réussi
-            LogInfo("Authenticate", $"User {username} (ID {u.UserID}) logged")
+            LogInfo("Authenticate", $"User {username} (ID {e.UserID}) logged")
             Return True
 
         Catch ex As UnauthorizedAccessException
@@ -35,20 +35,19 @@
         End Try
     End Function
 
-    ' Optionnel : wrapper pour compatibilité si d'autres parties utilisent GetEleveByUsername
+    ''' Récupère un utilisateur par son username
+
     Public Function GetEleveByUsername(username As String) As Eleve
-        Dim u = dbAccess.GetEleveByUsername(username)
-        If u Is Nothing Then
+        If String.IsNullOrEmpty(username) Then
             Return Nothing
         End If
-        Dim e As New Eleve With {
-            .UserID = u.UserID,
-            .Nom = u.Nom,
-            .Prenom = u.Prenom,
-            .Email = u.Email,
-            .MdpHashed = u.MdpHashed
-        }
-        Return e
+
+        Try
+            Return dbAccess.GetEleveByUsername(username)
+        Catch ex As Exception
+            LogError("GetEleveByUsername", ex)
+            Return Nothing
+        End Try
     End Function
 
     Private Sub LogError(method As String, ex As Exception)

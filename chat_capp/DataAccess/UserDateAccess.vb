@@ -9,7 +9,7 @@ Public Class UserDateAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT * from Eleve WHERE per_nom = :username"
+                Dim sql As String = "SELECT * FROM ESS_PERSONNE where per_nom = :username"
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.BindByName = True
                     cmd.CommandType = CommandType.Text
@@ -18,7 +18,13 @@ Public Class UserDateAccess
                     Using reader As OracleDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             e.UserID = CInt(reader("per_id"))
+                            Console.WriteLine("ID" & e.UserID)
+                            e.UserName = reader("per_username").ToString()
+                            Console.WriteLine("ID" & e.UserName)
+
                             e.Nom = reader("per_nom").ToString()
+                            Console.WriteLine("ID" & e.Nom)
+
                             e.Prenom = reader("per_prenom").ToString()
                             e.DateDeNaissance = CDate(reader("dateDeNaissance"))
                             e.Email = reader("per_email").ToString()
@@ -29,6 +35,8 @@ Public Class UserDateAccess
                             e.Niveau = reader("ele_niveau").ToString()
                             e.NbPoints = CInt(reader("ele_nbPoints"))
                             e.Classe = reader("ele_classe").ToString()
+                            Console.WriteLine("ID" & e.Classe)
+
                             Return e
                         End If
                     End Using

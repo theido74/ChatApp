@@ -1,5 +1,4 @@
-﻿
-Partial Public Class Login
+﻿Partial Public Class Login
 
 
     Private authService As New AuthenticationService()
@@ -195,5 +194,11 @@ Partial Public Class Login
 
     Private Sub Login_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Public Sub New()
+        InitializeComponent() ' <-- indispensable : crée les contrôles du formulaire
+        Dim dbAccess = New UserDateAccess()
+        Dim PasswordHasher = New PasswordHasher()
     End Sub
 End Class

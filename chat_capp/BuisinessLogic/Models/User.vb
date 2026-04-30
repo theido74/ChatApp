@@ -1,5 +1,7 @@
 ﻿Public Class User
     Public Property UserID As Integer
+    Public Property UserName As String
+
     Public Property Nom As String
     Public Property Prenom As String
     Public DateDeNaissance As DateTime

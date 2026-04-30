@@ -21,12 +21,12 @@
                 MessageBox.Show("✅ Connexion Oracle réussie!", "Succès")
 
                 Dim userAccess As New UserDateAccess()
-                Dim e As Eleve = userAccess.GetEleveByID(3)
+                Dim e As Eleve = userAccess.GetEleveByUsername("Arnaud")
 
                 If e IsNot Nothing Then
                     MessageBox.Show("✅ Utilisateur trouvé: " & e.Nom, "Succès")
                 Else
-                    MessageBox.Show("⚠️ Pas d'utilisateur avec ID=3", "Info")
+                    MessageBox.Show("⚠️ Pas d'utilisateur avec ", "Info")
                 End If
             Else
                 MessageBox.Show("❌ Connexion Oracle échouée!", "Erreur")
