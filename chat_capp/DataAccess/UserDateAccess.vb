@@ -9,11 +9,14 @@ Public Class UserDateAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT * FROM ESS_PERSONNE where per_nom = :username"
-                Using cmd As New OracleCommand(sql, conn)
-                    cmd.BindByName = True
-                    cmd.CommandType = CommandType.Text
-                    cmd.Parameters.Add("username", OracleDbType.Varchar2).Value = username
+                Dim sql As String = "SELECT p.per_id, p.per_username, p.per_nom, p.per_prenom, " & _ 'PUREMENT DE LA FRIME!!!!
+                        "p.per_dateNaissance, p.per_email, p.per_mdpHashed, " & _
+                        "p.per_dateCreation, p.per_isActive, p.per_chatStatut, " & _
+                        "e.ele_niveau, e.ele_nbPoints, e.ele_classe " & _
+                        "FROM ess_personne p " & _
+                        "LEFT JOIN ess_eleve e ON p.per_id = e.ele_per_id " & _
+                        "WHERE p.per_nom = :username"
+
 
                     Using reader As OracleDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
@@ -26,16 +29,21 @@ Public Class UserDateAccess
                             Console.WriteLine("ID" & e.Nom)
 
                             e.Prenom = reader("per_prenom").ToString()
-                            e.DateDeNaissance = CDate(reader("dateDeNaissance"))
+                            e.DateDeNaissance = CDate(reader("per_dateNaissance"))
                             e.Email = reader("per_email").ToString()
-                            e.MdpHashed = reader("per_motDePasse").ToString()
-                            e.DateCreation = CDate(reader("dateCreation"))
-                            e.IsActive = CBool(reader("isActive"))
-                            e.ChatStatut = reader("chatStatus").ToString()
-                            e.Niveau = reader("ele_niveau").ToString()
-                            e.NbPoints = CInt(reader("ele_nbPoints"))
-                            e.Classe = reader("ele_classe").ToString()
-                            Console.WriteLine("ID" & e.Classe)
+                            e.MdpHashed = reader("per_mdpHashed").ToString()
+                            e.DateCreation = CDate(reader("per_dateCreation"))
+                            e.IsActive = CBool(reader("per_isActive"))
+                            e.ChatStatut = reader("per_chatStatus").ToString()
+                            If Not IsDBNull(reader("ele_niveau")) Then
+                                e.Niveau = reader("ele_niveau").ToString()
+                            End If
+                            If Not IsDBNull(reader("ele_nbPoints")) Then
+                                e.NbPoints = CInt(reader("ele_nbPoints"))
+                            End If
+                            If Not IsDBNull(reader("ele_classe")) Then
+                                e.Classe = reader("ele_classe").ToString()   'VALEUR QUI VIENNENT D'UNE AUTRE TABLE, A TESTER SI NULL AVANT; EVITE ERREUR NO SUCH TABLE
+                            End If
 
                             Return e
                         End If
