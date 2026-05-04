@@ -38,12 +38,16 @@ Public Class messageDataAccess
 
                         Return newId
                     End Using
+                    tx.Rollback()
                 End Using
+
             End Using
 
         Catch ex As Exception
             MessageBox.Show("Erreur BD: " & ex.Message)
+
             Return -1
+
         End Try
     End Function
 End Class

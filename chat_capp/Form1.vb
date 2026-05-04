@@ -22,10 +22,10 @@
             If DatabaseConnection.TestConnection() Then
                 MessageBox.Show("✅ Connexion Oracle réussie!", "Succès")
 
-                Dim userAccess As New UserDateAccess()
-                Dim id As Integer = userAccess.CreateEleve("testUserHashed", "User1", "UserPrenom", New Date(1989, 5, 30), "User@emial.com", PasswordHasher.HashMotdePasse("motDePasse1234"), 2, 0, "ESIG1")
+                Dim message As New messageDataAccess()
+                Dim id As Integer = message.CreateMessage(1, 2, "TEST SALUT")
 
-                If id > 1 Then
+                If id > 0 Then
                     MessageBox.Show("✅ Utilisateur trouvé: " & id, "Succès")
                 Else
                     MessageBox.Show("⚠️ Pas d'utilisateur avec ", "Info")
