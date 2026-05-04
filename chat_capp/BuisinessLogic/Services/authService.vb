@@ -61,4 +61,7 @@
     Private Sub LogInfo(method As String, message As String)
         System.Diagnostics.Debug.WriteLine($"[INFO] {method}: {message}")
     End Sub
+
+
+
 End Class
