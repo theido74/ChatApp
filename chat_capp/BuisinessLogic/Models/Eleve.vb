@@ -1,7 +1,7 @@
 ﻿Public Class Eleve
     Inherits User
 
-    Public Property Niveau As String
+    Public Property Niveau As Integer
     Public Property NbPoints As Integer
     Public Property Classe As String
 

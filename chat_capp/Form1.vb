@@ -1,4 +1,6 @@
 ﻿Public Class Form1
+    Private passwordHasher As New PasswordHasher()
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Tester la connexion au démarrage
         TestOracleConnection()
@@ -21,10 +23,10 @@
                 MessageBox.Show("✅ Connexion Oracle réussie!", "Succès")
 
                 Dim userAccess As New UserDateAccess()
-                Dim e As Eleve = userAccess.GetEleveByUsername("Arnaud")
+                Dim id As Integer = userAccess.CreateEleve("testUserHashed", "User1", "UserPrenom", New Date(1989, 5, 30), "User@emial.com", PasswordHasher.HashMotdePasse("motDePasse1234"), 2, 0, "ESIG1")
 
-                If e IsNot Nothing Then
-                    MessageBox.Show("✅ Utilisateur trouvé: " & e.Nom, "Succès")
+                If id > 1 Then
+                    MessageBox.Show("✅ Utilisateur trouvé: " & id, "Succès")
                 Else
                     MessageBox.Show("⚠️ Pas d'utilisateur avec ", "Info")
                 End If
