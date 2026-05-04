@@ -10,15 +10,20 @@ Public Class UserDateAccess
                 conn.Open()
 
                 Dim sql As String = "SELECT p.per_id, p.per_username, p.per_nom, p.per_prenom, " & _ 'PUREMENT DE LA FRIME!!!!
-                        "p.per_dateNaissance, p.per_email, p.per_mdpHashed, " & _
-                        "p.per_dateCreation, p.per_isActive, p.per_chatStatut, " & _
-                        "e.ele_niveau, e.ele_nbPoints, e.ele_classe " & _
-                        "FROM ess_personne p " & _
-                        "LEFT JOIN ess_eleve e ON p.per_id = e.ele_per_id " & _
-                        "WHERE p.per_nom = :username"
+                        "p.per_dateNaissance, p.per_email, p.per_mdpHashed, " &
+                        "p.per_dateCreation, p.per_isActive, p.per_chatStatut, " &
+                        "e.ele_niveau, e.ele_nbPoints, e.ele_classe " &
+                        "FROM ess_personne p " &
+                        "JOIN ess_eleve e ON p.per_id = e.ele_per_id " &
+                        "WHERE p.per_username = :username"
 
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
+                    cmd.CommandType = CommandType.Text
+                    cmd.Parameters.Add("username", OracleDbType.Varchar2).Value = username
 
                     Using reader As OracleDataReader = cmd.ExecuteReader()
+
                         If reader.Read() Then
                             e.UserID = CInt(reader("per_id"))
                             Console.WriteLine("ID" & e.UserID)
@@ -26,17 +31,33 @@ Public Class UserDateAccess
                             Console.WriteLine("ID" & e.UserName)
 
                             e.Nom = reader("per_nom").ToString()
-                            Console.WriteLine("ID" & e.Nom)
+                            Console.WriteLine("per_nom" & e.Nom)
 
                             e.Prenom = reader("per_prenom").ToString()
+                            Console.WriteLine("per_prenom" & e.Prenom)
+
                             e.DateDeNaissance = CDate(reader("per_dateNaissance"))
+                            Console.WriteLine("ID" & e.DateDeNaissance)
+
                             e.Email = reader("per_email").ToString()
+                            Console.WriteLine("per_dateNaissance" & e.Email)
+
                             e.MdpHashed = reader("per_mdpHashed").ToString()
+                            Console.WriteLine("per_mdpHashed" & e.MdpHashed)
+
                             e.DateCreation = CDate(reader("per_dateCreation"))
+                            Console.WriteLine("per_dateCreation" & e.DateCreation)
+
                             e.IsActive = CBool(reader("per_isActive"))
-                            e.ChatStatut = reader("per_chatStatus").ToString()
+                            Console.WriteLine("per_isActive" & e.IsActive)
+
+                            e.ChatStatut = reader("per_chatStatut").ToString()
+                            Console.WriteLine("per_chatStatus" & e.ChatStatut)
+
                             If Not IsDBNull(reader("ele_niveau")) Then
                                 e.Niveau = reader("ele_niveau").ToString()
+                                Console.WriteLine("ID" & e.Niveau)
+
                             End If
                             If Not IsDBNull(reader("ele_nbPoints")) Then
                                 e.NbPoints = CInt(reader("ele_nbPoints"))
@@ -49,7 +70,6 @@ Public Class UserDateAccess
                         End If
                     End Using
                 End Using
-
             End Using
         Catch ex As Exception
             MessageBox.Show("Erreur BD: " & ex.Message)
