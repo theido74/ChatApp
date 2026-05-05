@@ -196,17 +196,10 @@
 
     End Sub
 
-    Public Sub New()
-        InitializeComponent() ' <-- indispensable : crée les contrôles du formulaire
-        Dim dbAccess = New UserDateAccess()
-        Dim PasswordHasher = New PasswordHasher()
-    End Sub
 
 
 
-    Private Sub Login_Load_2(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Login_Load_3(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
-
-
 End Class

@@ -6,18 +6,8 @@
     Private UserService As New UserService()
     Private passwordHash As New PasswordHasher()
 
-    Public Class RegistrationData
-            Public Property Nom As String
-            Public Property Prenom As String
-            Public Property Username As String
-            Public Property Password As String
-            Public Property Age As Integer
-            Public Property Email As String
-            Public Property Niveau As String
-        End Class
 
-        ' Variable publique conservant les informations d'inscription après validation
-        Public PendingRegistration As RegistrationData = Nothing
+
 
 
     ' Message d'erreur succinct
@@ -38,13 +28,14 @@
             Dim username = txtUsername.Text.Trim()
             Dim password = txtMDP.Text
         Dim confirmPassword = txtConfirmMDP.Text.Trim()
-
+        Dim dateDeNaissance = New Date(1989 - 20 - 7)
         Dim ageValue As Integer = 0
-            Dim email = txtEmail.Text.Trim()
-            Dim niveau = txtNiveau.Text.Trim()
+        Dim email = txtEmail.Text.Trim()
+        Dim niveau = CInt(txtNiveau.Text.Trim())
+        Dim classe = "ESIG1"
 
-            ' Vérifications basiques de présence
-            If String.IsNullOrEmpty(nom) OrElse String.IsNullOrEmpty(prenom) Then
+        ' Vérifications basiques de présence
+        If String.IsNullOrEmpty(nom) OrElse String.IsNullOrEmpty(prenom) Then
                 AfficherErreur("Le nom et le prénom sont requis.")
                 Return
             End If
@@ -72,13 +63,13 @@
         End If
 
         ' Vérifier niveau (si présent)
-        If String.IsNullOrWhiteSpace(niveau) Then
-                AfficherErreur("Le niveau est requis.")
-                Return
-            End If
+        If String.IsNullOrWhiteSpace(CStr(niveau)) Then
+            AfficherErreur("Le niveau est requis.")
+            Return
+        End If
 
-            ' Vérifier que les services sont disponibles (runtime)
-            If clientValidator Is Nothing OrElse authService Is Nothing Then
+        ' Vérifier que les services sont disponibles (runtime)
+        If clientValidator Is Nothing OrElse authService Is Nothing Then
                 AfficherErreur("Erreur interne : services non initialisés (mode designer ?).")
                 Return
             End If
@@ -112,16 +103,6 @@
                 Return
             End Try
 
-        ' Tous les contrôles passés : stocker les données dans PendingRegistration
-        PendingRegistration = New RegistrationData With {
-                .Nom = nom,
-                .Prenom = prenom,
-                .Username = username,
-                .Password = password,
-                .Age = ageValue,
-                .Email = email,
-                .Niveau = niveau
-            }
 
         UserService.CreateEleve(username, nom, prenom, dateDeNaissance, email, passwordHash.HashMotdePasse(password), niveau, 0, classe)
 
@@ -136,18 +117,6 @@
         Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
             Me.Close()
         End Sub
-
-    Private Sub InitializeComponent()
-        Me.SuspendLayout()
-        '
-        'Inscription
-        '
-        Me.ClientSize = New System.Drawing.Size(284, 261)
-        Me.Name = "Inscription"
-        Me.ResumeLayout(False)
-
-    End Sub
-
 
 
 

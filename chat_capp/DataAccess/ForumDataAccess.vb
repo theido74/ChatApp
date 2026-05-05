@@ -2,10 +2,8 @@
 
 Public Class ForumDataAccess
 
-    ''' <summary>
     ''' Récupère tous les forums actifs
     ''' Approche: SQL Direct Query (SELECT simple)
-    ''' </summary>
     Public Function GetAllForums() As List(Of Forum)
         Dim forums As New List(Of Forum)()
 
@@ -45,11 +43,8 @@ Public Class ForumDataAccess
         Return Nothing
     End Function
 
-    ''' <summary>
     ''' Crée un nouveau forum
     ''' Approche: SQL Direct Query (INSERT)
-    ''' Validation: Name unique (check avant INSERT)
-    ''' </summary>
     Public Function CreateForum(name As String, description As String) As Integer ' Retourne l'id.
         ' Validation
         If String.IsNullOrWhiteSpace(name) Then

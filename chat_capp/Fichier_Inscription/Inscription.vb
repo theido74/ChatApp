@@ -1,10 +1,12 @@
 ﻿Public Class Inscription
 
 
-    Private authService As New AuthenticationService()
-        Private clientValidator As New ClientValidator()
 
-        Public Class RegistrationData
+    Private authService As New AuthenticationService()
+    Private clientValidator As New ClientValidator()
+    Private userService As New UserService()
+
+    Public Class RegistrationData
             Public Property Nom As String
             Public Property Prenom As String
             Public Property Username As String
