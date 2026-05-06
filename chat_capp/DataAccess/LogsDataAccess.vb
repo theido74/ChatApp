@@ -3,7 +3,7 @@ Imports Oracle.ManagedDataAccess.Client
 
 Public Class LogsDataAccess
 
-    Public Function AjoutLog(id As Integer?, message As String) As Integer
+    Public Function AjoutLog(id As Integer?, message As String) As Integer 'A TESTER AVEC CONSTANTE
         Dim newId As Integer = 0
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -60,10 +60,14 @@ Public Class LogsDataAccess
                                     IdActive.Add(userId)
                                 End If
                             End If
+
                         End Using
+
                     End Using
+
                 End Using
             End Using
+
         Catch ex As Exception
             MessageBox.Show("Erreur BD: " & ex.Message)
         End Try

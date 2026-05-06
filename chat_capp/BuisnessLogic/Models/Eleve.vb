@@ -1,4 +1,6 @@
-﻿Public Class Eleve
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+
+Public Class Eleve
     Inherits User
 
     Public Property Niveau As Integer

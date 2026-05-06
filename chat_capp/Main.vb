@@ -1,7 +1,5 @@
 ﻿Public Class Main
-
-
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub lblForm_Click(sender As Object, e As EventArgs) Handles lblForm.Click
 
     End Sub
 End Class

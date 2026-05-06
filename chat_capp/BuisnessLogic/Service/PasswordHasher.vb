@@ -2,7 +2,7 @@
 Imports System.Text
 
 Public Class PasswordHasher
-	'Salt = Empêche deux utilisateurs avec le même mot de passe d’avoir le même hash
+    'Salt = Empêche deux utilisateurs avec le même mot de passe d’avoir le même hash
     Private Const SALT_SIZE As Integer = 16
     'Itérations = hash(hash(hash( - Ajoute de la complexité au Hash pour plus de sécurité 
     Private Const HASH_ITERATIONS As Integer = 1000
@@ -71,3 +71,4 @@ Public Class PasswordHasher
     End Function
 
 End Class
+

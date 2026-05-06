@@ -19,7 +19,7 @@
             End If
 
             ' Vérifier le password
-            If Not passwordHasher.VerifierMotDePasse(password, e.MdpHashed) Then
+            If Not PasswordHasher.VerifierMotDePasse(password, e.MdpHashed) Then
                 LogError("Authenticate", $"Echec de connexion {username}")
                 Throw New UnauthorizedAccessException("Nom d'utilisateur ou mot de passe incorrect")
             End If

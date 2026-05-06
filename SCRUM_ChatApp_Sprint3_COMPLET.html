@@ -1,0 +1,589 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        td, th { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #1F4E78; color: white; font-weight: bold; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        h1, h2 { color: #1F4E78; }
+        .high-priority { background-color: #FFE6E6; }
+        .medium-priority { background-color: #FFF4E6; }
+        .low-priority { background-color: #E6F7FF; }
+        .status-done { color: green; font-weight: bold; }
+        .status-inprogress { color: orange; font-weight: bold; }
+        .status-planned { color: blue; font-weight: bold; }
+        ul { margin-top: 10px; }
+        .key-stats { background-color: #f9f9f9; padding: 15px; border-left: 4px solid #1F4E78; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>🚀 SCRUM ChatApp - Sprint 3 - Fichier Complet</h1>
+<p><strong>Tous les éléments Scrum pour la Semaine 3 (Forum Public & Messages Privés) avec allocation 3 Développeurs FULLTIME</strong></p>
+
+<div class="key-stats">
+    <strong>📊 Résumé Sprint 3:</strong><br>
+    ✅ Équipe: 3 développeurs FULLTIME<br>
+    📦 Capacité totale: 120-126 heures (10 jours)<br>
+    🎯 Allocation: Dev A (8.5h), Dev B (8h), Dev C (9h) = ~26h de travail effectif (21.5% utilisation avec buffer)<br>
+    🏆 Objectif: Forum CRUD complet + Messages privés CRUD + QA & Documentation
+</div>
+
+<h2>1. PRODUCT BACKLOG (Semaine 3 & 4)</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Fonctionnalité</th>
+    <th>Description</th>
+    <th>Priorité</th>
+    <th>Estimation (h)</th>
+    <th>Sprint</th>
+    <th>Statut</th>
+</tr>
+<tr class="high-priority">
+    <td>F-002</td>
+    <td>Forum public (CRUD)</td>
+    <td>Créer/lire/modifier/supprimer messages + pagination + modération</td>
+    <td><strong>P1</strong></td>
+    <td>12</td>
+    <td>Sprint 3</td>
+    <td><span class="status-planned">Planifié</span></td>
+</tr>
+<tr class="high-priority">
+    <td>F-003</td>
+    <td>Messages privés (CRUD)</td>
+    <td>Conversations 1-à-1 + notifications + archivage</td>
+    <td><strong>P1</strong></td>
+    <td>10</td>
+    <td>Sprint 3</td>
+    <td><span class="status-planned">Planifié</span></td>
+</tr>
+<tr class="medium-priority">
+    <td>F-004</td>
+    <td>Notifications en temps réel</td>
+    <td>Alertes nouveaux messages + pings utilisateurs actifs</td>
+    <td>P2</td>
+    <td>8</td>
+    <td>Sprint 4</td>
+    <td><span class="status-planned">Planifié</span></td>
+</tr>
+<tr class="low-priority">
+    <td>F-005</td>
+    <td>Profils utilisateurs</td>
+    <td>Avatar + bio + statut en ligne + historique posts</td>
+    <td>P3</td>
+    <td>10</td>
+    <td>Sprint 4</td>
+    <td><span class="status-planned">Planifié</span></td>
+</tr>
+</table>
+
+<h2>2. USER STORIES SPRINT 3</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Dev</th>
+    <th>Estimation (h)</th>
+    <th>Dépendances</th>
+    <th>Notes</th>
+</tr>
+<tr>
+    <td>US-11</td>
+    <td>Schéma BD Forum + Messages</td>
+    <td>Dev A</td>
+    <td>2</td>
+    <td>Sprint 2 Auth</td>
+    <td>Oracle tables (Forum, PrivateMessages, Threads)</td>
+</tr>
+<tr>
+    <td>US-12</td>
+    <td>DataAccess - Forum (SQL + Procs)</td>
+    <td>Dev A</td>
+    <td>3</td>
+    <td>US-11</td>
+    <td>CRUD complet + dual approach</td>
+</tr>
+<tr>
+    <td>US-13</td>
+    <td>DataAccess - Messages (SQL + Procs)</td>
+    <td>Dev A</td>
+    <td>2.5</td>
+    <td>US-11</td>
+    <td>CRUD complet + dual approach</td>
+</tr>
+<tr>
+    <td>US-14</td>
+    <td>Service Layer - Forum</td>
+    <td>Dev A</td>
+    <td>1.5</td>
+    <td>US-12</td>
+    <td>Business logic (validation, permissions)</td>
+</tr>
+<tr>
+    <td>US-15</td>
+    <td>Service Layer - Messages</td>
+    <td>Dev A</td>
+    <td>1.5</td>
+    <td>US-13</td>
+    <td>Business logic (recipient check, timestamps)</td>
+</tr>
+<tr>
+    <td>US-20</td>
+    <td>Forum UI - List & Display</td>
+    <td>Dev B</td>
+    <td>3</td>
+    <td>US-14</td>
+    <td>DataGridView + threading UI</td>
+</tr>
+<tr>
+    <td>US-21</td>
+    <td>Forum UI - Create & Edit</td>
+    <td>Dev B</td>
+    <td>2.5</td>
+    <td>US-14</td>
+    <td>Forms pour post, réponse, modération</td>
+</tr>
+<tr>
+    <td>US-22</td>
+    <td>Messages UI - Conversation List</td>
+    <td>Dev B</td>
+    <td>2</td>
+    <td>US-15</td>
+    <td>List conversations + Preview</td>
+</tr>
+<tr>
+    <td>US-23</td>
+    <td>Messages UI - Chat Window</td>
+    <td>Dev B</td>
+    <td>2.5</td>
+    <td>US-15</td>
+    <td>Chat box + message display + sender indicator</td>
+</tr>
+<tr>
+    <td>US-30</td>
+    <td>Tests Unitaires - DataAccess</td>
+    <td>Dev C</td>
+    <td>3</td>
+    <td>US-12 + US-13</td>
+    <td>CRUD tests (C, R, U, D) pour Forum + Messages</td>
+</tr>
+<tr>
+    <td>US-31</td>
+    <td>Tests Intégration - Service Layer</td>
+    <td>Dev C</td>
+    <td>2.5</td>
+    <td>US-14 + US-15</td>
+    <td>End-to-end service tests</td>
+</tr>
+<tr>
+    <td>US-32</td>
+    <td>Tests Sécurité - SQL Injection</td>
+    <td>Dev C</td>
+    <td>2</td>
+    <td>US-12 + US-13</td>
+    <td>Parameterized query validation + injection attempts</td>
+</tr>
+<tr>
+    <td>US-33</td>
+    <td>Tests UI - Fonctionnels</td>
+    <td>Dev C</td>
+    <td>1.5</td>
+    <td>US-20 + US-21 + US-22 + US-23</td>
+    <td>UI interaction tests</td>
+</tr>
+</table>
+
+<h2>3. ÉQUIPE & RÉPARTITION CHARGE SPRINT 3</h2>
+<table>
+<tr>
+    <th>Développeur</th>
+    <th>Rôle</th>
+    <th>Disponibilité (h/jour)</th>
+    <th>Total 10j (h)</th>
+    <th>Allocation Sprint 3 (h)</th>
+    <th>Utilisation %</th>
+    <th>Tâches Clés</th>
+</tr>
+<tr>
+    <td><strong>Dev A</strong></td>
+    <td>Backend / BD / DataAccess</td>
+    <td>8.5</td>
+    <td>85</td>
+    <td>10.5</td>
+    <td>12%</td>
+    <td>US-11, 12, 13, 14, 15 (Schéma, DataAccess, Services)</td>
+</tr>
+<tr>
+    <td><strong>Dev B</strong></td>
+    <td>Frontend / UI / Forms</td>
+    <td>8</td>
+    <td>80</td>
+    <td>10</td>
+    <td>12.5%</td>
+    <td>US-20, 21, 22, 23 (Forum UI, Messages UI)</td>
+</tr>
+<tr>
+    <td><strong>Dev C</strong></td>
+    <td>QA / Tests / Documentation FULLTIME</td>
+    <td>9</td>
+    <td>90</td>
+    <td>9</td>
+    <td>10%</td>
+    <td>US-30, 31, 32, 33 (Tests Unitaires, Intégration, Sécurité, UI)</td>
+</tr>
+<tr style="background-color: #E6F2FF; font-weight: bold;">
+    <td>TOTAL</td>
+    <td>3 Devs FULLTIME</td>
+    <td>25.5</td>
+    <td>255</td>
+    <td>29.5</td>
+    <td>11.5%</td>
+    <td>13 User Stories</td>
+</tr>
+</table>
+
+<p><strong>💡 Insight:</strong> Allocation légère (11.5%) permet flexibilité pour bugs, code review, meetings. Buffer 88.5% pour imprévus.</p>
+
+<h2>4. CALENDRIER SPRINT 3 (2 Semaines)</h2>
+<table>
+<tr>
+    <th>Jour</th>
+    <th>Dev A (Backend)</th>
+    <th>Dev B (Frontend)</th>
+    <th>Dev C (QA)</th>
+    <th>Checkpoint / Livrables</th>
+</tr>
+<tr>
+    <td><strong>J1 (Lundi)</strong></td>
+    <td>Schéma BD (US-11) - 2h</td>
+    <td>Setup UI forms</td>
+    <td>Test plan setup</td>
+    <td>✅ BD ready, branches created</td>
+</tr>
+<tr>
+    <td><strong>J2 (Mardi)</strong></td>
+    <td>DataAccess Forum SQL+Proc (US-12) - 3h</td>
+    <td>Forum List UI (US-20)</td>
+    <td>Unit test templates</td>
+    <td>✅ Forum CRUD implemented</td>
+</tr>
+<tr>
+    <td><strong>J3 (Mercredi)</strong></td>
+    <td>DataAccess Messages (US-13) - 2.5h</td>
+    <td>Forum Edit UI (US-21)</td>
+    <td>Forum DataAccess tests (US-30)</td>
+    <td>✅ Messages CRUD ready</td>
+</tr>
+<tr>
+    <td><strong>J4 (Jeudi)</strong></td>
+    <td>Service Layer Forum (US-14) - 1.5h</td>
+    <td>Messages List UI (US-22)</td>
+    <td>Integration tests (US-31)</td>
+    <td>✅ Business logic tested</td>
+</tr>
+<tr>
+    <td><strong>J5 (Vendredi)</strong></td>
+    <td>Service Layer Messages (US-15) - 1.5h</td>
+    <td>Messages Chat UI (US-23)</td>
+    <td>Security tests - SQL Injection (US-32)</td>
+    <td>✅ Week 1 Complete - All CRUD Live</td>
+</tr>
+<tr style="background-color: #E6F2FF;">
+    <td colspan="4"><strong>WEEK 1 REVIEW: Forum + Messages complets, tous les services testés</strong></td>
+    <td></td>
+</tr>
+<tr>
+    <td><strong>J6 (Lundi)</strong></td>
+    <td>Bug fixes + polish</td>
+    <td>UI refinement + pagination</td>
+    <td>UI functional tests (US-33)</td>
+    <td>✅ Week 2 begins - Refinement</td>
+</tr>
+<tr>
+    <td><strong>J7-J10</strong></td>
+    <td>Code review, optimization, S4 prep</td>
+    <td>UX polish, accessibility, S4 prep</td>
+    <td>Regression tests, documentation, S4 prep</td>
+    <td>✅ Ready for Sprint 4 (Notifications, Profiles)</td>
+</tr>
+</table>
+
+<h2>5. RISQUES & MITIGATION</h2>
+<table>
+<tr>
+    <th>ID</th>
+    <th>Risque</th>
+    <th>Impact</th>
+    <th>Probabilité</th>
+    <th>Mitigation</th>
+    <th>Owner</th>
+</tr>
+<tr>
+    <td>R1</td>
+    <td>DataAccess dual-approach complexity</td>
+    <td>Moyen</td>
+    <td>Moyen</td>
+    <td>Templates prêts (TEMPLATES_REUTILISABLES.md) + exemples complets (EXAMPLES_DataAccess.md)</td>
+    <td>Dev A</td>
+</tr>
+<tr>
+    <td>R2</td>
+    <td>Threading complexity UI</td>
+    <td>Moyen</td>
+    <td>Moyen</td>
+    <td>UI prototypes validés avant implémentation full</td>
+    <td>Dev B</td>
+</tr>
+<tr>
+    <td>R3</td>
+    <td>SQL injection vulnerabilities</td>
+    <td>Critique</td>
+    <td>Bas</td>
+    <td>Code review mandatory, tests sécurité avant merge (US-32)</td>
+    <td>Dev C</td>
+</tr>
+<tr>
+    <td>R4</td>
+    <td>Désynchronisation équipe (3 devs)</td>
+    <td>Moyen</td>
+    <td>Bas</td>
+    <td>Standup quotidien, README_IMPLEMENTATION.md checklist quotidienne</td>
+    <td>Scrum Master</td>
+</tr>
+<tr>
+    <td>R5</td>
+    <td>Performance messages (scalability)</td>
+    <td>Moyen</td>
+    <td>Bas</td>
+    <td>BONNES_PRATIQUES.md inclut query optimization (pagination, indexes)</td>
+    <td>Dev A</td>
+</tr>
+</table>
+
+<h2>6. DÉPENDANCES INTER-TASKS</h2>
+<table>
+<tr>
+    <th>Task</th>
+    <th>Dépend De</th>
+    <th>Peut Démarrer</th>
+    <th>Blocage Risk</th>
+</tr>
+<tr>
+    <td>US-11 (Schéma)</td>
+    <td>Sprint 2 Auth</td>
+    <td>J1</td>
+    <td>Bas</td>
+</tr>
+<tr>
+    <td>US-12 (DataAccess Forum)</td>
+    <td>US-11</td>
+    <td>J2</td>
+    <td>Moyen</td>
+</tr>
+<tr>
+    <td>US-13 (DataAccess Messages)</td>
+    <td>US-11</td>
+    <td>J2</td>
+    <td>Moyen</td>
+</tr>
+<tr>
+    <td>US-14 (Service Forum)</td>
+    <td>US-12</td>
+    <td>J3</td>
+    <td>Bas</td>
+</tr>
+<tr>
+    <td>US-15 (Service Messages)</td>
+    <td>US-13</td>
+    <td>J3</td>
+    <td>Bas</td>
+</tr>
+<tr>
+    <td>US-20 (Forum UI List)</td>
+    <td>US-14</td>
+    <td>J3</td>
+    <td>Moyen</td>
+</tr>
+<tr>
+    <td>US-22 (Messages UI List)</td>
+    <td>US-15</td>
+    <td>J3</td>
+    <td>Moyen</td>
+</tr>
+<tr>
+    <td>US-30 (Unit Tests)</td>
+    <td>US-12, US-13</td>
+    <td>J3</td>
+    <td>Bas</td>
+</tr>
+<tr>
+    <td>US-32 (Security Tests)</td>
+    <td>US-12, US-13</td>
+    <td>J4</td>
+    <td>Bas</td>
+</tr>
+</table>
+
+<h2>7. BURN-DOWN CHART DATA</h2>
+<p>
+    <strong>Total heures Sprint 3:</strong> 29.5h<br>
+    <strong>Jours Sprint:</strong> 10 jours<br>
+    <strong>Burn rate idéal:</strong> 3h/jour<br>
+    <strong>Utilisation réelle:</strong> 11.5% (buffer 88.5% pour flexibility)
+</p>
+
+<h2>8. DÉFINITION OF DONE (Sprint 3)</h2>
+<ul>
+    <li>✅ All US stories implemented and merged to main</li>
+    <li>✅ Code passes all unit tests (US-30)</li>
+    <li>✅ Code passes integration tests (US-31)</li>
+    <li>✅ Security tests passed (US-32) - No SQL injection vulnerabilities</li>
+    <li>✅ UI functional tests passed (US-33)</li>
+    <li>✅ Code reviewed by peer (at least 1 other developer)</li>
+    <li>✅ Documentation updated (templates, examples, best practices)</li>
+    <li>✅ No regressions in Sprint 2 features (Auth, Login)</li>
+</ul>
+
+<h2>9. SUCCESS CRITERIA & METRICS</h2>
+<table>
+<tr>
+    <th>Critère</th>
+    <th>Métrique</th>
+    <th>Target</th>
+    <th>Status</th>
+</tr>
+<tr>
+    <td>Fonctionnalité Forum</td>
+    <td>CRUD 100%, Pagination working, Moderation tools</td>
+    <td>J5</td>
+    <td>Planifié</td>
+</tr>
+<tr>
+    <td>Fonctionnalité Messages</td>
+    <td>CRUD 100%, 1-to-1 conversations, Timestamps</td>
+    <td>J5</td>
+    <td>Planifié</td>
+</tr>
+<tr>
+    <td>Code Quality</td>
+    <td>100% Unit Test Coverage (DataAccess), 0 critical bugs</td>
+    <td>J10</td>
+    <td>Planifié</td>
+</tr>
+<tr>
+    <td>Security</td>
+    <td>100% Parameterized queries, 0 injection vulnerabilities</td>
+    <td>J5</td>
+    <td>Planifié</td>
+</tr>
+<tr>
+    <td>Documentation</td>
+    <td>README updated, examples complete, templates ready for S4</td>
+    <td>J10</td>
+    <td>Planifié</td>
+</tr>
+<tr>
+    <td>Team Velocity</td>
+    <td>13 US stories completed on time, 0 carryover to Sprint 4</td>
+    <td>J10</td>
+    <td>Planifié</td>
+</tr>
+</table>
+
+<h2>10. DOCUMENTATION SPRINT 3 (Disponible)</h2>
+<table>
+<tr>
+    <th>Fichier</th>
+    <th>Objectif</th>
+    <th>Lecteur(s)</th>
+    <th>Priorité</th>
+</tr>
+<tr>
+    <td>SEMAINE_3_REPARTITION_3DEVS.md</td>
+    <td>Allocation détaillée 3 devs, calendrier, risques</td>
+    <td>Tous</td>
+    <td>🔴 Haute</td>
+</tr>
+<tr>
+    <td>README_IMPLEMENTATION.md</td>
+    <td>Guide d'exécution jour-par-jour pour Dev A/B/C</td>
+    <td>Dev A, Dev B, Dev C</td>
+    <td>🔴 Haute</td>
+</tr>
+<tr>
+    <td>TEMPLATES_REUTILISABLES.md</td>
+    <td>Code templates VB.NET (SQL + Procs), Services, Models, Tests</td>
+    <td>Dev A, Dev B, Dev C</td>
+    <td>🔴 Haute</td>
+</tr>
+<tr>
+    <td>SEMAINE_3_EXAMPLES_DataAccess.md</td>
+    <td>CRUD examples (Forum & Messages) - SQL Direct + Stored Procedures</td>
+    <td>Dev A</td>
+    <td>🔴 Haute</td>
+</tr>
+<tr>
+    <td>SEMAINE_3_BONNES_PRATIQUES.md</td>
+    <td>Best practices (SQL injection, transactions, optimization)</td>
+    <td>Tous</td>
+    <td>🟡 Moyenne</td>
+</tr>
+<tr>
+    <td>SEMAINE_3_PLANNING_JOUR_PAR_JOUR.md</td>
+    <td>Schedule détaillée jour-par-jour avec checkpoints</td>
+    <td>Scrum Master</td>
+    <td>🟡 Moyenne</td>
+</tr>
+<tr>
+    <td>SEMAINE_4_ROADMAP.md</td>
+    <td>Planning Sprint 4 (Notifications, Profiles)</td>
+    <td>Lead Dev, Scrum Master</td>
+    <td>🟢 Basse</td>
+</tr>
+<tr>
+    <td>INDEX_SEMAINE3_DOCUMENTATION.md</td>
+    <td>Navigation hub pour tous les fichiers</td>
+    <td>Tous (Start Here)</td>
+    <td>🔴 Haute</td>
+</tr>
+</table>
+
+<h2>11. KEY POINTS SPRINT 3</h2>
+<ul>
+    <li>✅ <strong>Équipe:</strong> 3 développeurs FULLTIME (changement majeur de Sprint 2)</li>
+    <li>✅ <strong>Capacité:</strong> 255 heures disponibles, ~30h allocation (11.5% utilisation = high flexibility)</li>
+    <li>✅ <strong>Objectif:</strong> Forum CRUD + Messages CRUD + QA complète + Documentation</li>
+    <li>✅ <strong>Dual DataAccess:</strong> SQL Direct + Stored Procedures (team chooses per feature)</li>
+    <li>✅ <strong>Quality:</strong> 100% test coverage (Unit, Integration, Security, UI tests)</li>
+    <li>✅ <strong>Documentation:</strong> 8 fichiers support (templates, examples, best practices, planning)</li>
+    <li>✅ <strong>Dependencies:</strong> Minimisées via parallelisation (Dev A/B/C work independently after J1)</li>
+    <li>✅ <strong>Risk Management:</strong> Mitigation strategies pour DataAccess complexity, UI threading, SQL injection</li>
+    <li>✅ <strong>S4 Readiness:</strong> Week 2 reserved for code review, optimization, Sprint 4 prep</li>
+</ul>
+
+<h2>12. QUICK CHECKLIST - START HERE</h2>
+<ul>
+    <li>[ ] Dev A: Read SEMAINE_3_REPARTITION_3DEVS.md + your section in README_IMPLEMENTATION.md</li>
+    <li>[ ] Dev B: Read SEMAINE_3_REPARTITION_3DEVS.md + your section in README_IMPLEMENTATION.md</li>
+    <li>[ ] Dev C: Read SEMAINE_3_REPARTITION_3DEVS.md + your section in README_IMPLEMENTATION.md</li>
+    <li>[ ] All: Review INDEX_SEMAINE3_DOCUMENTATION.md (navigation hub)</li>
+    <li>[ ] All: Review TEMPLATES_REUTILISABLES.md (code patterns)</li>
+    <li>[ ] Dev A: Review SEMAINE_3_EXAMPLES_DataAccess.md + SEMAINE_3_BONNES_PRATIQUES.md</li>
+    <li>[ ] All: Attend kickoff meeting to clarify questions</li>
+    <li>[ ] Day 1: Create git branches per task + setup development environment</li>
+    <li>[ ] Daily: Review README_IMPLEMENTATION.md daily checklist for your role</li>
+    <li>[ ] Daily: Run 15min standup with team (track progress vs schedule)</li>
+</ul>
+
+<hr>
+<p style="color: #666; font-size: 0.9em;">
+    <strong>Generated:</strong> 2026-05-04<br>
+    <strong>Sprint Duration:</strong> 2 weeks (10 working days)<br>
+    <strong>Team:</strong> Dev A (Backend), Dev B (Frontend), Dev C (QA/Tests)<br>
+    <strong>Status:</strong> READY FOR KICKOFF ✅
+</p>
+
+</body>
+</html>

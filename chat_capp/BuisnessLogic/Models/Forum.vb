@@ -6,3 +6,4 @@
     Public Property EstActif As Boolean
 
 End Class
+

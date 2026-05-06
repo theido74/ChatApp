@@ -26,26 +26,37 @@ Public Class UserDateAccess
 
                         If reader.Read() Then
                             e.UserID = CInt(reader("per_id"))
+                            Console.WriteLine("ID" & e.UserID)
                             e.UserName = reader("per_username").ToString()
+                            Console.WriteLine("ID" & e.UserName)
 
                             e.Nom = reader("per_nom").ToString()
+                            Console.WriteLine("per_nom" & e.Nom)
 
                             e.Prenom = reader("per_prenom").ToString()
+                            Console.WriteLine("per_prenom" & e.Prenom)
 
                             e.DateDeNaissance = CDate(reader("per_dateNaissance"))
+                            Console.WriteLine("ID" & e.DateDeNaissance)
 
                             e.Email = reader("per_email").ToString()
+                            Console.WriteLine("per_dateNaissance" & e.Email)
 
                             e.MdpHashed = reader("per_mdpHashed").ToString()
+                            Console.WriteLine("per_mdpHashed" & e.MdpHashed)
 
                             e.DateCreation = CDate(reader("per_dateCreation"))
+                            Console.WriteLine("per_dateCreation" & e.DateCreation)
 
                             e.IsActive = CBool(reader("per_isActive"))
+                            Console.WriteLine("per_isActive" & e.IsActive)
 
                             e.ChatStatut = reader("per_chatStatut").ToString()
+                            Console.WriteLine("per_chatStatus" & e.ChatStatut)
 
                             If Not IsDBNull(reader("ele_niveau")) Then
                                 e.Niveau = CInt(reader("ele_niveau"))
+                                Console.WriteLine("ID" & e.Niveau)
 
                             End If
                             If Not IsDBNull(reader("ele_nbPoints")) Then
@@ -123,7 +134,7 @@ Public Class UserDateAccess
                             cmd.Parameters.Add("email", OracleDbType.Varchar2).Value = email
                             cmd.Parameters.Add("mdpHashed", OracleDbType.Varchar2).Value = mdp
                             cmd.Parameters.Add("dateCreation", OracleDbType.Date).Value = DateTime.Now
-                            cmd.Parameters.Add("isActive", OracleDbType.Int16).Value = 0
+                            cmd.Parameters.Add("isActive", OracleDbType.Int16).Value = 1
                             cmd.Parameters.Add("chatStatut", OracleDbType.Varchar2).Value = String.Empty
 
                             Dim prmNewId = cmd.Parameters.Add("newId", OracleDbType.Int32)

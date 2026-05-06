@@ -1,4 +1,5 @@
-﻿Imports Oracle.ManagedDataAccess.Client
+﻿Imports System.Windows
+Imports Oracle.ManagedDataAccess.Client
 
 Public Class ForumDataAccess
 
@@ -32,6 +33,7 @@ Public Class ForumDataAccess
                     End Using
                 End Using
             End Using
+
             Return forums
 
         Catch ex As Exception
@@ -39,6 +41,7 @@ Public Class ForumDataAccess
         End Try
         Return Nothing
     End Function
+
 
     Public Function GetForumById(id As Integer) As Forum
 
@@ -51,7 +54,7 @@ Public Class ForumDataAccess
                                     "WHERE for_estActif = 1 AND for_id = :id"
 
                 Using cmd As New OracleCommand(sql, conn)
-                    cmd.Parameters.Add("id", OracleDbType.Int32).Value = id
+                    cmd.Parameters.Add("id", OracleDbType.Varchar2).Value = id
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
@@ -74,6 +77,7 @@ Public Class ForumDataAccess
         End Try
         Return Nothing
     End Function
+
 
     Public Function CreateForum(name As String, description As String) As Integer ' Retourne l'id.
         ' Validation

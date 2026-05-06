@@ -1,4 +1,6 @@
-﻿Public Class Session
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+
+Public Class Session
     Public Property SessionId As Integer
     Public Property UserId As Integer
     Public Property LoginTime As Integer

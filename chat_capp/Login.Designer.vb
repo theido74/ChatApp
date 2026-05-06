@@ -26,8 +26,9 @@ Partial Class Login
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.txtMDP = New System.Windows.Forms.TextBox()
         Me.btnVoirMDP = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.btnConnexion = New System.Windows.Forms.Button()
+        Me.lblCreeCompte = New System.Windows.Forms.LinkLabel()
+        Me.lblMessage = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txtUsername
@@ -58,31 +59,42 @@ Partial Class Login
         Me.btnVoirMDP.Text = "Button1"
         Me.btnVoirMDP.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnConnexion
         '
-        Me.Button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.BlueViolet
-        Me.Button1.Location = New System.Drawing.Point(124, 341)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(304, 50)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "SE CONNECTER"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnConnexion.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnConnexion.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConnexion.ForeColor = System.Drawing.Color.BlueViolet
+        Me.btnConnexion.Location = New System.Drawing.Point(124, 341)
+        Me.btnConnexion.Name = "btnConnexion"
+        Me.btnConnexion.Size = New System.Drawing.Size(304, 50)
+        Me.btnConnexion.TabIndex = 3
+        Me.btnConnexion.Text = "SE CONNECTER"
+        Me.btnConnexion.UseVisualStyleBackColor = False
         '
-        'LinkLabel1
+        'lblCreeCompte
         '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.LinkLabel1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.BlueViolet
-        Me.LinkLabel1.Location = New System.Drawing.Point(346, 502)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(106, 19)
-        Me.LinkLabel1.TabIndex = 4
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Crée un compte"
+        Me.lblCreeCompte.AutoSize = True
+        Me.lblCreeCompte.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblCreeCompte.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCreeCompte.LinkColor = System.Drawing.Color.BlueViolet
+        Me.lblCreeCompte.Location = New System.Drawing.Point(346, 502)
+        Me.lblCreeCompte.Name = "lblCreeCompte"
+        Me.lblCreeCompte.Size = New System.Drawing.Size(106, 19)
+        Me.lblCreeCompte.TabIndex = 4
+        Me.lblCreeCompte.TabStop = True
+        Me.lblCreeCompte.Text = "Crée un compte"
+        '
+        'lblMessage
+        '
+        Me.lblMessage.AutoSize = True
+        Me.lblMessage.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblMessage.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMessage.ForeColor = System.Drawing.Color.IndianRed
+        Me.lblMessage.Location = New System.Drawing.Point(148, 415)
+        Me.lblMessage.Name = "lblMessage"
+        Me.lblMessage.Size = New System.Drawing.Size(0, 18)
+        Me.lblMessage.TabIndex = 5
         '
         'Login
         '
@@ -91,8 +103,9 @@ Partial Class Login
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(562, 543)
-        Me.Controls.Add(Me.LinkLabel1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.lblMessage)
+        Me.Controls.Add(Me.lblCreeCompte)
+        Me.Controls.Add(Me.btnConnexion)
         Me.Controls.Add(Me.btnVoirMDP)
         Me.Controls.Add(Me.txtMDP)
         Me.Controls.Add(Me.txtUsername)
@@ -107,6 +120,7 @@ Partial Class Login
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents txtMDP As TextBox
     Friend WithEvents btnVoirMDP As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents btnConnexion As Button
+    Friend WithEvents lblCreeCompte As LinkLabel
+    Friend WithEvents lblMessage As Label
 End Class
