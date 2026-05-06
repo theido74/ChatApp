@@ -1,10 +1,11 @@
-﻿Imports System.Data
-Imports System.Windows
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+﻿'Imports System.Data
+'Imports System.Windows
+'Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports Oracle.ManagedDataAccess.Client
 
 Public Class messageDataAccess
-    Public Function CreateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String) As Integer
+
+    Public Function CreateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String, Optional forum As Integer? = Nothing) As Integer
         Dim newId As Integer = 0
 
         Try
@@ -22,7 +23,13 @@ Public Class messageDataAccess
 
                         cmd.Parameters.Add("idEnvoyeur", OracleDbType.Int32).Value = idEnvoyeur
                         cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
-                        cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = 22
+
+                        If forum.HasValue Then
+                            cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = forum.Value
+                        Else
+                            cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = DBNull.Value
+                        End If
+
                         cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
                         cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
                         cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = 0
@@ -71,11 +78,16 @@ Public Class messageDataAccess
 
                     Using reader As OracleDataReader = cmd.ExecuteReader()
                         While reader.Read()
+                            Dim forumId As Integer = -1
+                            If Not IsDBNull(reader("mes_for_id")) Then
+                                forumId = CInt(reader("mes_for_id"))
+                            End If
+
                             Dim message As New Message With {
                                 .MessageId = CInt(reader("mes_id")),
                                 .EmmeteurId = CInt(reader("mes_per_id_emm")),
                                 .ReceveurId = CInt(reader("mes_per_id_rec")),
-                                .ForumId = CInt(reader("mes_for_id")),
+                                .ForumId = forumId,
                                 .Contenu = reader("mes_contenu").ToString(),
                                 .TimeStamp = CDate(reader("mes_timestamp")),
                                 .EstPrive = CBool(reader("mes_estprive")),
