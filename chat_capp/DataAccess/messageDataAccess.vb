@@ -35,19 +35,14 @@ Public Class messageDataAccess
                         newId = Convert.ToInt32(prmNewId.Value.ToString())
 
                         tx.Commit()
-
                         Return newId
                     End Using
                     tx.Rollback()
                 End Using
-
             End Using
-
         Catch ex As Exception
             MessageBox.Show("Erreur BD: " & ex.Message)
-
             Return -1
-
         End Try
     End Function
 End Class

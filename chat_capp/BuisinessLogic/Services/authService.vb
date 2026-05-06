@@ -26,6 +26,7 @@
 
             ' Login réussi
             LogInfo("Authenticate", $"User {username} (ID {e.UserID}) logged")
+            e.IsActive = True
             logger.AjoutLog(e.UserID, MESSAGEOK)
             Return True
 

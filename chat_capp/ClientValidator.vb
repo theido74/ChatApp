@@ -29,33 +29,27 @@ Public Class ClientValidator
 
     Public Function GetValidationMessage(username As String, password As String) As String
         If String.IsNullOrWhiteSpace(username) Then
-            Login.AfficherErreur("Veuillez entrer un nom d'utilisateur")
 
             Return ""
         End If
 
         If username.Length < 4 Then
-            Login.AfficherErreur("Le nom d'utilisateur doit contenir au moins 4 caractères")
             Return ""
         End If
 
         If username.Length > 20 Then
-            Login.AfficherErreur("Le nom d'utilisateur ne doit pas dépasser 20 caractères")
             Return ""
         End If
 
         If String.IsNullOrEmpty(password) Then
-            Login.AfficherErreur("Veuillez entrer un mot de passe")
             Return ""
         End If
 
         If password.Length < 8 Then
-            Login.AfficherErreur("Le mot de passe doit contenir au moins 8 caractères")
             Return ""
         End If
 
         If password.Length > 50 Then
-            Login.AfficherErreur("Le mot de passe ne doit pas dépasser 50 caractères")
             Return ""
         End If
 

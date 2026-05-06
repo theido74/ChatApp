@@ -1,5 +1,6 @@
 ﻿Public Class UserService
     Private dbAccess As New UserDateAccess()
+    Private logger As New LogService()
 
     Public Function CreateEleve(username As String, nom As String, prenom As String, dateDeNaissance As DateTime, email As String, mdp As String, niveau As Integer, nbPoint As Integer, classe As String) As Integer
         If String.IsNullOrEmpty(username) Then
@@ -12,5 +13,14 @@
             MessageBox.Show("Erreur Fonction CreateEleve")
             Return Nothing
         End Try
+    End Function
+
+    Public Function CheckIsActive(id As Integer) As Boolean
+        Dim lstActive As New List(Of Integer)
+        lstActive = logger.isActive()
+        If lstActive.Contains(id) Then
+            Return True
+        End If
+        Return False
     End Function
 End Class

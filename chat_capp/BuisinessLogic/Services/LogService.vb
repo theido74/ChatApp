@@ -18,8 +18,10 @@ Public Class LogService
     End Function
 
     Public Function PingDB(id As Integer, message As String) As Integer
-        AjoutLog(id, message)
+        Dim newID = AjoutLog(id, message)
         Console.WriteLine("PING DB Exécuté à " & DateTime.Now)
+        Return newID
+
     End Function
 
 
@@ -28,6 +30,7 @@ Public Class LogService
         lstActive = dbAccess.isActive()
         Return lstActive
     End Function
-    'Private WithEvents timer As New Timers.Timer(30000) ' 30 000 ms = 30 sec
+
+
 
 End Class
