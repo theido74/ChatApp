@@ -1,9 +1,12 @@
-﻿Partial Public Class Login
+﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting.Logging
 
+Partial Public Class Login
 
+    Private logger As New LogService()
     Private authService As New AuthenticationService()
 
     Private clientValidator As New ClientValidator()
+    Private Const MESSAGEFAILED As String = "LOG ERROR"
 
     Public ConnectedUserID As Integer = 0
 
@@ -54,7 +57,9 @@
             End If
 
             If Not clientValidator.ValidatePassword(password) Then
+
                 AfficherErreur("Mot de passe invalide (8-50 caractères minimum)")
+
                 clientValidator.GetValidationMessage(username, password)
                 txtMDP.Clear()
                 Return
@@ -100,7 +105,10 @@
 
         Catch ex As UnauthorizedAccessException
             ' Erreur d'authentification (identifiants incorrects)
+            logger.AjoutLog(999, MESSAGEFAILED)
+
             AfficherErreur(ex.Message)
+
             ' Vider le champ password pour sécurité
             txtMDP.Clear()
 

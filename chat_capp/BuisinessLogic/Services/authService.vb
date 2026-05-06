@@ -1,7 +1,8 @@
 ﻿Public Class AuthenticationService
     Private dbAccess As New UserDateAccess()
     Private passwordHasher As New PasswordHasher()
-
+    Private logger As New LogService()
+    Private Const MESSAGEOK As String = "LOGGED"
     ''' Authentifie un utilisateur avec username et password
 
     Public Function Authenticate(username As String, password As String) As Boolean
@@ -25,14 +26,17 @@
 
             ' Login réussi
             LogInfo("Authenticate", $"User {username} (ID {e.UserID}) logged")
+            logger.AjoutLog(e.UserID, MESSAGEOK)
             Return True
 
         Catch ex As UnauthorizedAccessException
             Throw
         Catch ex As Exception
             LogError("Authenticate", ex)
+
             Throw New Exception("Erreur lors du logging")
         End Try
+
     End Function
 
     ''' Récupère un utilisateur par son username

@@ -5,14 +5,7 @@
         ' Tester la connexion au démarrage
         TestOracleConnection()
 
-        ' Exécuter le test manuellement (débogage uniquement) et afficher toute erreur
-        Try
-            Dim passwordTest As New PasswordHasherTests()
-            passwordTest.HashPassword_ReturnsDifferentHashEachTime()
-            MessageBox.Show("Test manuel exécuté avec succès", "Info")
-        Catch ex As Exception
-            MessageBox.Show("Erreur lors du test manuel: " & ex.Message, "Erreur")
-        End Try
+
     End Sub
 
     Private Sub TestOracleConnection()
@@ -22,11 +15,13 @@
             If DatabaseConnection.TestConnection() Then
                 MessageBox.Show("✅ Connexion Oracle réussie!", "Succès")
 
-                Dim message As New messageDataAccess()
-                Dim id As Integer = message.CreateMessage(1, 2, "TEST SALUT")
+                Dim message As New MessageService()
+                Dim id As Integer = message.CreateMessage(4, 1, "TEST SALUT LOGS")
+                Dim logger As New LogService()
 
                 If id > 0 Then
                     MessageBox.Show("✅ Utilisateur trouvé: " & id, "Succès")
+                    logger.PingDB(4, "PING")
                 Else
                     MessageBox.Show("⚠️ Pas d'utilisateur avec ", "Info")
                 End If

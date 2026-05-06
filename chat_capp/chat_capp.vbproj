@@ -174,7 +174,10 @@
     <Compile Include="BuisinessLogic\Models\Session.vb" />
     <Compile Include="BuisinessLogic\Models\User.vb" />
     <Compile Include="BuisinessLogic\Services\authService.vb" />
+    <Compile Include="BuisinessLogic\Services\LogService.vb" />
+    <Compile Include="BuisinessLogic\Services\MessageService.vb" />
     <Compile Include="DataAccess\ForumDataAccess.vb" />
+    <Compile Include="DataAccess\LogsDataAccess.vb" />
     <Compile Include="DataAccess\messageDataAccess.vb" />
     <Compile Include="BuisinessLogic\Services\PasswordHasher.vb" />
     <Compile Include="BuisinessLogic\Services\PasswordHasherTests.vb" />
