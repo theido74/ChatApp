@@ -2,8 +2,6 @@
 
 Public Class ForumDataAccess
 
-    ''' Récupère tous les forums actifs
-    ''' Approche: SQL Direct Query (SELECT simple)
     Public Function GetAllForums() As List(Of Forum)
         Dim forums As New List(Of Forum)()
 
@@ -43,8 +41,43 @@ Public Class ForumDataAccess
         Return Nothing
     End Function
 
-    ''' Crée un nouveau forum
-    ''' Approche: SQL Direct Query (INSERT)
+
+    Public Function GetForumById(id As Integer) As Forum
+
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection() ' Using -> à la fin la variable "conn" se ferme; GetConnection() -> retourne une connexion oracle configurée.
+                conn.Open() ' Rend la connexion active.
+
+                Dim sql As String = "SELECT for_id, for_nom, for_description, for_dateCreation, for_estActif " &
+                                    "FROM ess_forum " &
+                                    "WHERE for_estActif = 1 AND for_id = :id"
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.Parameters.Add("id", OracleDbType.Varchar2).Value = id
+                    cmd.CommandType = CommandType.Text
+                    cmd.CommandTimeout = 30
+
+                    Using reader As OracleDataReader = cmd.ExecuteReader()
+                        reader.Read()
+                        Dim forum As New Forum With {
+                            .ForumId = CInt(reader("for_id")),
+                            .NomForum = reader("for_nom").ToString(),
+                            .Description = reader("for_description").ToString(),
+                            .DateCreation = CDate(reader("for_dateCreation")),
+                            .EstActif = CBool(reader("for_estActif"))
+                        }
+                        Return forum
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+        End Try
+        Return Nothing
+    End Function
+
+
     Public Function CreateForum(name As String, description As String) As Integer ' Retourne l'id.
         ' Validation
         If String.IsNullOrWhiteSpace(name) Then
