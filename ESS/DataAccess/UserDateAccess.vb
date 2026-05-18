@@ -131,10 +131,9 @@ Public Class UserDateAccess
     Public Function CreateEleve(username As String, nom As String, prenom As String, dateDeNaissance As DateTime, email As String, mdp As String, niveau As Integer, nbPoint As Integer, classe As String) As Integer
         Dim newId As Integer = 0
 
+        Dim sqlGetSeq As String = "SELECT seq_personne.NEXTVAL FROM dual"
         Dim sqlPerson As String = "INSERT INTO ess_personne (per_id, per_username, per_nom, per_prenom, per_dateNaissance, per_email, per_mdpHashed, per_dateCreation, per_isActive, per_chatStatut) " &
-                              "VALUES (seq_personne.NEXTVAL, :username, :nom, :prenom, :dateDeNaissance, :email, :mdpHashed, :dateCreation, :isActive, :chatStatut) " &
-                              "RETURNING per_id INTO :newId"
-
+                              "VALUES (:per_id, :username, :nom, :prenom, :dateDeNaissance, :email, :mdpHashed, :dateCreation, :isActive, :chatStatut)"
         Dim sqlEleve As String = "INSERT INTO ess_eleve (ele_per_id, ele_niveau, ele_nbPoints, ele_classe) " &
                              "VALUES (:per_id, :niveau, :nbPoints, :classe)"
 
@@ -144,12 +143,18 @@ Public Class UserDateAccess
                 conn.Open()
                 Using tx = conn.BeginTransaction()
                     Try
-                        ' Insert dans ess_personne et récupérer le nouvel ID
+                        ' Obtenir NEXTVAL
+                        Using cmdSeq As New OracleCommand(sqlGetSeq, conn)
+                            cmdSeq.Transaction = tx
+                            newId = Convert.ToInt32(cmdSeq.ExecuteScalar())
+                        End Using
+
+                        ' Insert dans ess_personne avec per_id explicite
                         Using cmd As New OracleCommand(sqlPerson, conn)
                             cmd.Transaction = tx
                             cmd.BindByName = True
 
-
+                            cmd.Parameters.Add("per_id", OracleDbType.Int32).Value = newId
                             cmd.Parameters.Add("username", OracleDbType.Varchar2).Value = username
                             cmd.Parameters.Add("nom", OracleDbType.Varchar2).Value = nom
                             cmd.Parameters.Add("prenom", OracleDbType.Varchar2).Value = prenom
@@ -160,12 +165,7 @@ Public Class UserDateAccess
                             cmd.Parameters.Add("isActive", OracleDbType.Int16).Value = 1
                             cmd.Parameters.Add("chatStatut", OracleDbType.Varchar2).Value = String.Empty
 
-                            Dim prmNewId = cmd.Parameters.Add("newId", OracleDbType.Int32)
-                            prmNewId.Direction = ParameterDirection.Output
-
                             cmd.ExecuteNonQuery()
-
-                            newId = Convert.ToInt32(prmNewId.Value.ToString())
                         End Using
 
                         ' Insert dans ess_eleve lié à per_id
@@ -190,7 +190,6 @@ Public Class UserDateAccess
                         Catch
                         End Try
                         System.Diagnostics.Debug.WriteLine($"[ORA] Number={oex.Number} Message={oex.Message}")
-                        System.Diagnostics.Debug.WriteLine(oex.ToString())
                         Throw
                     Catch ex As Exception
                         Try
@@ -203,7 +202,6 @@ Public Class UserDateAccess
                 End Using
             End Using
         Catch ex As Exception
-            ' Remonter l'exception pour que l'appelant gère/logge
             Throw
         End Try
     End Function

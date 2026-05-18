@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "J:\\gitLundi\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\gitlundi\\chatapp\\ess\\buisnesslogic\\service\\logservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\logservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\gitlundi\\chatapp\\ess\\dataaccess\\logsdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\logsdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\gitlundi\\chatapp\\ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\gitlundi\\chatapp\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\gitlundi\\chatapp\\ess\\dataaccess\\userdateaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\userdateaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,59 +37,16 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LogService.vb",
-              "DocumentMoniker": "J:\\gitLundi\\ChatApp\\ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "ToolTip": "J:\\gitLundi\\ChatApp\\ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
+              "Title": "UserDateAccess.vb",
+              "DocumentMoniker": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\UserDateAccess.vb",
+              "RelativeDocumentMoniker": "ESS\\DataAccess\\UserDateAccess.vb",
+              "ToolTip": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\UserDateAccess.vb",
+              "RelativeToolTip": "ESS\\DataAccess\\UserDateAccess.vb",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAkwGUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T08:29:09.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Main.vb",
-              "DocumentMoniker": "J:\\gitLundi\\ChatApp\\ESS\\Main.vb",
-              "RelativeDocumentMoniker": "ESS\\Main.vb",
-              "ToolTip": "J:\\gitLundi\\ChatApp\\ESS\\Main.vb",
-              "RelativeToolTip": "ESS\\Main.vb",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAcwBAAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T08:26:33.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LogsDataAccess.vb",
-              "DocumentMoniker": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\LogsDataAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\LogsDataAccess.vb",
-              "ToolTip": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\LogsDataAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\LogsDataAccess.vb",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwDcAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T08:24:15.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "messageDataAccess.vb",
-              "DocumentMoniker": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\messageDataAccess.vb",
-              "ToolTip": "J:\\gitLundi\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\messageDataAccess.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T08:16:56.513Z",
+              "WhenOpened": "2026-05-18T09:09:17.632Z",
               "EditorCaption": ""
             }
           ]
