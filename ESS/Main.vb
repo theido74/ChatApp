@@ -10,7 +10,7 @@
             lblClasse.Text = CurrentUser.User.Classe
         End If
 
-        logger.PingDB(CurrentUser.User.UserID, "PING")
+        logger.PingDB(CurrentUser.User.UserID)
         RefreshOnlineUser()
         timer.Interval = 30000
         AddHandler timer.Tick, AddressOf TimerTick
@@ -20,7 +20,7 @@
 
     Private Sub TimerTick(sender As Object, e As EventArgs)
         Try
-            logger.PingDB(CurrentUser.User.UserID, "PING")
+            logger.PingDB(CurrentUser.User.UserID)
             RefreshOnlineUser()
         Catch ex As Exception
 

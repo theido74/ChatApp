@@ -49,7 +49,7 @@
 
                 If id > 0 Then
                     MessageBox.Show("✅ Utilisateur trouvé: " & id, "Succès")
-                    logger.PingDB(4, "PING")
+                    logger.PingDB(4)
                 Else
                     MessageBox.Show("⚠️ Pas d'utilisateur avec ", "Info")
                 End If

@@ -35,6 +35,7 @@ Public Class LogsDataAccess
         Return Nothing
     End Function
 
+
     Public Function isActive() As List(Of Integer)
         Dim IdActive As New List(Of Integer)
         Try
@@ -49,7 +50,7 @@ Public Class LogsDataAccess
                     Using cmd As New OracleCommand(sql, conn)
                         cmd.BindByName = True
                         cmd.CommandType = CommandType.Text
-                        cmd.Parameters.Add("username", OracleDbType.Varchar2).Value = "PING"
+                        cmd.Parameters.Add("message", OracleDbType.Varchar2).Value = "PING"
                         Using reader As OracleDataReader = cmd.ExecuteReader()
 
                             While reader.Read()
