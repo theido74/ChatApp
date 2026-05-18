@@ -5,6 +5,7 @@
     Public Property ForumId As Integer
     Public Property Contenu As String
     Public Property TimeStamp As DateTime
+    Public Property EstLu As Boolean
     Public Property EstPrive As Boolean
     Public Property EstSupprime As Boolean
 
