@@ -31,7 +31,7 @@ Public Class messageDataAccess
 
                         cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
                         cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
-                        cmd.Parameters.Add("mes_estlu", OracleDbType.Int16).Value = 0 ' NEW
+                        cmd.Parameters.Add("estLu", OracleDbType.Int16).Value = 0 ' NEW
                         cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = isPrivate
                         cmd.Parameters.Add("supprime", OracleDbType.Int16).Value = 0
 
