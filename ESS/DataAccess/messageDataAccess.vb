@@ -10,26 +10,29 @@ Public Class messageDataAccess
                 conn.Open()
                 Using tx = conn.BeginTransaction()
 
-                    Dim sql As String = "INSERT INTO ess_message(mes_id,mes_per_id_emm,mes_per_id_rec,mes_for_id,mes_contenu,mes_timeStamp,mes_estPrive,mes_estSupprime) " &
-                                        "VALUES(seq_message.NEXTVAL, :idEnvoyeur, :idReceveur, :forumId, :contenu, :timeStamp, :estPrive ,:supprime) " &
+                    Dim sql As String = "INSERT INTO ess_message(mes_id,mes_per_id_emm,mes_per_id_rec,mes_for_id,mes_contenu,mes_timeStamp,mes_estLu,mes_estPrive,mes_estSupprime) " &
+                                        "VALUES(seq_message.NEXTVAL, :idEnvoyeur, :idReceveur, :forumId, :contenu, :timeStamp, :estLu, :estPrive ,:supprime) " &
                                         "RETURNING mes_id INTO :newId"
 
                     Using cmd As New OracleCommand(sql, conn)
                         cmd.Transaction = tx
                         cmd.BindByName = True
+                        Dim isPrivate = 1
 
                         cmd.Parameters.Add("idEnvoyeur", OracleDbType.Int32).Value = idEnvoyeur
                         cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
 
                         If forum.HasValue Then
                             cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = forum.Value
+                            isPrivate = 0
                         Else
                             cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = DBNull.Value
                         End If
 
                         cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
                         cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
-                        cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = 1
+                        cmd.Parameters.Add("mes_estlu", OracleDbType.Int16).Value = 0 ' NEW
+                        cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = isPrivate
                         cmd.Parameters.Add("supprime", OracleDbType.Int16).Value = 0
 
                         Dim prmNewId = cmd.Parameters.Add("newId", OracleDbType.Int32)
@@ -62,7 +65,7 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open() ' Rend la connexion active.
 
-                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estprive, mes_estsupprime " &
+                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                     "FROM ess_message " &
                     "WHERE mes_estsupprime = 0 AND mes_per_id_rec = :id " &
                     "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
@@ -91,6 +94,7 @@ Public Class messageDataAccess
                                 .ForumId = forumId,
                                 .Contenu = reader("mes_contenu").ToString(),
                                 .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstLu = CBool(reader("mes_estlu")), ' NEW
                                 .EstPrive = CBool(reader("mes_estprive")),
                                 .EstSupprime = CBool(reader("mes_estsupprime"))
                             }
@@ -115,7 +119,7 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open() ' Rend la connexion active.
 
-                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estprive, mes_estsupprime " &
+                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                     "FROM ess_message " &
                     "WHERE mes_estsupprime = 0 AND mes_for_id = :id " &
                     "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
@@ -143,6 +147,7 @@ Public Class messageDataAccess
                                 .ForumId = forumId,
                                 .Contenu = reader("mes_contenu").ToString(),
                                 .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstLu = CBool(reader("mes_estlu")), ' NEW
                                 .EstPrive = CBool(reader("mes_estprive")),
                                 .EstSupprime = CBool(reader("mes_estsupprime"))
                             }
@@ -185,6 +190,33 @@ Public Class messageDataAccess
             Return False
         End Try
     End Function
+
+
+    Public Function CountUnreadMessagesByReceiverId(id As Integer) As Integer
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                Dim sql As String = "SELECT COUNT(*) " &
+                    "FROM ess_message " &
+                    "WHERE mes_estsupprime = 0 AND mes_estlu = 0 AND mes_per_id_rec = :id " &
+                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
+
+                Using checkCmd As New OracleCommand(sql, conn)
+                    checkCmd.Parameters.Add("id", OracleDbType.Int32).Value = id
+                    Dim count = CInt(checkCmd.ExecuteScalar()) ' Récupère le résultat de COUNT(*) (une seule valeur : le nombre total de correspondances)
+                    Return count
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+        End Try
+        Return 0
+    End Function
+
+    
+'---
     Public Function GetRecentConversations(currentUserId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
@@ -238,12 +270,12 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_contenu, mes_timestamp, mes_estprive, mes_estsupprime " &
-                    "FROM ess_message " &
-                    "WHERE mes_estsupprime = 0 AND mes_estPrive = 1 AND " &
-                    "((mes_per_id_emm = :currentUserId AND mes_per_id_rec = :otherUserId) OR " &
-                    "(mes_per_id_emm = :otherUserId AND mes_per_id_rec = :currentUserId)) " &
-                    "ORDER BY mes_timestamp ASC"
+                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
+                                    "FROM ess_message " &
+                                    "WHERE mes_estsupprime = 0 AND mes_estPrive = 1 AND " &
+                                    "((mes_per_id_emm = :currentUserId AND mes_per_id_rec = :otherUserId) OR " &
+                                    "(mes_per_id_emm = :otherUserId AND mes_per_id_rec = :currentUserId)) " &
+                                    "ORDER BY mes_timestamp ASC"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.BindByName = True
@@ -260,6 +292,7 @@ Public Class messageDataAccess
                                 .ReceveurId = CInt(reader("mes_per_id_rec")),
                                 .Contenu = reader("mes_contenu").ToString(),
                                 .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstLu = CBool(reader("mes_estlu")), ' NEW
                                 .EstPrive = CBool(reader("mes_estprive")),
                                 .EstSupprime = CBool(reader("mes_estsupprime"))
                             }
@@ -274,4 +307,5 @@ Public Class messageDataAccess
         End Try
         Return Nothing
     End Function
+
 End Class
