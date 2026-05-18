@@ -1,10 +1,38 @@
 ﻿Public Class MessageService
 
     Private dbAccess As New messageDataAccess()
-    Private userDataAccess As New UserDateAccess()
+    'Private userDataAccess As New UserDateAccess()
     Private logger As New LogService()
     Private Const MESSAGE As String = "Message Envoyé"
 
+    ' Compter le nombre de messages non lu de l'utilisateur connecté [DAMIEN]
+    Public Function GetNbUnreadMessagesById(Optional id As Integer? = -1) As Integer
+        If id = -1 Then
+            id = CurrentUser.User.UserID
+        End If
+
+        Try
+            Return dbAccess.CountUnreadMessagesByReceiverId(id)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du comptage")
+            Return Nothing
+        End Try
+    End Function
+
+
+    ' Marquer les messages d'une conversation comme lu [DAMIEN]
+    Public Function MarkAsReadById(sender As Integer, Optional receiver As Integer? = -1) As Integer
+        If receiver = -1 Then
+            receiver = CurrentUser.User.UserID
+        End If
+
+        Try
+            Return dbAccess.MarkAsReadByChat(sender, receiver)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du comptage")
+            Return Nothing
+        End Try
+    End Function
 
 
     ' Message PRIVÉ : entre deux utilisateurs
@@ -62,6 +90,7 @@
 
     Public Function GetPrivateConversation(currentUserId As Integer, otherUserId As Integer) As List(Of Message)
         Try
+            MarkAsReadById(otherUserId) ' NEW
             Return dbAccess.GetPrivateConversation(currentUserId, otherUserId)
         Catch ex As Exception
             MessageBox.Show("Erreur: " & ex.Message)

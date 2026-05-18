@@ -2,6 +2,18 @@
     Private timer As New System.Windows.Forms.Timer
     Private logger As New LogService()
 
+    '' Vérifier si l'utilisateur à des messages non lu
+    Private Sub CheckMessages()
+        Dim messageServ As New MessageService
+        Dim nbUnreadMessages As Integer = messageServ.GetNbUnreadMessagesById()
+        If nbUnreadMessages > 0 Then
+            lblNotification.Text = "Vous avez " & nbUnreadMessages.ToString() & " message(s) non lu(s)."
+            lblNotification.Visible = True
+        Else
+            lblNotification.Visible = False
+            lblNotification.Text = "-"
+        End If
+    End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If CurrentUser.User IsNot Nothing Then
@@ -16,6 +28,8 @@
         AddHandler timer.Tick, AddressOf TimerTick
         timer.Start()
 
+        lblNotification.Visible = False
+        CheckMessages()
     End Sub
 
     Private Sub TimerTick(sender As Object, e As EventArgs)

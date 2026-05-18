@@ -30,9 +30,10 @@ Partial Class Main
         Me.ForumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CréerUnForumToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TrouverUnForumToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MessagesPrivésToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TrouverUnForumToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblNotification = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -91,13 +92,19 @@ Partial Class Main
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(166, 6)
         '
         'CréerUnForumToolStripMenuItem
         '
         Me.CréerUnForumToolStripMenuItem.Name = "CréerUnForumToolStripMenuItem"
-        Me.CréerUnForumToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CréerUnForumToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.CréerUnForumToolStripMenuItem.Text = "Créer un Forum"
+        '
+        'TrouverUnForumToolStripMenuItem1
+        '
+        Me.TrouverUnForumToolStripMenuItem1.Name = "TrouverUnForumToolStripMenuItem1"
+        Me.TrouverUnForumToolStripMenuItem1.Size = New System.Drawing.Size(169, 22)
+        Me.TrouverUnForumToolStripMenuItem1.Text = "Trouver un Forum"
         '
         'MessagesPrivésToolStripMenuItem
         '
@@ -111,11 +118,17 @@ Partial Class Main
         Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(56, 20)
         Me.QuitterToolStripMenuItem.Text = "Quitter"
         '
-        'TrouverUnForumToolStripMenuItem1
+        'lblNotification
         '
-        Me.TrouverUnForumToolStripMenuItem1.Name = "TrouverUnForumToolStripMenuItem1"
-        Me.TrouverUnForumToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
-        Me.TrouverUnForumToolStripMenuItem1.Text = "Trouver un Forum"
+        Me.lblNotification.AutoSize = True
+        Me.lblNotification.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblNotification.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNotification.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.lblNotification.Location = New System.Drawing.Point(290, 524)
+        Me.lblNotification.Name = "lblNotification"
+        Me.lblNotification.Size = New System.Drawing.Size(11, 16)
+        Me.lblNotification.TabIndex = 10
+        Me.lblNotification.Text = "-"
         '
         'Main
         '
@@ -124,6 +137,7 @@ Partial Class Main
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(755, 584)
+        Me.Controls.Add(Me.lblNotification)
         Me.Controls.Add(Me.lblClasse)
         Me.Controls.Add(Me.lblUsername2)
         Me.Controls.Add(Me.lblUsername)
@@ -149,4 +163,5 @@ Partial Class Main
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents CréerUnForumToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TrouverUnForumToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents lblNotification As Label
 End Class

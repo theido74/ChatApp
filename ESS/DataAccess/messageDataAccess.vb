@@ -179,7 +179,35 @@ Public Class messageDataAccess
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
-                    ' rowsAffected contiendra le nombre de lignes modifiées
+                    ' rowsAffected contiendra le nombre de lignes modifiées le max devrait être 1 car id est unique
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    Return rowsAffected > 0
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+            Return False
+        End Try
+    End Function
+
+
+    ' TO COMPLETE
+    Public Function MarkAsReadByChat(senderId As Integer, reveiverId As Integer) As Boolean
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                Dim sql As String = "UPDATE ess_message " &
+                                    "SET mes_estlu = 1 " &
+                                    "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver"
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId
+                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = reveiverId
+                    cmd.CommandType = CommandType.Text
+                    cmd.CommandTimeout = 30
+
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     Return rowsAffected > 0
                 End Using

@@ -168,5 +168,4 @@ Public Class MessagePrive
         ChargerConversationsRecentes()
     End Sub
 
-
 End Class
