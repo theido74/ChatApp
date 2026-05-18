@@ -185,4 +185,93 @@ Public Class messageDataAccess
             Return False
         End Try
     End Function
+    Public Function GetRecentConversations(currentUserId As Integer) As List(Of Message)
+        Dim messages As New List(Of Message)()
+
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                ' Récupérer le dernier message de chaque conversation
+                Dim sql As String = "SELECT DISTINCT " &
+                    "FIRST_VALUE(mes_id) OVER (PARTITION BY CASE WHEN mes_per_id_emm = :userId THEN mes_per_id_rec ELSE mes_per_id_emm END ORDER BY mes_timestamp DESC) as mes_id, " &
+                    "FIRST_VALUE(mes_per_id_emm) OVER (PARTITION BY CASE WHEN mes_per_id_emm = :userId THEN mes_per_id_rec ELSE mes_per_id_emm END ORDER BY mes_timestamp DESC) as mes_per_id_emm, " &
+                    "FIRST_VALUE(mes_per_id_rec) OVER (PARTITION BY CASE WHEN mes_per_id_emm = :userId THEN mes_per_id_rec ELSE mes_per_id_emm END ORDER BY mes_timestamp DESC) as mes_per_id_rec, " &
+                    "FIRST_VALUE(mes_contenu) OVER (PARTITION BY CASE WHEN mes_per_id_emm = :userId THEN mes_per_id_rec ELSE mes_per_id_emm END ORDER BY mes_timestamp DESC) as mes_contenu, " &
+                    "FIRST_VALUE(mes_timestamp) OVER (PARTITION BY CASE WHEN mes_per_id_emm = :userId THEN mes_per_id_rec ELSE mes_per_id_emm END ORDER BY mes_timestamp DESC) as mes_timestamp " &
+                    "FROM ess_message " &
+                    "WHERE mes_estSupprime = 0 AND mes_estPrive = 1 AND (mes_per_id_emm = :userId OR mes_per_id_rec = :userId) " &
+                    "ORDER BY mes_timestamp DESC"
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
+                    cmd.Parameters.Add("userId", OracleDbType.Int32).Value = currentUserId
+                    cmd.CommandType = CommandType.Text
+                    cmd.CommandTimeout = 30
+
+                    Using reader As OracleDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim message As New Message With {
+                                .MessageId = CInt(reader("mes_id")),
+                                .EmmeteurId = CInt(reader("mes_per_id_emm")),
+                                .ReceveurId = CInt(reader("mes_per_id_rec")),
+                                .Contenu = reader("mes_contenu").ToString(),
+                                .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstPrive = True
+                            }
+                            messages.Add(message)
+                        End While
+                    End Using
+                End Using
+            End Using
+            Return messages
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+        End Try
+        Return Nothing
+    End Function
+
+    Public Function GetPrivateConversation(currentUserId As Integer, otherUserId As Integer) As List(Of Message)
+        Dim messages As New List(Of Message)()
+
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_contenu, mes_timestamp, mes_estprive, mes_estsupprime " &
+                    "FROM ess_message " &
+                    "WHERE mes_estsupprime = 0 AND mes_estPrive = 1 AND " &
+                    "((mes_per_id_emm = :currentUserId AND mes_per_id_rec = :otherUserId) OR " &
+                    "(mes_per_id_emm = :otherUserId AND mes_per_id_rec = :currentUserId)) " &
+                    "ORDER BY mes_timestamp ASC"
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
+                    cmd.Parameters.Add("currentUserId", OracleDbType.Int32).Value = currentUserId
+                    cmd.Parameters.Add("otherUserId", OracleDbType.Int32).Value = otherUserId
+                    cmd.CommandType = CommandType.Text
+                    cmd.CommandTimeout = 30
+
+                    Using reader As OracleDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim message As New Message With {
+                                .MessageId = CInt(reader("mes_id")),
+                                .EmmeteurId = CInt(reader("mes_per_id_emm")),
+                                .ReceveurId = CInt(reader("mes_per_id_rec")),
+                                .Contenu = reader("mes_contenu").ToString(),
+                                .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstPrive = CBool(reader("mes_estprive")),
+                                .EstSupprime = CBool(reader("mes_estsupprime"))
+                            }
+                            messages.Add(message)
+                        End While
+                    End Using
+                End Using
+            End Using
+            Return messages
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+        End Try
+        Return Nothing
+    End Function
 End Class
