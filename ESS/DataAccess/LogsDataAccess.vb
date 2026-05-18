@@ -52,14 +52,14 @@ Public Class LogsDataAccess
                         cmd.Parameters.Add("username", OracleDbType.Varchar2).Value = "PING"
                         Using reader As OracleDataReader = cmd.ExecuteReader()
 
-                            If reader.Read() Then
+                            While reader.Read()
                                 Dim userId = CInt(reader("log_per_id"))
                                 Dim ts As Date = CDate(reader("log_timeStamp"))
                                 Dim tsMinus30Sec As Date = ts.AddSeconds(-30)
                                 If ts < tsMinus30Sec Then
                                     IdActive.Add(userId)
                                 End If
-                            End If
+                            End While
 
                         End Using
 

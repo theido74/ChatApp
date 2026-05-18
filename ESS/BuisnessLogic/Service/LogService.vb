@@ -18,7 +18,7 @@ Public Class LogService
     End Function
 
     Public Function PingDB(id As Integer, message As String) As Integer
-        Dim newID = AjoutLog(id, message)
+        Dim newID = AjoutLog(id, "PING")
         Console.WriteLine("PING DB Exécuté à " & DateTime.Now)
         Return newID
 

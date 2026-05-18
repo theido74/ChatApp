@@ -29,7 +29,7 @@ Public Class messageDataAccess
 
                         cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
                         cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
-                        cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = 0
+                        cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = 1
                         cmd.Parameters.Add("supprime", OracleDbType.Int16).Value = 0
 
                         Dim prmNewId = cmd.Parameters.Add("newId", OracleDbType.Int32)
