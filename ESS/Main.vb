@@ -22,20 +22,20 @@
             lblClasse.Text = CurrentUser.User.Classe
         End If
 
+        CheckMessages()
+
         logger.PingDB(CurrentUser.User.UserID)
         RefreshOnlineUser()
         timer.Interval = 30000
         AddHandler timer.Tick, AddressOf TimerTick
         timer.Start()
-
-        lblNotification.Visible = False
-        CheckMessages()
     End Sub
 
     Private Sub TimerTick(sender As Object, e As EventArgs)
         Try
             logger.PingDB(CurrentUser.User.UserID)
             RefreshOnlineUser()
+            CheckMessages()
         Catch ex As Exception
 
         End Try
