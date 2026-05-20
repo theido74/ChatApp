@@ -57,7 +57,7 @@ Public Class LogsDataAccess
                                 Dim userId = CInt(reader("log_per_id"))
                                 Dim ts As Date = CDate(reader("log_timeStamp"))
                                 Dim tsMinus30Sec As Date = ts.AddSeconds(-30)
-                                If ts < tsMinus30Sec Then
+                                If Date.UtcNow <= ts.AddSeconds(30) Then
                                     IdActive.Add(userId)
                                 End If
                             End While
