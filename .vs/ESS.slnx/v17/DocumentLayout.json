@@ -3,15 +3,16 @@
   "WorkspaceRootPath": "J:\\ProjetCapp\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\buisnesslogic\\models\\chat.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\chat.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\messageprive.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\messageprive.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\messageprive.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ESS||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\messageprive.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
@@ -22,15 +23,15 @@
       "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ESS||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|8998e48e-b89a-4034-b66e-353d8c1fdc2e"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -64,14 +65,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ESS",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\ESS.vbproj",
               "RelativeDocumentMoniker": "ESS\\ESS.vbproj",
-              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\ESS.vbproj*",
-              "RelativeToolTip": "ESS\\ESS.vbproj*",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\ESS.vbproj",
+              "RelativeToolTip": "ESS\\ESS.vbproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-19T13:09:34.085Z",
+              "WhenOpened": "2026-05-19T13:09:34.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Chat.vb",
+              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-20T09:36:01.27Z",
               "EditorCaption": ""
             },
             {
@@ -82,7 +95,7 @@
               "RelativeDocumentMoniker": "ESS\\MessagePrive.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\MessagePrive.vb",
               "RelativeToolTip": "ESS\\MessagePrive.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAUwEYAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-20T08:28:39.252Z",
               "EditorCaption": ""
@@ -107,44 +120,42 @@
               "RelativeDocumentMoniker": "ESS\\Form1.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb",
               "RelativeToolTip": "ESS\\Form1.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAA6wBIAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBAAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-19T08:29:37.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T08:29:37.665Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form1.vb [Design]",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb",
               "RelativeDocumentMoniker": "ESS\\Form1.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb [Design]",
               "RelativeToolTip": "ESS\\Form1.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-19T08:28:30.932Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-19T08:28:30.932Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MessageService.vb",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwCEAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwB4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-18T12:15:56.864Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "messageDataAccess.vb",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
               "RelativeDocumentMoniker": "ESS\\DataAccess\\messageDataAccess.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
               "RelativeToolTip": "ESS\\DataAccess\\messageDataAccess.vb",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAmwOkAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAIwP0AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-19T08:54:19.131Z",
               "EditorCaption": ""

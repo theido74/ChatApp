@@ -23,9 +23,19 @@
         End If
         Return False
     End Function
+
     Public Function GetEleveByUsername(username As String) As Eleve
         Try
             Return dbAccess.GetEleveByUsername(username)
+        Catch ex As Exception
+            MessageBox.Show("Erreur Fonction GetEleveByUsername")
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function GetEleveById(id As Integer) As Eleve
+        Try
+            Return dbAccess.GetEleveByID(id)
         Catch ex As Exception
             MessageBox.Show("Erreur Fonction GetEleveByUsername")
             Return Nothing

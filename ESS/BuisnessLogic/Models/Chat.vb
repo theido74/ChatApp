@@ -4,5 +4,6 @@
     Public Property ContactNom As String
     Public Property DateDernierMessage As DateTime
     Public Property NbOfUnreadMessages As Integer
+    Public Property Statut As String
 
 End Class

@@ -2,6 +2,7 @@
 
 Public Class MessagePrive
     Private messageService As New MessageService()
+    Private userService As New UserService()
     Private userDataAccess As New UserDateAccess()
     Private selectedContactId As Integer = -1
 
@@ -23,6 +24,7 @@ Public Class MessagePrive
         flpMessagesPrives.WrapContents = False
         flpMessagesPrives.HorizontalScroll.Enabled = False
         flpMessagesPrives.HorizontalScroll.Visible = False
+
     End Sub
 
     ' ===== LISTBOX =====
@@ -145,6 +147,7 @@ Public Class MessagePrive
                     }
                     ctrl = ctrlRecu
                 End If
+                ctrl.Width = flpMessagesPrives.ClientSize.Width - 20 ' Contôler la taille
 
                 flpMessagesPrives.Controls.Add(ctrl)
             Next

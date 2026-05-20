@@ -11,10 +11,10 @@
         'Dim CurrentUserId As Integer? = CurrentUser.User.UserID
         lblUnread.Text = ""
         Dim mesSer As MessageService = New MessageService
-        Dim chats As List(Of Chat) = mesSer.GetConversationNameWithUnreadMessagesById(11)
+        Dim chats As List(Of Chat) = mesSer.GetChatById(11)
         If chats IsNot Nothing Then
             For Each cha As Chat In chats
-                Dim line As String = cha.ContactNom & " - Nb mess. non lu: " & cha.NbOfUnreadMessages.ToString()
+                Dim line As String = cha.ContactNom & " - Message(s) non lu(s): " & cha.NbOfUnreadMessages.ToString()
                 lblUnread.Text &= line & Environment.NewLine
             Next
         End If

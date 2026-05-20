@@ -22,13 +22,13 @@
 
 
     ' Retrouver les conversation qui possèdent des messages non lu [DAMIEN]
-    Public Function GetConversationNameWithUnreadMessagesById(Optional receiverId As Integer? = -1) As List(Of Chat)
+    Public Function GetChatById(Optional receiverId As Integer? = -1) As List(Of Chat)
         If receiverId = -1 Then
             receiverId = CurrentUser.User.UserID
         End If
 
         Try
-            Return dbAccess.GetConversationNameWithUnreadMessagesById(receiverId)
+            Return dbAccess.GetChatById(receiverId)
         Catch ex As Exception
             MessageBox.Show("Erreur lors du comptage")
             Return Nothing
