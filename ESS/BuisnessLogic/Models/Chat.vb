@@ -3,6 +3,6 @@
     Public Property ContactId As Integer
     Public Property ContactNom As String
     Public Property DateDernierMessage As DateTime
-    Public Property HasUnreadMessages As Boolean
+    Public Property NbOfUnreadMessages As Integer
 
 End Class

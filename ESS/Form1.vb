@@ -14,7 +14,7 @@
         Dim chats As List(Of Chat) = mesSer.GetConversationNameWithUnreadMessagesById(11)
         If chats IsNot Nothing Then
             For Each cha As Chat In chats
-                Dim line As String = cha.ContactNom
+                Dim line As String = cha.ContactNom & " - Nb mess. non lu: " & cha.NbOfUnreadMessages.ToString()
                 lblUnread.Text &= line & Environment.NewLine
             Next
         End If

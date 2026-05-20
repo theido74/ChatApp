@@ -229,15 +229,17 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String =
-                "SELECT ess_message.mes_per_id_emm, ess_personne.per_nom, ess_message.mes_timestamp " &
-                "FROM ess_message " &
-                "JOIN ess_personne ON ess_personne.per_id = ess_message.mes_per_id_emm " &
-                "WHERE ess_message.mes_estsupprime = 0 " &
-                "AND ess_message.mes_estlu = 0 " &
-                "AND ess_message.mes_per_id_rec = :receiver " &
-                "ORDER BY ess_message.mes_timestamp DESC"
-                '"GROUP BY ess_personne.per_nom " &
+                Dim sql As String = "SELECT ess_message.mes_per_id_emm, " &
+                                    "ess_personne.per_nom, " &
+                                    "MAX(ess_message.mes_timestamp) AS mes_timestamp, " &
+                                    "COUNT(ess_message.mes_estlu) AS unread_count " &
+                                    "FROM ess_message " &
+                                    "JOIN ess_personne ON ess_personne.per_id = ess_message.mes_per_id_emm " &
+                                    "WHERE ess_message.mes_estsupprime = 0 " &
+                                    "AND ess_message.mes_estlu = 0 " &
+                                    "AND ess_message.mes_per_id_rec = :receiver " &
+                                    "GROUP BY ess_message.mes_per_id_emm, ess_personne.per_nom " &
+                                    "ORDER BY MAX(ess_message.mes_timestamp) DESC"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
@@ -249,7 +251,8 @@ Public Class messageDataAccess
                             .UserId = receiverId,
                             .ContactId = CInt(reader("mes_per_id_emm")),
                             .ContactNom = reader("per_nom").ToString(),
-                            .DateDernierMessage = CDate(reader("mes_timestamp"))
+                            .DateDernierMessage = CDate(reader("mes_timestamp")),
+                            .NbOfUnreadMessages = CInt(reader("unread_count"))
                             }
 
                             chatLst.Add(cha)
