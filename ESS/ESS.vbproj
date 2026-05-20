@@ -117,6 +117,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuisnessLogic\Models\Chat.vb" />
     <Compile Include="BuisnessLogic\Service\authService.vb" />
     <Compile Include="BuisnessLogic\Service\ClientValidator.vb" />
     <Compile Include="BuisnessLogic\Models\CurrentUser.vb" />

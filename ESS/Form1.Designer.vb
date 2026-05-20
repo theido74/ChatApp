@@ -22,16 +22,30 @@ Partial Class Form1
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.lblUnread = New System.Windows.Forms.Label()
         Me.SuspendLayout()
+        '
+        'lblUnread
+        '
+        Me.lblUnread.AutoSize = True
+        Me.lblUnread.Location = New System.Drawing.Point(144, 76)
+        Me.lblUnread.Name = "lblUnread"
+        Me.lblUnread.Size = New System.Drawing.Size(10, 13)
+        Me.lblUnread.TabIndex = 0
+        Me.lblUnread.Text = "-"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.lblUnread)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+
+    Friend WithEvents lblUnread As Label
 End Class

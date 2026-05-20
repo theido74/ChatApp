@@ -1,4 +1,8 @@
-﻿Imports Oracle.ManagedDataAccess.Client
+﻿' ExecuteNonQuery() → INSERT / UPDATE / DELETE (pas de résultats)
+' ExecuteScalar() → une seule valeur
+' ExecuteReader() → Select avec plusieurs lignes (ton cas)
+
+Imports Oracle.ManagedDataAccess.Client
 
 Public Class messageDataAccess
 
@@ -112,7 +116,7 @@ Public Class messageDataAccess
     End Function
 
 
-    Public Function GetMessageByForumId(forumId As Integer) As List(Of Message)
+    Public Function GetMessageByForumId(forumIdPar As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
         Try
@@ -125,7 +129,7 @@ Public Class messageDataAccess
                     "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
 
                 Using cmd As New OracleCommand(sql, conn)
-                    cmd.Parameters.Add("forum", OracleDbType.Int32).Value = forumId
+                    cmd.Parameters.Add("forum", OracleDbType.Int32).Value = forumIdPar
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
@@ -147,7 +151,7 @@ Public Class messageDataAccess
                                 .ForumId = forumId,
                                 .Contenu = reader("mes_contenu").ToString(),
                                 .TimeStamp = CDate(reader("mes_timestamp")),
-                                .EstLu = CBool(reader("mes_estlu")), ' NEW
+                                .EstLu = CBool(reader("mes_estlu")),
                                 .EstPrive = CBool(reader("mes_estprive")),
                                 .EstSupprime = CBool(reader("mes_estsupprime"))
                             }
@@ -216,7 +220,52 @@ Public Class messageDataAccess
     End Function
 
 
-    ' TO COMPLETE
+    ' Récupérer les discussions 1:1 dont minimum un message est non lu
+    Public Function GetConversationNameWithUnreadMessagesById(receiverId As Integer) As List(Of Chat)
+
+        Dim chatLst As New List(Of Chat)
+
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                Dim sql As String =
+                "SELECT ess_message.mes_per_id_emm, ess_personne.per_nom, ess_message.mes_timestamp " &
+                "FROM ess_message " &
+                "JOIN ess_personne ON ess_personne.per_id = ess_message.mes_per_id_emm " &
+                "WHERE ess_message.mes_estsupprime = 0 " &
+                "AND ess_message.mes_estlu = 0 " &
+                "AND ess_message.mes_per_id_rec = :receiver " &
+                "ORDER BY ess_message.mes_timestamp DESC"
+                '"GROUP BY ess_personne.per_nom " &
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
+
+                    Using reader As OracleDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+
+                            Dim cha As New Chat With {
+                            .UserId = receiverId,
+                            .ContactId = CInt(reader("mes_per_id_emm")),
+                            .ContactNom = reader("per_nom").ToString(),
+                            .DateDernierMessage = CDate(reader("mes_timestamp"))
+                            }
+
+                            chatLst.Add(cha)
+                        End While
+                    End Using
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+        End Try
+
+        Return chatLst
+    End Function
+
+
     Public Function MarkAsReadByChat(senderId As Integer, reveiverId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -224,7 +273,7 @@ Public Class messageDataAccess
 
                 Dim sql As String = "UPDATE ess_message " &
                                     "SET mes_estlu = 1 " &
-                                    "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver"
+                                    "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver AND mes_estlu = 0"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId

@@ -3,16 +3,30 @@
   "WorkspaceRootPath": "J:\\ProjetCapp\\ChatApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ESS||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\buisnesslogic\\models\\chat.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\chat.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|J:\\ProjetCapp\\ChatApp\\ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|j:\\projetcapp\\chatapp\\ess\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|8998e48e-b89a-4034-b66e-353d8c1fdc2e"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,39 +61,77 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Main.vb [Design]",
-              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\Main.vb",
-              "RelativeDocumentMoniker": "ESS\\Main.vb",
-              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\Main.vb [Design]",
-              "RelativeToolTip": "ESS\\Main.vb [Design]",
+              "Title": "ESS",
+              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\ESS.vbproj",
+              "RelativeDocumentMoniker": "ESS\\ESS.vbproj",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\ESS.vbproj*",
+              "RelativeToolTip": "ESS\\ESS.vbproj*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-19T13:09:34.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Chat.vb",
+              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Chat.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wAUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T12:38:07.567Z",
+              "WhenOpened": "2026-05-19T12:32:21.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb",
+              "RelativeDocumentMoniker": "ESS\\Form1.vb",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb",
+              "RelativeToolTip": "ESS\\Form1.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-19T08:29:37.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.vb [Design]",
+              "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb",
+              "RelativeDocumentMoniker": "ESS\\Form1.vb",
+              "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\Form1.vb [Design]",
+              "RelativeToolTip": "ESS\\Form1.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-19T08:28:30.932Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MessageService.vb",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDEAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwCEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-18T12:15:56.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "messageDataAccess.vb",
               "DocumentMoniker": "J:\\ProjetCapp\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
               "RelativeDocumentMoniker": "ESS\\DataAccess\\messageDataAccess.vb",
               "ToolTip": "J:\\ProjetCapp\\ChatApp\\ESS\\DataAccess\\messageDataAccess.vb",
               "RelativeToolTip": "ESS\\DataAccess\\messageDataAccess.vb",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAowCEAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAN4AAAAAAAAAAAArwO4AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-18T12:24:44.55Z",
+              "WhenOpened": "2026-05-19T08:54:19.131Z",
               "EditorCaption": ""
             }
           ]

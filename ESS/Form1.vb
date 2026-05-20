@@ -4,25 +4,41 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Tester la connexion au démarrage
         ' TestOracleConnection()
-        GetMessages()
+        TestLabelTemp()
+    End Sub
+
+    Private Sub TestLabelTemp()
+        'Dim CurrentUserId As Integer? = CurrentUser.User.UserID
+        lblUnread.Text = ""
+        Dim mesSer As MessageService = New MessageService
+        Dim chats As List(Of Chat) = mesSer.GetConversationNameWithUnreadMessagesById(11)
+        If chats IsNot Nothing Then
+            For Each cha As Chat In chats
+                Dim line As String = cha.ContactNom
+                lblUnread.Text &= line & Environment.NewLine
+            Next
+        End If
+        'lblUnread.ForeColor = Color.Red
+        'lblUnread.Text = "●"
+        'lblUnread.Visible = True
     End Sub
 
     Private Sub GetForums()
-        Dim forumDataAccess = New ForumDataAccess
-        Dim forums As List(Of Forums) = forumDataAccess.GetAllForums
+        Dim forAcc As ForumDataAccess = New ForumDataAccess
+        Dim forums As List(Of Forums) = forAcc.GetAllForums
         For Each forum As Forums In forums
             Console.WriteLine("ID: " & forum.ForumId)
             Console.WriteLine("Nom: " & forum.NomForum)
-            Console.WriteLine("Description: ")
-            Console.WriteLine("DateCreation: ")
-            Console.WriteLine("Supprimé: ")
+            Console.WriteLine("Description: " & forum.Description)
+            Console.WriteLine("DateCreation: " & forum.DateCreation)
+            Console.WriteLine("Actif: " & forum.EstActif)
             Console.WriteLine("-----------------------------")
         Next
     End Sub
 
     Private Sub GetMessages()
-        Dim messageDataAccess As New messageDataAccess()
-        Dim userMessages As List(Of Message) = messageDataAccess.GetMessageByForumId(2)
+        Dim mesAcc As messageDataAccess = New messageDataAccess()
+        Dim userMessages As List(Of Message) = mesAcc.GetMessageByForumId(2)
         For Each msg As Message In userMessages
             Console.WriteLine("ID: " & msg.MessageId)
             Console.WriteLine("Expéditeur: " & msg.EmmeteurId)
@@ -61,4 +77,5 @@
             MessageBox.Show("Erreur: " & ex.Message, "Erreur")
         End Try
     End Sub
+
 End Class
