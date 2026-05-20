@@ -16,6 +16,13 @@ Public Class MessagePrive
 
         ' Charger la DataGridView avec les conversations récentes
         ChargerConversationsRecentes()
+
+        ' Rendre l'élément contenant les message scrollable uniquement sur l'axe des Y
+        flpMessagesPrives.AutoScroll = True
+        flpMessagesPrives.FlowDirection = FlowDirection.TopDown
+        flpMessagesPrives.WrapContents = False
+        flpMessagesPrives.HorizontalScroll.Enabled = False
+        flpMessagesPrives.HorizontalScroll.Visible = False
     End Sub
 
     ' ===== LISTBOX =====

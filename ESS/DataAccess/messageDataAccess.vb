@@ -1,6 +1,6 @@
 ﻿' ExecuteNonQuery() → INSERT / UPDATE / DELETE (pas de résultats)
 ' ExecuteScalar() → une seule valeur
-' ExecuteReader() → Select avec plusieurs lignes (ton cas)
+' ExecuteReader() → Select avec plusieurs lignes
 
 Imports Oracle.ManagedDataAccess.Client
 
@@ -232,14 +232,14 @@ Public Class messageDataAccess
                 Dim sql As String = "SELECT ess_message.mes_per_id_emm, " &
                                     "ess_personne.per_nom, " &
                                     "MAX(ess_message.mes_timestamp) AS mes_timestamp, " &
-                                    "COUNT(ess_message.mes_estlu) AS unread_count " &
+                                    "SUM(CASE WHEN ess_message.mes_estlu = 0 THEN 1 ELSE 0 END) AS unread_count " &
                                     "FROM ess_message " &
                                     "JOIN ess_personne ON ess_personne.per_id = ess_message.mes_per_id_emm " &
                                     "WHERE ess_message.mes_estsupprime = 0 " &
-                                    "AND ess_message.mes_estlu = 0 " &
                                     "AND ess_message.mes_per_id_rec = :receiver " &
                                     "GROUP BY ess_message.mes_per_id_emm, ess_personne.per_nom " &
                                     "ORDER BY MAX(ess_message.mes_timestamp) DESC"
+                '"AND ess_message.mes_estlu = 0 " &
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId

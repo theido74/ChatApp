@@ -22,7 +22,7 @@ Partial Class MessagePrive
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MessagePrive))
         Me.lblContactName = New System.Windows.Forms.Label()
         Me.dgvConversationsRecentes = New System.Windows.Forms.DataGridView()
@@ -51,14 +51,14 @@ Partial Class MessagePrive
         '
         Me.dgvConversationsRecentes.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvConversationsRecentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuText
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvConversationsRecentes.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuText
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvConversationsRecentes.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvConversationsRecentes.Location = New System.Drawing.Point(63, 99)
         Me.dgvConversationsRecentes.Name = "dgvConversationsRecentes"
         Me.dgvConversationsRecentes.Size = New System.Drawing.Size(186, 389)
