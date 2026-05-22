@@ -28,5 +28,131 @@ ESS
 <member name="M:ESS.AuthenticationService.GetEleveByUsername(System.String)">
  Récupère un utilisateur par son username
 </member>
+<member name="P:ESS.Forum.SelectedForumId">
+ <summary>
+ Author: Ayman
+ Propriété pour stocker et accéder à l'ID du forum sélectionné. Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
+ Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, et l'utiliser pour charger les messages et les informations du forum correspondant.
+ </summary>
+</member>
+<member name="M:ESS.Forum.ChargerEleves">
+ <summary>
+ Author: Ayman
+ Charge la liste des élèves (utilisateurs) depuis la base de données et les affiche dans le DataGridView.
+ </summary>
+</member>
+<member name="M:ESS.Forum.dgvUtilisateursForum_CellFormatting(System.Object,System.Windows.Forms.DataGridViewCellFormattingEventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de formatage des cellules du DataGridView pour appliquer une coloration conditionnelle en fonction du statut de chat de chaque utilisateur.
+ </summary>
+</member>
+<member name="M:ESS.Forum.ChargerMessages">
+ <summary>
+ Author: Ayman
+ Charge les messages du forum depuis la base de données et les affiche dans le FlowLayoutPanel.
+ Il récupère tous les messages du forum en utilisant le service de messagerie, puis crée des contrôles pour chaque message.
+ Les messages envoyés par l'utilisateur actuel sont affichés avec un contrôle différent de ceux reçus.
+ </summary>
+</member>
+<member name="M:ESS.Forum.btnEnvoyer_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de clic sur le bouton "Envoyer" pour envoyer un message dans le forum.
+ Il vérifie d'abord que le champ de message n'est pas vide, puis utilise le service de messagerie pour créer un nouveau message dans le forum.
+ Après l'envoi, il efface le champ de message et recharge les messages du forum pour afficher le nouveau message envoyé.
+ </summary>
+</member>
+<member name="M:ESS.Forum.AfficherNomForum">
+ <summary>
+ Author: Ayman
+ Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.ChargerConversation(System.Int32)">
+ <summary>
+ Author: Ayman
+ Charge la conversation privée entre l'utilisateur actuel et un autre utilisateur spécifié par son ID.
+ Il prend en paramètre l'ID de l'autre utilisateur, récupère les messages de la conversation privée depuis la base de données,
+ et les affiche dans le FlowLayoutPanel. Les messages envoyés par l'utilisateur actuel sont affichés avec un contrôle différent de ceux reçus.
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.GetEmmeteurName(System.Int32)">
+ <summary>
+ Author: Ayman
+ Récupère le nom d'utilisateur (pseudo) d'un utilisateur à partir de son ID.
+ Il prend en paramètre l'ID de l'utilisateur et utilise le service utilisateur pour obtenir son nom d'utilisateur,
+ qui est ensuite utilisé pour afficher les messages dans la conversation privée.
+ Et retourne le nom d'utilisateur correspondant à l'ID fourni.
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.btnEnvoyer_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Envoie un message privé à l'utilisateur sélectionné.
+ Il vérifie d'abord si un utilisateur est sélectionné et si le message n'est pas vide.
+ Ensuite, il utilise le service de messagerie pour créer le message privé et rafraîchit la conversation.
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.btnAnnuler_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Ferme le formulaire actuel et ouvre le formulaire principal lorsque l'utilisateur clique sur le bouton "Annuler".
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.RemplirDataGridView">
+ <summary>
+ Author: Ayman
+ Remplit le DataGridView avec la liste des utilisateurs (élèves) disponibles pour les conversations privées.
+ Il récupère tous les élèves depuis le service utilisateur, puis ajoute chaque élève comme une ligne dans le DataGridView,
+ en affichant leur nom d'utilisateur et leur statut de chat. 
+ L'ID de chaque utilisateur est stocké dans la propriété Tag de la ligne correspondante pour une récupération facile lors de la sélection.
+ </summary>
+</member>
+<member name="M:ESS.MessagePrive.DataGridView1_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.
+ Lorsque l'utilisateur clique sur une cellule, cette méthode vérifie si la ligne est valide, puis récupère l'ID de l'utilisateur sélectionné à partir de la propriété Tag de la ligne.
+ Ensuite, elle charge la conversation privée correspondante et met à jour le label pour afficher le nom de l'utilisateur avec lequel la conversation est en cours.
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.ChargerTousLesForums">
+ <summary>
+ Author: Ayman
+ Charge tous les forums depuis la base de données et les affiche dans le DataGridView.
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.RemplirDataGridView(System.Collections.Generic.List{ESS.Forums})">
+ <summary>
+ Author: Ayman
+ Remplit le DataGridView avec la liste des forums.
+ Prend une liste de forums en paramètre et ajoute chaque forum comme une ligne dans le DataGridView.
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.btnCreerForum_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Ouvre le formulaire de création de forum lorsque l'utilisateur clique sur le bouton "Créer un Forum".
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.dgvForums_CellContentClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ Author: Ayman
+ Ouvre le formulaire du forum sélectionné lorsque l'utilisateur clique sur une cellule du DataGridView.
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.btnAnnuler_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Ferme le formulaire actuel et ouvre le formulaire principal lorsque l'utilisateur clique sur le bouton.
+ </summary>
+</member>
+<member name="M:ESS.TrouverForum.txtForum_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Filtre les forums en temps réel selon le texte saisi dans la TextBox.
+ </summary>
+</member>
 </members>
 </doc>

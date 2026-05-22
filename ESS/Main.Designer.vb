@@ -44,7 +44,7 @@ Partial Class Main
         Me.lblUsername.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblUsername.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUsername.ForeColor = System.Drawing.Color.BlueViolet
-        Me.lblUsername.Location = New System.Drawing.Point(329, 377)
+        Me.lblUsername.Location = New System.Drawing.Point(339, 376)
         Me.lblUsername.Name = "lblUsername"
         Me.lblUsername.Size = New System.Drawing.Size(0, 22)
         Me.lblUsername.TabIndex = 6
@@ -68,7 +68,7 @@ Partial Class Main
         Me.lblClasse.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblClasse.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClasse.ForeColor = System.Drawing.Color.BlueViolet
-        Me.lblClasse.Location = New System.Drawing.Point(329, 448)
+        Me.lblClasse.Location = New System.Drawing.Point(339, 448)
         Me.lblClasse.Name = "lblClasse"
         Me.lblClasse.Size = New System.Drawing.Size(0, 22)
         Me.lblClasse.TabIndex = 8

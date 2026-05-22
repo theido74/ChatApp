@@ -51,6 +51,7 @@ Public Class CreateForum
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
+
         Me.Close()
     End Sub
 End Class

@@ -28,6 +28,9 @@ Partial Class TrouverForum
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.txtForum = New System.Windows.Forms.TextBox()
         Me.dgvForums = New System.Windows.Forms.DataGridView()
+        Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Forumid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvForums, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -67,12 +70,13 @@ Partial Class TrouverForum
         Me.txtForum.Name = "txtForum"
         Me.txtForum.Size = New System.Drawing.Size(374, 14)
         Me.txtForum.TabIndex = 5
-        Me.txtForum.Text = "Rechercher un forum"
         '
         'dgvForums
         '
         Me.dgvForums.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvForums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvForums.ColumnHeadersVisible = False
+        Me.dgvForums.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nom, Me.Description, Me.Forumid})
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuText
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -81,10 +85,35 @@ Partial Class TrouverForum
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.BlueViolet
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvForums.DefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvForums.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvForums.Location = New System.Drawing.Point(262, 138)
         Me.dgvForums.Name = "dgvForums"
+        Me.dgvForums.RowHeadersVisible = False
         Me.dgvForums.Size = New System.Drawing.Size(562, 394)
         Me.dgvForums.TabIndex = 6
+        '
+        'Nom
+        '
+        Me.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Nom.HeaderText = "Nom"
+        Me.Nom.Name = "Nom"
+        Me.Nom.ReadOnly = True
+        Me.Nom.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Description
+        '
+        Me.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Description.HeaderText = "Description"
+        Me.Description.Name = "Description"
+        Me.Description.ReadOnly = True
+        Me.Description.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Forumid
+        '
+        Me.Forumid.HeaderText = "Forumid"
+        Me.Forumid.Name = "Forumid"
+        Me.Forumid.ReadOnly = True
+        Me.Forumid.Visible = False
         '
         'TrouverForum
         '
@@ -110,4 +139,7 @@ Partial Class TrouverForum
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents txtForum As TextBox
     Friend WithEvents dgvForums As DataGridView
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents Description As DataGridViewTextBoxColumn
+    Friend WithEvents Forumid As DataGridViewTextBoxColumn
 End Class

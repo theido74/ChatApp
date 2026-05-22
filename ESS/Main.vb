@@ -50,30 +50,32 @@
         End Try
     End Sub
 
-    Private Sub ForumTestToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        Dim forumForm As New Forum With {.SelectedForumId = 1}  ' Ou un ID dynamique
-        forumForm.ShowDialog()
-    End Sub
+
 
     Private Sub QuitterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitterToolStripMenuItem.Click
         Application.Exit()
     End Sub
 
     Private Sub MessagesPrivésToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MessagesPrivésToolStripMenuItem.Click
+        Me.Hide()
         Dim MessaagePriveForm As New MessagePrive()
         MessaagePriveForm.ShowDialog()
-        Me.Hide()
+        Me.Show()
     End Sub
 
     Private Sub CréerUnForumToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CréerUnForumToolStripMenuItem.Click
+        Me.Hide()
+
         Dim createForumForm As New CreateForum()
         createForumForm.ShowDialog()
-        Me.Hide()
+        Me.Show()
     End Sub
 
     Private Sub TrouverUnForumToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles TrouverUnForumToolStripMenuItem1.Click
-        Dim trouverForumForm As New TrouverForum()
-        trouverForumForm.ShowDialog()
         Me.Hide()
+        Dim trouverForumForm As New TrouverForum()
+
+        trouverForumForm.ShowDialog()
+        Me.Show()
     End Sub
 End Class

@@ -23,8 +23,8 @@ Partial Class Forum
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Forum))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblNomForum = New System.Windows.Forms.Label()
         Me.txtMessge = New System.Windows.Forms.TextBox()
         Me.btnEnvoyer = New System.Windows.Forms.Button()
@@ -33,6 +33,9 @@ Partial Class Forum
         Me.lblUtilisateurs = New System.Windows.Forms.Label()
         Me.lblUsername = New System.Windows.Forms.Label()
         Me.dgvUtilisateursForum = New System.Windows.Forms.DataGridView()
+        Me.btnAnnuler = New System.Windows.Forms.Button()
+        Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvUtilisateursForum, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -114,26 +117,56 @@ Partial Class Forum
         Me.dgvUtilisateursForum.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvUtilisateursForum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUtilisateursForum.ColumnHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuText
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvUtilisateursForum.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvUtilisateursForum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Username, Me.Status})
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuText
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvUtilisateursForum.DefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvUtilisateursForum.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvUtilisateursForum.Location = New System.Drawing.Point(66, 113)
         Me.dgvUtilisateursForum.Name = "dgvUtilisateursForum"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvUtilisateursForum.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvUtilisateursForum.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvUtilisateursForum.RowHeadersVisible = False
         Me.dgvUtilisateursForum.Size = New System.Drawing.Size(194, 389)
         Me.dgvUtilisateursForum.TabIndex = 11
+        '
+        'btnAnnuler
+        '
+        Me.btnAnnuler.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAnnuler.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnnuler.ForeColor = System.Drawing.Color.BlueViolet
+        Me.btnAnnuler.Location = New System.Drawing.Point(101, 515)
+        Me.btnAnnuler.Name = "btnAnnuler"
+        Me.btnAnnuler.Size = New System.Drawing.Size(116, 23)
+        Me.btnAnnuler.TabIndex = 16
+        Me.btnAnnuler.Text = "Retour"
+        Me.btnAnnuler.UseVisualStyleBackColor = False
+        '
+        'Username
+        '
+        Me.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Username.HeaderText = "Username"
+        Me.Username.Name = "Username"
+        Me.Username.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
         '
         'Forum
         '
@@ -142,6 +175,7 @@ Partial Class Forum
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(923, 598)
+        Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.dgvUtilisateursForum)
         Me.Controls.Add(Me.lblUtilisateurs)
         Me.Controls.Add(Me.lblTime)
@@ -168,4 +202,7 @@ Partial Class Forum
     Friend WithEvents lblUtilisateurs As Label
     Friend WithEvents lblUsername As Label
     Friend WithEvents dgvUtilisateursForum As DataGridView
+    Friend WithEvents btnAnnuler As Button
+    Friend WithEvents Username As DataGridViewTextBoxColumn
+    Friend WithEvents Status As DataGridViewTextBoxColumn
 End Class

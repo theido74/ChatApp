@@ -128,7 +128,7 @@ Public Class Inscription
     End Sub
 
     Private Sub txtNiveau_Enter(sender As Object, e As EventArgs) Handles txtNiveau.Enter
-        HandleLeave(txtNiveau, placeholderNiveau, False)
+        HandleEnter(txtNiveau, placeholderNiveau, False)
     End Sub
     Private Sub txtNiveau_Leave(sender As Object, e As EventArgs) Handles txtNiveau.Leave
         HandleLeave(txtNiveau, placeholderNiveau, False)
@@ -172,7 +172,7 @@ Public Class Inscription
         Dim password = txtMDP.Text
         Dim confirmPassword = txtConfirmMDP.Text.Trim()
         Dim dateDeNaissance = New Date(1989 - 20 - 7)
-        Dim ageValue As Integer = 0
+        Dim ageValue = txtDateNaissance.Text.Trim()
         Dim email = txtEmail.Text.Trim()
         Dim niveau = CInt(txtNiveau.Text)
         Dim classe = "ESIG1"
@@ -193,16 +193,11 @@ Public Class Inscription
             Return
         End If
 
-        ' Vérifier âge (si présent)
-        If Not String.IsNullOrWhiteSpace(txtDateNaissance.Text) Then
-            If Not Integer.TryParse(txtDateNaissance.Text.Trim(), ageValue) Then
-                AfficherErreur("L'âge doit être un nombre entier.")
-                Return
-            End If
-            If ageValue < 5 OrElse ageValue > 120 Then
-                AfficherErreur("L'âge semble invalide.")
-                Return
-            End If
+
+
+
+        If String.IsNullOrWhiteSpace(txtDateNaissance.Text) Then
+            AfficherErreur("Date de naissance requis.")
         End If
 
         ' Vérifier niveau (si présent)

@@ -1,160 +1,123 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\",
+  "WorkspaceRootPath": "E:\\ChatApp\\ESS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|c:\\users\\arnaud.pnct\\desktop\\ess\\ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messageservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\messagedataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\trouverforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\trouverforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\createforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\createforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\trouverforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\trouverforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\forumservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\forumservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\createforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\createforum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\dataaccess\\forumdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\forumdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\logservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\logservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\forums.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\forums.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\dataaccess\\userdateaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\userdateaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\userservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\userservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\messagecontrolrecu.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messagecontrolrecu.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\messagecontrolenvoye.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messagecontrolenvoye.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\eleve.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\eleve.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\user.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\user.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\passwordhasher.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\passwordhasher.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\passwordhashertests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\passwordhashertests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\currentuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\currentuser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\messagecontrolrecu.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messagecontrolrecu.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\messagecontrolenvoye.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messagecontrolenvoye.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\messagecontrol.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\messagecontrol.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\dataaccess\\databaseconnection.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\databaseconnection.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\authservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\authservice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageService.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ayman.elhd\\Desktop\\ChatApp\\chat_capp\\DataAccess\\MessageDataAccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\service\\clientvalidator.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\service\\clientvalidator.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\dataaccess\\logsdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\dataaccess\\logsdataaccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\session.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\session.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ess\\buisnesslogic\\models\\message.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{3008E975-A849-4A37-9CBC-979072C3BF56}|ESS\\ESS.vbproj|solutionrelative:ess\\buisnesslogic\\models\\message.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\capp\\ESS\\ESS\\BuisnessLogic\\Models\\Forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\messageDataAccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ForumService.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\ForumDataAccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\LogService.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Forums.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\UserService.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\UserDateAccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.Designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.Designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\App.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\CurrentUser.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControl.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\authService.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\DataBaseConnection.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ClientValidator.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasherTests.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasher.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\LogsDataAccess.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\User.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Session.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Message.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Eleve.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -188,46 +151,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TrouverForum.vb [Design]",
+              "DocumentIndex": 3,
+              "Title": "TrouverForum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb",
-              "RelativeDocumentMoniker": "ESS\\TrouverForum.vb",
-              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb [Design]",
-              "RelativeToolTip": "ESS\\TrouverForum.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-16T03:27:31.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "messageDataAccess.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\messageDataAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\messageDataAccess.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\messageDataAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\messageDataAccess.vb",
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwEcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:23:12.736Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Forum.vb [Design]",
+              "DocumentIndex": 5,
+              "Title": "Forum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb",
-              "RelativeDocumentMoniker": "ESS\\Forum.vb",
-              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb [Design]",
-              "RelativeToolTip": "ESS\\Forum.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T12:25:48.652Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Forum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb",
-              "RelativeDocumentMoniker": "ESS\\Forum.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Forum.vb",
-              "RelativeToolTip": "ESS\\Forum.vb",
               "ViewState": "AgIAAAwAAAAAAAAAAAAowCEAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T12:03:14.795Z"
@@ -237,9 +192,7 @@
               "DocumentIndex": 0,
               "Title": "MessageService.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\MessageService.vb",
               "ViewState": "AgIAAAEAAAAAAAAAAAAiwAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:30:20.818Z",
@@ -247,350 +200,293 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateForum.vb [Design]",
+              "DocumentIndex": 7,
+              "Title": "CreateForum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb",
-              "RelativeDocumentMoniker": "ESS\\CreateForum.vb",
-              "ToolTip": "C:\\Users\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\CreateForum.vb [Design]",
-              "RelativeToolTip": "..\\..\\..\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\CreateForum.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-15T19:30:48.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Main.vb [Design]",
+              "DocumentIndex": 8,
+              "Title": "Main.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb",
-              "RelativeDocumentMoniker": "ESS\\Main.vb",
-              "ToolTip": "C:\\Users\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Main.vb [Design]",
-              "RelativeToolTip": "..\\..\\..\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Main.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:04:45.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "TrouverForum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb",
-              "RelativeDocumentMoniker": "ESS\\TrouverForum.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\TrouverForum.vb",
-              "RelativeToolTip": "ESS\\TrouverForum.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-16T03:36:23.049Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Inscription.vb [Design]",
+              "DocumentIndex": 10,
+              "Title": "Inscription.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb",
-              "RelativeDocumentMoniker": "ESS\\Inscription.vb",
-              "ToolTip": "C:\\Users\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Inscription.vb [Design]",
-              "RelativeToolTip": "..\\..\\..\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Inscription.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:04:44.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Inscription.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb",
-              "RelativeDocumentMoniker": "ESS\\Inscription.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Inscription.vb",
-              "RelativeToolTip": "ESS\\Inscription.vb",
               "ViewState": "AgIAAIkAAAAAAAAAAADwv50AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:34:40.657Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "ForumService.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ForumService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\ForumService.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ForumService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\ForumService.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-16T03:22:28.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Main.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb",
-              "RelativeDocumentMoniker": "ESS\\Main.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Main.vb",
-              "RelativeToolTip": "ESS\\Main.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T12:33:08.407Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "CreateForum.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb",
-              "RelativeDocumentMoniker": "ESS\\CreateForum.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\CreateForum.vb",
-              "RelativeToolTip": "ESS\\CreateForum.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-16T02:59:47.986Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "ForumDataAccess.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\ForumDataAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\ForumDataAccess.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\ForumDataAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\ForumDataAccess.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:21:34.046Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "LogService.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\LogService.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\LogService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\LogService.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:29:12.025Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Form1.vb [Design]",
+              "DocumentIndex": 17,
+              "Title": "Form1.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb",
-              "RelativeDocumentMoniker": "ESS\\Form1.vb",
-              "ToolTip": "C:\\Users\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Form1.vb [Design]",
-              "RelativeToolTip": "..\\..\\..\\ayman\\Desktop\\ProjetESS\\ESS\\ESS\\Form1.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T13:04:57.282Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "Forums.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Forums.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Forums.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Forums.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Forums.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-15T19:32:49.12Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "UserService.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\UserService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\UserService.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\UserService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\UserService.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:32:26.694Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "UserDateAccess.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\UserDateAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\UserDateAccess.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\UserDateAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\UserDateAccess.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:24:02.659Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "MessageControlRecu.Designer.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.Designer.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageControlRecu.Designer.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.Designer.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\MessageControlRecu.Designer.vb",
               "ViewState": "AgIAACEAAAAAAAAAAAAowEUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T11:59:57.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "MessageControlEnvoye.Designer.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.Designer.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.Designer.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.Designer.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.Designer.vb",
               "ViewState": "AgIAACQAAAAAAAAAAAAowE4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-15T17:54:46.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "MessageControlEnvoye.vb [Design]",
+              "DocumentIndex": 23,
+              "Title": "MessageControlEnvoye.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.vb",
-              "ToolTip": "D:\\ProjetESS\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlEnvoye.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T11:59:52.428Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\App.config",
-              "RelativeDocumentMoniker": "ESS\\App.config",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\App.config",
-              "RelativeToolTip": "ESS\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-05-11T13:56:50.849Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "MessageControlRecu.vb [Design]",
+              "DocumentIndex": 25,
+              "Title": "MessageControlRecu.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageControlRecu.vb",
-              "ToolTip": "D:\\ProjetESS\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControlRecu.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T11:59:54.319Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "CurrentUser.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\CurrentUser.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\CurrentUser.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\CurrentUser.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\CurrentUser.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T12:00:06.446Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "MessageControl.vb [Design]",
+              "DocumentIndex": 27,
+              "Title": "MessageControl.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControl.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\MessageControl.vb",
-              "ToolTip": "D:\\ProjetESS\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControl.vb [Design]",
+              "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\MessageControl.vb",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-08T11:59:47.506Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 28,
               "Title": "authService.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\authService.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\authService.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\authService.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\authService.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:28:36.168Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "Form1.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb",
-              "RelativeDocumentMoniker": "ESS\\Form1.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\Form1.vb",
-              "RelativeToolTip": "ESS\\Form1.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T13:05:20.437Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "DataBaseConnection.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\DataBaseConnection.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\DataBaseConnection.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\DataBaseConnection.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\DataBaseConnection.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:19:35.913Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 1,
               "Title": "MessageDataAccess.vb",
               "DocumentMoniker": "C:\\Users\\ayman.elhd\\Desktop\\ChatApp\\chat_capp\\DataAccess\\MessageDataAccess.vb",
-              "RelativeDocumentMoniker": "..\\..\\..\\ayman.elhd\\Desktop\\ChatApp\\chat_capp\\DataAccess\\MessageDataAccess.vb",
               "ToolTip": "C:\\Users\\ayman.elhd\\Desktop\\ChatApp\\chat_capp\\DataAccess\\MessageDataAccess.vb",
-              "RelativeToolTip": "..\\..\\..\\ayman.elhd\\Desktop\\ChatApp\\chat_capp\\DataAccess\\MessageDataAccess.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T12:56:23.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 31,
               "Title": "ClientValidator.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ClientValidator.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\ClientValidator.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\ClientValidator.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\ClientValidator.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:34:03.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 32,
               "Title": "PasswordHasherTests.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasherTests.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\PasswordHasherTests.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasherTests.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\PasswordHasherTests.vb",
               "ViewState": "AgIAAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:31:27.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 33,
               "Title": "PasswordHasher.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasher.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Service\\PasswordHasher.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Service\\PasswordHasher.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Service\\PasswordHasher.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:30:52.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 34,
               "Title": "LogsDataAccess.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\LogsDataAccess.vb",
-              "RelativeDocumentMoniker": "ESS\\DataAccess\\LogsDataAccess.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\DataAccess\\LogsDataAccess.vb",
-              "RelativeToolTip": "ESS\\DataAccess\\LogsDataAccess.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:22:23.095Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 35,
               "Title": "User.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\User.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\User.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\User.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\User.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAA6wBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:27:38.074Z"
@@ -600,9 +496,7 @@
               "DocumentIndex": 36,
               "Title": "Session.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Session.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Session.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Session.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Session.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:27:07.892Z"
@@ -612,16 +506,14 @@
               "DocumentIndex": 37,
               "Title": "Message.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Message.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Message.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Message.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Message.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:26:42.041Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 2,
               "Title": "Forum.vb",
               "DocumentMoniker": "D:\\capp\\ESS\\ESS\\BuisnessLogic\\Models\\Forum.vb",
               "ToolTip": "D:\\capp\\ESS\\ESS\\BuisnessLogic\\Models\\Forum.vb",
@@ -631,12 +523,10 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 38,
               "Title": "Eleve.vb",
               "DocumentMoniker": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Eleve.vb",
-              "RelativeDocumentMoniker": "ESS\\BuisnessLogic\\Models\\Eleve.vb",
               "ToolTip": "C:\\Users\\ARNAUD.PNCT\\Desktop\\ESS\\ESS\\BuisnessLogic\\Models\\Eleve.vb",
-              "RelativeToolTip": "ESS\\BuisnessLogic\\Models\\Eleve.vb",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-06T11:25:31.353Z"

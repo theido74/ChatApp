@@ -213,7 +213,7 @@ Public Class UserDateAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT per_id, per_username FROM ess_personne WHERE per_isActive = 1 AND per_id != :currentUserId ORDER BY per_username ASC"
+                Dim sql As String = "SELECT per_id, per_username, per_chatstatut FROM ess_personne WHERE per_isActive = 1 AND per_id != :currentUserId ORDER BY per_username ASC"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.BindByName = True
@@ -223,7 +223,8 @@ Public Class UserDateAccess
                         While reader.Read()
                             Dim user As New Eleve With {
                                 .UserID = CInt(reader("per_id")),
-                                .UserName = reader("per_username").ToString()
+                                .UserName = reader("per_username").ToString(),
+                                .ChatStatut = reader("per_chatstatut").ToString()
                             }
                             users.Add(user)
                         End While

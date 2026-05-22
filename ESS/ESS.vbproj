@@ -128,6 +128,7 @@
     <Compile Include="BuisnessLogic\Service\MessageControlRecu.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="BuisnessLogic\Models\Chat.vb" />
     <Compile Include="CreateForum.Designer.vb">
       <DependentUpon>CreateForum.vb</DependentUpon>
     </Compile>

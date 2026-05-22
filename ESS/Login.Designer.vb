@@ -44,6 +44,7 @@ Partial Class Login
         Me.txtMDP.Location = New System.Drawing.Point(151, 293)
         Me.txtMDP.Multiline = True
         Me.txtMDP.Name = "txtMDP"
+        Me.txtMDP.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtMDP.Size = New System.Drawing.Size(238, 20)
         Me.txtMDP.TabIndex = 1
         '
@@ -63,7 +64,7 @@ Partial Class Login
         '
         Me.btnConnexion.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.btnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnConnexion.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConnexion.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnConnexion.ForeColor = System.Drawing.Color.BlueViolet
         Me.btnConnexion.Location = New System.Drawing.Point(124, 341)
         Me.btnConnexion.Name = "btnConnexion"

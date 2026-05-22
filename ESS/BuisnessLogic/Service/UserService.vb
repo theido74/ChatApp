@@ -31,4 +31,28 @@
             Return Nothing
         End Try
     End Function
+    Public Function GetAllEleve() As List(Of Eleve)
+        Try
+            Return dbAccess.GetAllUsers()
+        Catch ex As Exception
+            MessageBox.Show("Erreur Fonction GetallEleve")
+            Return Nothing
+        End Try
+    End Function
+    Public Function GetUsernameById(userId As Integer) As String
+        Try
+            Return dbAccess.GetUsernameById(userId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur Fonction GetUsernameById")
+            Return Nothing
+        End Try
+    End Function
+    Public Function GetEleveById(userId As Integer) As Eleve
+        Try
+            Return dbAccess.GetEleveByID(userId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur Fonction GetEleveById")
+            Return Nothing
+        End Try
+    End Function
 End Class
