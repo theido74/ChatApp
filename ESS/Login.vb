@@ -5,7 +5,6 @@ Public Class Login
 
     Private logger As New LogService()
     Private authService As New AuthenticationService()
-
     Private clientValidator As New ClientValidator()
     Private Const MESSAGEFAILED As String = "LOG ERROR"
 

@@ -4,6 +4,8 @@
     'Private userDataAccess As New UserDateAccess()
     Private logger As New LogService()
     Private Const MESSAGE As String = "Message Envoyé"
+    Private Const MESSAGENOTOK As String = "Message Non Envoyé"
+
 
 
     ' Vérifier si un chat 1:1 possède des messages non lu par l'utilisateur [DAMIEN]
@@ -76,6 +78,7 @@
             logger.AjoutLog(idEnvoyeur, MESSAGE)
             Return dbAccess.CreateMessage(idEnvoyeur, idReceveur, contenu)
         Catch ex As Exception
+            logger.AjoutLog(idEnvoyeur, MESSAGENOTOK)
             MessageBox.Show("Erreur lors de l'envoi du message privé")
             Return Nothing
         End Try
@@ -91,6 +94,7 @@
             logger.AjoutLog(idEnvoyeur, MESSAGE)
             Return dbAccess.CreateMessage(idEnvoyeur, forumId, contenu, forumId)
         Catch ex As Exception
+            logger.AjoutLog(idEnvoyeur, MESSAGENOTOK)
             MessageBox.Show("Erreur lors de l'envoi du message au forum")
             Return Nothing
         End Try

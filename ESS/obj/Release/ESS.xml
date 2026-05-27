@@ -22,12 +22,6 @@ ESS
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:ESS.AuthenticationService.Authenticate(System.String,System.String)">
- Authentifie un utilisateur avec username et password
-</member>
-<member name="M:ESS.AuthenticationService.GetEleveByUsername(System.String)">
- Récupère un utilisateur par son username
-</member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
  Author: Ayman
@@ -101,15 +95,6 @@ ESS
  </summary>
 </member>
 <member name="M:ESS.MessagePrive.RemplirDataGridView">
- <summary>
- Author: Ayman
- Remplit le DataGridView avec la liste des utilisateurs (élèves) disponibles pour les conversations privées.
- Il récupère tous les élèves depuis le service utilisateur, puis ajoute chaque élève comme une ligne dans le DataGridView,
- en affichant leur nom d'utilisateur et leur statut de chat. 
- L'ID de chaque utilisateur est stocké dans la propriété Tag de la ligne correspondante pour une récupération facile lors de la sélection.
- </summary>
-</member>
-<member name="M:ESS.MessagePrive.DataGridView1_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
  <summary>
  Author: Ayman
  Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.

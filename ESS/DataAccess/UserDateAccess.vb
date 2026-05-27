@@ -26,44 +26,33 @@ Public Class UserDateAccess
 
                         If reader.Read() Then
                             e.UserID = CInt(reader("per_id"))
-                            Console.WriteLine("ID" & e.UserID)
                             e.UserName = reader("per_username").ToString()
-                            Console.WriteLine("ID" & e.UserName)
 
                             e.Nom = reader("per_nom").ToString()
-                            Console.WriteLine("per_nom" & e.Nom)
 
                             e.Prenom = reader("per_prenom").ToString()
-                            Console.WriteLine("per_prenom" & e.Prenom)
 
                             e.DateDeNaissance = CDate(reader("per_dateNaissance"))
-                            Console.WriteLine("ID" & e.DateDeNaissance)
 
                             e.Email = reader("per_email").ToString()
-                            Console.WriteLine("per_dateNaissance" & e.Email)
 
                             e.MdpHashed = reader("per_mdpHashed").ToString()
-                            Console.WriteLine("per_mdpHashed" & e.MdpHashed)
 
                             e.DateCreation = CDate(reader("per_dateCreation"))
-                            Console.WriteLine("per_dateCreation" & e.DateCreation)
 
                             e.IsActive = CBool(reader("per_isActive"))
-                            Console.WriteLine("per_isActive" & e.IsActive)
 
                             e.ChatStatut = reader("per_chatStatut").ToString()
-                            Console.WriteLine("per_chatStatus" & e.ChatStatut)
 
                             If Not IsDBNull(reader("ele_niveau")) Then
                                 e.Niveau = CInt(reader("ele_niveau"))
-                                Console.WriteLine("ID" & e.Niveau)
 
                             End If
                             If Not IsDBNull(reader("ele_nbPoints")) Then
                                 e.NbPoints = CInt(reader("ele_nbPoints"))
                             End If
                             If Not IsDBNull(reader("ele_classe")) Then
-                                e.Classe = reader("ele_classe").ToString()   'VALEUR QUI VIENNENT D'UNE AUTRE TABLE, A TESTER SI NULL AVANT; EVITE ERREUR NO SUCH TABLE
+                                e.Classe = reader("ele_classe").ToString()
                             End If
 
                             Return e
@@ -72,7 +61,7 @@ Public Class UserDateAccess
                 End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show("Erreur BD: " & ex.Message)
+            MessageBox.Show("Erreur BD")
         End Try
         Return Nothing
     End Function

@@ -22,12 +22,6 @@ ESS
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:ESS.AuthenticationService.Authenticate(System.String,System.String)">
- Authentifie un utilisateur avec username et password
-</member>
-<member name="M:ESS.AuthenticationService.GetEleveByUsername(System.String)">
- Récupère un utilisateur par son username
-</member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
  Author: Ayman

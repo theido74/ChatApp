@@ -3,28 +3,26 @@
     Private passwordHasher As New PasswordHasher()
     Private logger As New LogService()
     Private Const MESSAGEOK As String = "LOGGED"
-    ''' Authentifie un utilisateur avec username et password
+    Private Const MESSAGENOTOK As String = "LOGERROR"
+
 
     Public Function Authenticate(username As String, password As String) As Boolean
 
-        ' Trim des entrées POUR EVITER FICHIER SQL
         username = username.Trim()
         password = password.Trim()
 
         Try
-            ' Récupérer l'eleve de la BD
             Dim e As Eleve = dbAccess.GetEleveByUsername(username)
             If e Is Nothing Then
                 Throw New UnauthorizedAccessException("Utilisateur non trouvé")
             End If
 
-            ' Vérifier le password
             If Not PasswordHasher.VerifierMotDePasse(password, e.MdpHashed) Then
+                logger.AjoutLog(e.UserID, MESSAGENOTOK)
                 LogError("Authenticate", $"Echec de connexion {username}")
                 Throw New UnauthorizedAccessException("Nom d'utilisateur ou mot de passe incorrect")
             End If
 
-            ' Login réussi
             LogInfo("Authenticate", $"User {username} (ID {e.UserID}) logged")
             e.IsActive = True
             logger.AjoutLog(e.UserID, MESSAGEOK)
@@ -32,15 +30,15 @@
 
         Catch ex As UnauthorizedAccessException
             Throw
+
+
         Catch ex As Exception
             LogError("Authenticate", ex)
-
-            Throw New Exception("Erreur lors du logging")
+            Throw 'New Exception("Erreur lors du logging")
         End Try
 
     End Function
 
-    ''' Récupère un utilisateur par son username
 
     Public Function GetEleveByUsername(username As String) As Eleve
         If String.IsNullOrEmpty(username) Then
