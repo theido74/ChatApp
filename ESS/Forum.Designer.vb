@@ -33,9 +33,9 @@ Partial Class Forum
         Me.lblUtilisateurs = New System.Windows.Forms.Label()
         Me.lblUsername = New System.Windows.Forms.Label()
         Me.dgvUtilisateursForum = New System.Windows.Forms.DataGridView()
-        Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAnnuler = New System.Windows.Forms.Button()
         CType(Me.dgvUtilisateursForum, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -138,21 +138,9 @@ Partial Class Forum
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvUtilisateursForum.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvUtilisateursForum.RowHeadersVisible = False
+        Me.dgvUtilisateursForum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvUtilisateursForum.Size = New System.Drawing.Size(194, 389)
         Me.dgvUtilisateursForum.TabIndex = 11
-        '
-        'btnAnnuler
-        '
-        Me.btnAnnuler.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnnuler.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAnnuler.ForeColor = System.Drawing.Color.BlueViolet
-        Me.btnAnnuler.Location = New System.Drawing.Point(101, 515)
-        Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(116, 23)
-        Me.btnAnnuler.TabIndex = 16
-        Me.btnAnnuler.Text = "Retour"
-        Me.btnAnnuler.UseVisualStyleBackColor = False
         '
         'Username
         '
@@ -167,6 +155,19 @@ Partial Class Forum
         Me.Status.HeaderText = "Status"
         Me.Status.Name = "Status"
         Me.Status.ReadOnly = True
+        '
+        'btnAnnuler
+        '
+        Me.btnAnnuler.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAnnuler.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnnuler.ForeColor = System.Drawing.Color.BlueViolet
+        Me.btnAnnuler.Location = New System.Drawing.Point(101, 515)
+        Me.btnAnnuler.Name = "btnAnnuler"
+        Me.btnAnnuler.Size = New System.Drawing.Size(116, 23)
+        Me.btnAnnuler.TabIndex = 16
+        Me.btnAnnuler.Text = "Retour"
+        Me.btnAnnuler.UseVisualStyleBackColor = False
         '
         'Forum
         '

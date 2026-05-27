@@ -221,7 +221,7 @@ Public Class messageDataAccess
 
 
     ' Récupérer les discussions 1:1 dont minimum un message est non lu
-    Public Function GetChatById(receiverId As Integer) As List(Of Chat)
+    Public Function GetChatById(receiverId As Integer) As List(Of Chat) '' NOUVEAU
 
         Dim chatLst As New List(Of Chat)
 
@@ -229,7 +229,7 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT ess_message.mes_per_id_emm, " &
+                Dim sql As String = "SELECT ess_message.mes_per_id_rec, " &
                                     "ess_personne.per_nom, " &
                                     "MAX(ess_message.mes_timestamp) AS mes_timestamp, " &
                                     "SUM(CASE WHEN ess_message.mes_estlu = 0 THEN 1 ELSE 0 END) AS unread_count, " &
@@ -238,7 +238,10 @@ Public Class messageDataAccess
                                     "JOIN ess_personne ON ess_personne.per_id = ess_message.mes_per_id_emm " &
                                     "WHERE ess_message.mes_estsupprime = 0 " &
                                     "AND ess_message.mes_per_id_rec = :receiver " &
-                                    "GROUP BY ess_message.mes_per_id_emm, ess_personne.per_nom " &
+                                    "GROUP BY ess_message.mes_per_id_emm, " &
+                                    "ess_message.mes_per_id_rec, " &
+                                    "ess_personne.per_nom, " &
+                                    "ess_personne.per_chatstatut " &
                                     "ORDER BY MAX(ess_message.mes_timestamp) DESC"
 
                 Using cmd As New OracleCommand(sql, conn)
@@ -249,13 +252,12 @@ Public Class messageDataAccess
 
                             Dim cha As New Chat With {
                             .UserId = receiverId,
-                            .ContactId = CInt(reader("mes_per_id_emm")),
+                            .ContactId = CInt(reader("mes_per_id_rec")),
                             .ContactNom = reader("per_nom").ToString(),
                             .DateDernierMessage = CDate(reader("mes_timestamp")),
                             .NbOfUnreadMessages = CInt(reader("unread_count")),
                             .Statut = reader("per_chatstatut").ToString()
                             }
-
                             chatLst.Add(cha)
                         End While
                     End Using

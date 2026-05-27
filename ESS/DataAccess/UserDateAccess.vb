@@ -163,7 +163,7 @@ Public Class UserDateAccess
                             cmd.Parameters.Add("mdpHashed", OracleDbType.Varchar2).Value = mdp
                             cmd.Parameters.Add("dateCreation", OracleDbType.Date).Value = DateTime.Now
                             cmd.Parameters.Add("isActive", OracleDbType.Int16).Value = 1
-                            cmd.Parameters.Add("chatStatut", OracleDbType.Varchar2).Value = String.Empty
+                            cmd.Parameters.Add("chatStatut", OracleDbType.Varchar2).Value = "Hors ligne" ''NOUVEAU
 
                             cmd.ExecuteNonQuery()
                         End Using

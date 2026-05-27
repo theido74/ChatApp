@@ -103,15 +103,6 @@ ESS
 <member name="M:ESS.MessagePrive.RemplirDataGridView">
  <summary>
  Author: Ayman
- Remplit le DataGridView avec la liste des utilisateurs (élèves) disponibles pour les conversations privées.
- Il récupère tous les élèves depuis le service utilisateur, puis ajoute chaque élève comme une ligne dans le DataGridView,
- en affichant leur nom d'utilisateur et leur statut de chat. 
- L'ID de chaque utilisateur est stocké dans la propriété Tag de la ligne correspondante pour une récupération facile lors de la sélection.
- </summary>
-</member>
-<member name="M:ESS.MessagePrive.DataGridView1_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
- <summary>
- Author: Ayman
  Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.
  Lorsque l'utilisateur clique sur une cellule, cette méthode vérifie si la ligne est valide, puis récupère l'ID de l'utilisateur sélectionné à partir de la propriété Tag de la ligne.
  Ensuite, elle charge la conversation privée correspondante et met à jour le label pour afficher le nom de l'utilisateur avec lequel la conversation est en cours.

@@ -105,10 +105,9 @@ Public Class MessagePrive
 
     ''' <summary>
     ''' Author: Ayman
-    ''' Remplit le DataGridView avec la liste des utilisateurs (élèves) disponibles pour les conversations privées.
-    ''' Il récupère tous les élèves depuis le service utilisateur, puis ajoute chaque élève comme une ligne dans le DataGridView,
-    ''' en affichant leur nom d'utilisateur et leur statut de chat. 
-    ''' L'ID de chaque utilisateur est stocké dans la propriété Tag de la ligne correspondante pour une récupération facile lors de la sélection.
+    ''' Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.
+    ''' Lorsque l'utilisateur clique sur une cellule, cette méthode vérifie si la ligne est valide, puis récupère l'ID de l'utilisateur sélectionné à partir de la propriété Tag de la ligne.
+    ''' Ensuite, elle charge la conversation privée correspondante et met à jour le label pour afficher le nom de l'utilisateur avec lequel la conversation est en cours.
     ''' </summary>
     Private Sub RemplirDataGridView()
 
@@ -139,12 +138,34 @@ Public Class MessagePrive
         End If
 
     End Sub
-    ''' <summary>
-    ''' Author: Ayman
-    ''' Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.
-    ''' Lorsque l'utilisateur clique sur une cellule, cette méthode vérifie si la ligne est valide, puis récupère l'ID de l'utilisateur sélectionné à partir de la propriété Tag de la ligne.
-    ''' Ensuite, elle charge la conversation privée correspondante et met à jour le label pour afficher le nom de l'utilisateur avec lequel la conversation est en cours.
-    ''' </summary>
+
+    Private Sub RemplirDataGridView2()
+
+        DataGridView1.AllowUserToAddRows = False
+        Dim chats As List(Of Chat) = messageService.GetChatById()
+        DataGridView1.Rows.Clear()
+
+        If chats IsNot Nothing AndAlso chats.Count > 0 Then
+
+            For Each chat As Chat In chats
+                Dim col1 As String = chat.UserId & "-" & chat.ContactNom '& "[" & chat.DateDernierMessage.ToString() & "]"
+                Dim col2 As String = ""
+                If chat.NbOfUnreadMessages > 0 Then
+                    col2 += " " & chat.NbOfUnreadMessages.ToString() & " nouveau m."
+                End If
+                If chat.Statut IsNot Nothing AndAlso chat.Statut <> "" Then
+                    col2 += " <" & chat.Statut & ">"
+                End If
+
+                Dim index As Integer = DataGridView1.Rows.Add(col1, col2)
+
+                DataGridView1.Rows(index).Tag = chat.UserId
+
+            Next
+
+        End If
+
+    End Sub
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         If e.RowIndex < 0 Then
@@ -160,6 +181,5 @@ Public Class MessagePrive
         lblContactName.Text = "Conversation avec " & contactName
 
     End Sub
-
 
 End Class

@@ -31,9 +31,9 @@ Partial Class MessagePrive
         Me.lblUsername = New System.Windows.Forms.Label()
         Me.lblPresentation = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAnnuler = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -122,8 +122,26 @@ Partial Class MessagePrive
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(228, 421)
         Me.DataGridView1.TabIndex = 14
+        '
+        'Username
+        '
+        Me.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Username.HeaderText = "Username"
+        Me.Username.Name = "Username"
+        Me.Username.ReadOnly = True
+        Me.Username.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Username.Width = 21
+        '
+        'Status
+        '
+        Me.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        Me.Status.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'btnAnnuler
         '
@@ -137,22 +155,6 @@ Partial Class MessagePrive
         Me.btnAnnuler.TabIndex = 15
         Me.btnAnnuler.Text = "Retour"
         Me.btnAnnuler.UseVisualStyleBackColor = False
-        '
-        'Username
-        '
-        Me.Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Username.HeaderText = "Username"
-        Me.Username.Name = "Username"
-        Me.Username.ReadOnly = True
-        Me.Username.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'Status
-        '
-        Me.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
-        Me.Status.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'MessagePrive
         '

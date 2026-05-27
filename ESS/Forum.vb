@@ -62,12 +62,11 @@
         ' Vérifier que c'est bien la colonne ChatStatut (index 1)
         'Select Case marche comme un if else if, mais plus adapté pour comparer une même variable à plusieurs valeurs différentes
         If e.ColumnIndex = 1 AndAlso e.Value IsNot Nothing Then
-            Select Case e.Value.ToString()
-                Case "En ligne"
-                    e.CellStyle.ForeColor = Color.Green
-                Case "Hors ligne"
-                    e.CellStyle.ForeColor = Color.Red
-            End Select
+            If e.Value.ToString() = "En ligne" Then
+                e.CellStyle.ForeColor = Color.Green
+            Else
+                e.CellStyle.ForeColor = Color.Red
+            End If
         End If
     End Sub
 
