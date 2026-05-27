@@ -5,14 +5,45 @@
     Private logger As New LogService()
     Private Const MESSAGE As String = "Message Envoyé"
 
-    ' Compter le nombre de messages non lu de l'utilisateur connecté [DAMIEN]
-    Public Function GetNbUnreadMessagesById(Optional id As Integer? = -1) As Integer
-        If id = -1 Then
-            id = CurrentUser.User.UserID
+
+    ' Vérifier si un chat 1:1 possède des messages non lu par l'utilisateur [DAMIEN]
+    Public Function ChatHasUnreadMessages(senderId As Integer, Optional receiverId As Integer? = -1) As Integer
+        If receiverId = -1 Then
+            receiverId = CurrentUser.User.UserID
         End If
 
         Try
-            Return dbAccess.CountUnreadMessagesByReceiverId(id)
+            Return dbAccess.ChatHasUnreadMessages(senderId, receiverId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du comptage")
+            Return Nothing
+        End Try
+    End Function
+
+
+    ' Retrouver les conversation qui possèdent des messages non lu [DAMIEN]
+    Public Function GetChatById(Optional receiverId As Integer? = -1) As List(Of Chat)
+        If receiverId = -1 Then
+            receiverId = CurrentUser.User.UserID
+        End If
+
+        Try
+            Return dbAccess.GetChatById(receiverId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du comptage")
+            Return Nothing
+        End Try
+    End Function
+
+
+    ' Compter le nombre de messages non lu de l'utilisateur connecté [DAMIEN]
+    Public Function GetNbUnreadMessagesById(Optional receiverId As Integer? = -1) As Integer
+        If receiverId = -1 Then
+            receiverId = CurrentUser.User.UserID
+        End If
+
+        Try
+            Return dbAccess.CountUnreadMessagesByReceiverId(receiverId)
         Catch ex As Exception
             MessageBox.Show("Erreur lors du comptage")
             Return Nothing
