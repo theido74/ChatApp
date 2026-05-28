@@ -53,7 +53,11 @@
 
 
     Private Sub QuitterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitterToolStripMenuItem.Click
-        Application.Exit()
+        Dim loginForm As New Login()
+        Me.Hide()
+        loginForm.ShowDialog()
+        RefreshOnlineUser()
+
     End Sub
 
     Private Sub MessagesPrivésToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MessagesPrivésToolStripMenuItem.Click

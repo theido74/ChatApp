@@ -143,7 +143,7 @@ Partial Class Main
         Me.Controls.Add(Me.lblUsername)
         Me.Controls.Add(Me.MenuStrip1)
         Me.DoubleBuffered = True
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Main"
         Me.Text = "Main"

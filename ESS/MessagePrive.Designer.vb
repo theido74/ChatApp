@@ -172,7 +172,7 @@ Partial Class MessagePrive
         Me.Controls.Add(Me.flpMessagesPrives)
         Me.Controls.Add(Me.lblContactName)
         Me.DoubleBuffered = True
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "MessagePrive"
         Me.Text = "MessagePrivéForm"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

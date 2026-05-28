@@ -3,6 +3,7 @@
     Private forumId As Integer
     Private userDataAccess As New UserService()
     Private forumService As New ForumService()
+    Private logger As New LogService()
 
     Private Function GetEmmeteurName(userId As Integer) As String
         Return userDataAccess.GetUsernameById(userId)
@@ -30,9 +31,25 @@
             lblUsername.Text = "#" & CurrentUser.User.UserName
         End If
 
+        logger.PingDB(CurrentUser.User.UserID)
+        RefreshOnlineUser()
+
+
         AfficherNomForum()
         ChargerMessages()
         ChargerEleves()
+
+    End Sub
+
+
+
+    Private Sub RefreshOnlineUser()
+        Try
+            Dim lstUser = logger.isActive()
+
+        Catch ex As Exception
+
+        End Try
     End Sub
     ''' <summary>
     ''' Author: Ayman

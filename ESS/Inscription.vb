@@ -141,7 +141,9 @@ Public Class Inscription
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
-        Me.Close()
+        Dim loginform As New Login()
+        Me.Hide()
+        loginform.ShowDialog()
     End Sub
 
     Private Sub btnVoirMDP_Click(sender As Object, e As EventArgs) Handles btnVoirMDP.Click
@@ -248,8 +250,9 @@ Public Class Inscription
         ' Option : appeler directement le service d'enregistrement ici si disponible,
         ' sinon rediriger vers le Login et insérer depuis là en récupérant PendingRegistration.
         Dim loginform As New Login()
+        Me.Hide()
         loginform.ShowDialog()
-        Me.Close()
+
     End Sub
 
 End Class

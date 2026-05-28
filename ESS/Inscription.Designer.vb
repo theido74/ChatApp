@@ -185,6 +185,7 @@ Partial Class Inscription
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.txtPrenom)
         Me.Controls.Add(Me.txtNom)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Inscription"
         Me.Text = "."
         Me.ResumeLayout(False)

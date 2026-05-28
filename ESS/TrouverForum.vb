@@ -45,6 +45,7 @@ Public Class TrouverForum
 
     Private Sub btnCreerForum_Click(sender As Object, e As EventArgs) Handles btnCreerForum.Click
         Dim createForumForm As New CreateForum()
+        Me.Hide()
         createForumForm.ShowDialog()
 
     End Sub
@@ -59,6 +60,7 @@ Public Class TrouverForum
         End If
         Dim forumId As Integer = CInt(dgvForums.Rows(e.RowIndex).Cells(2).Value)
         Dim forumForm As New Forum With {.SelectedForumId = forumId}
+        Me.Hide()
         forumForm.ShowDialog()
     End Sub
     ''' <summary>

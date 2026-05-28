@@ -56,8 +56,9 @@ Public Class Login
 
     Private Sub lblCreeCompteClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblCreeCompte.LinkClicked
         Dim inscriptionForm As New Inscription()
+        Me.Hide()
         inscriptionForm.ShowDialog()
-        Me.Close()
+
     End Sub
 
     Private Sub BtnConnexion_Click(sender As Object, e As EventArgs) Handles btnConnexion.Click

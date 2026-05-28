@@ -90,7 +90,7 @@ Partial Class CreateForum
         Me.Controls.Add(Me.btnCreerForum)
         Me.Controls.Add(Me.txtDescription)
         Me.Controls.Add(Me.txtNomForum)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "CreateForum"
         Me.Text = "CreateForum"
         Me.ResumeLayout(False)

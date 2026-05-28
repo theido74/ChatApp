@@ -34,10 +34,11 @@ Public Class CreateForum
 
                 ' Ouvrir le forum fraîchement créé
                 Dim forumForm As New Forum With {.SelectedForumId = newForumId}
+                ' Fermer la fenêtre de création
+                Me.Hide()
                 forumForm.ShowDialog()
 
-                ' Fermer la fenêtre de création
-                Me.Close()
+
             Else
                 MessageBox.Show("Erreur lors de la création du forum !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -52,6 +53,8 @@ Public Class CreateForum
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
 
-        Me.Close()
+        Dim mainForm As New Main()
+        Me.Hide()
+        Main.ShowDialog()
     End Sub
 End Class

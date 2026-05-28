@@ -110,7 +110,7 @@ Partial Class Login
         Me.Controls.Add(Me.btnVoirMDP)
         Me.Controls.Add(Me.txtMDP)
         Me.Controls.Add(Me.txtUsername)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Login"
         Me.Text = "Login"
         Me.ResumeLayout(False)

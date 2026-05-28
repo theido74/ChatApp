@@ -126,7 +126,7 @@ Partial Class TrouverForum
         Me.Controls.Add(Me.txtForum)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.btnCreerForum)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "TrouverForum"
         Me.Text = "TrouverForum"
         CType(Me.dgvForums, System.ComponentModel.ISupportInitialize).EndInit()

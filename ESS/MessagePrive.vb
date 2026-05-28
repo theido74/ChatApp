@@ -4,13 +4,24 @@ Public Class MessagePrive
     Private messageService As New MessageService()
     Private userService As New UserService()
     Private selectedContactId As Integer = -1
+    Private logger As New LogService()
 
     Private Sub MessagePrive_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If CurrentUser.User IsNot Nothing Then
             lblUsername.Text = "#" & CurrentUser.User.UserName
         End If
         RemplirDataGridView()
+        logger.PingDB(CurrentUser.User.UserID)
+        RefreshOnlineUser()
+    End Sub
 
+    Private Sub RefreshOnlineUser()
+        Try
+            Dim lstUser = logger.isActive()
+
+        Catch ex As Exception
+
+        End Try
     End Sub
     ''' <summary>
     ''' Author: Ayman
@@ -102,7 +113,17 @@ Public Class MessagePrive
         Me.Close()
 
     End Sub
-
+    Private Sub DataGridView1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
+        ' Vérifier que c'est bien la colonne ChatStatut (index 1)
+        'Select Case marche comme un if else if, mais plus adapté pour comparer une même variable à plusieurs valeurs différentes
+        If e.ColumnIndex = 1 AndAlso e.Value IsNot Nothing Then
+            If e.Value.ToString() = "En ligne" Then
+                e.CellStyle.ForeColor = Color.Green
+            Else
+                e.CellStyle.ForeColor = Color.Red
+            End If
+        End If
+    End Sub
     ''' <summary>
     ''' Author: Ayman
     ''' Gère l'événement de clic sur une cellule du DataGridView pour afficher la conversation privée avec l'utilisateur sélectionné.

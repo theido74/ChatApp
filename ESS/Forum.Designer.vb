@@ -186,7 +186,7 @@ Partial Class Forum
         Me.Controls.Add(Me.txtMessge)
         Me.Controls.Add(Me.lblNomForum)
         Me.DoubleBuffered = True
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Forum"
         Me.Text = "Forum"
         CType(Me.dgvUtilisateursForum, System.ComponentModel.ISupportInitialize).EndInit()
