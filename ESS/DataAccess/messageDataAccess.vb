@@ -169,21 +169,24 @@ Public Class messageDataAccess
     End Function
 
 
-    Public Function DeleteMessageById(messageId As Integer) As Boolean
+    Public Function DeleteMessageById(senderId As Integer, receiverId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
+                ' Efface tous les messages entre deux personnes (dans les deux sens)
                 Dim sql As String = "UPDATE ess_message " &
                                     "SET mes_estsupprime = 1 " &
-                                    "WHERE mes_id = :message"
+                                    "WHERE (mes_per_id_emm = :sender AND mes_per_id_rec = :receiver) OR " &
+                                    "(mes_per_id_emm = :receiver AND mes_per_id_rec = :sender)"
 
                 Using cmd As New OracleCommand(sql, conn)
-                    cmd.Parameters.Add("message", OracleDbType.Int32).Value = messageId
+                    cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId
+                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
-                    ' rowsAffected contiendra le nombre de lignes modifiées le max devrait être 1 car id est unique
+                    ' rowsAffected contient le nombre de lignes modifiées
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     Return rowsAffected > 0
                 End Using
@@ -416,5 +419,7 @@ Public Class messageDataAccess
         End Try
         Return Nothing
     End Function
+
+
 
 End Class

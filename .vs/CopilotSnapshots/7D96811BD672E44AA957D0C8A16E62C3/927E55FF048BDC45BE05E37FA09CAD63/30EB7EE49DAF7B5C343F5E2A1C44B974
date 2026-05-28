@@ -26,13 +26,8 @@ Public Class LogService
 
     Public Function Logout(id As Integer) As Integer
         Dim newID = AjoutLog(id, "LOGOUT")
-
         Console.WriteLine("LOGOUT DB Exécuté à " & DateTime.Now)
         Return newID
-    End Function
-
-    Public Function SetUserOffline(id As Integer) As Boolean
-        Return dbAccess.SetUserOffline(id)
     End Function
 
     Public Function isActive() As List(Of Integer)

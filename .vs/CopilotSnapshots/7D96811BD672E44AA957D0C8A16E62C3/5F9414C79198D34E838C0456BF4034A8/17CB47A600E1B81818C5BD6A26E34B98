@@ -79,8 +79,8 @@ Public Class LogsDataAccess
                 conn.Open()
 
                 Dim sql As String = "UPDATE ess_personne " &
-                                    "SET per_chatstatut = :statut " &
-                                    "WHERE per_id = :userId"
+"SET per_chatstatut = :statut " &
+     "WHERE per_id = :userId"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.BindByName = True

@@ -31,10 +31,6 @@ Public Class LogService
         Return newID
     End Function
 
-    Public Function SetUserOffline(id As Integer) As Boolean
-        Return dbAccess.SetUserOffline(id)
-    End Function
-
     Public Function isActive() As List(Of Integer)
         Dim lstActive As New List(Of Integer)
         lstActive = dbAccess.isActive()

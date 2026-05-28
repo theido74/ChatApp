@@ -36,9 +36,6 @@
         Try
             timer.Stop()
             logger.Logout(CurrentUser.User.UserID)
-            ' Mettre à jour le statut utilisateur à "Hors ligne" dans la base de données
-            Dim userService As New UserService()
-            userService.Logout(CurrentUser.User.UserID)
         Catch ex As Exception
         End Try
     End Sub

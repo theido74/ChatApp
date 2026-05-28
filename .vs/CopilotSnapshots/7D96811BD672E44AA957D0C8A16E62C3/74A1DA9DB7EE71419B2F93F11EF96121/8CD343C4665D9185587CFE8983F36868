@@ -133,23 +133,7 @@
         End Try
     End Function
 
-    ' Effacer tous les messages d'une conversation entre deux personnes
-    Public Function DeleteConversation(senderId As Integer, Optional receiverId As Integer? = -1) As Boolean
-        If receiverId = -1 Then
-            receiverId = CurrentUser.User.UserID
-        End If
-
-        Try
-            Return dbAccess.DeleteMessageById(senderId, receiverId)
-        Catch ex As Exception
-            MessageBox.Show("Erreur lors de la suppression de la conversation")
-            Return False
-        End Try
-    End Function
-
 End Class
-
-
 
 
 

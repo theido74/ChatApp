@@ -55,13 +55,4 @@
             Return Nothing
         End Try
     End Function
-
-    Public Function Logout(userId As Integer) As Boolean
-        Try
-            Return logger.SetUserOffline(userId)
-        Catch ex As Exception
-            MessageBox.Show("Erreur lors de la déconnexion")
-            Return False
-        End Try
-    End Function
 End Class

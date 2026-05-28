@@ -4,7 +4,6 @@
     Private userDataAccess As New UserService()
     Private forumService As New ForumService()
     Private logger As New LogService()
-    Private timer As New System.Windows.Forms.Timer
 
     Private Function GetEmmeteurName(userId As Integer) As String
         Return userDataAccess.GetUsernameById(userId)
@@ -40,20 +39,9 @@
         ChargerMessages()
         ChargerEleves()
 
-        ' Démarrer le timer pour rafraîchir tous les 30 secondes
-        timer.Interval = 30000
-        AddHandler timer.Tick, AddressOf TimerTick
-        timer.Start()
     End Sub
 
-    Private Sub TimerTick(sender As Object, e As EventArgs)
-        Try
-            logger.PingDB(CurrentUser.User.UserID)
-            RefreshOnlineUser()
-            ChargerEleves()
-        Catch ex As Exception
-        End Try
-    End Sub
+
 
     Private Sub RefreshOnlineUser()
         Try
@@ -160,16 +148,17 @@
     ''' Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
     ''' </summary>
     Private Sub AfficherNomForum()
-        Dim forum As Forums = forumService.GetForumById(forumId)
+        Dim forum As Forums = ForumService.GetForumById(forumId)
         If forum IsNot Nothing Then
             lblNomForum.Text = forum.NomForum
         End If
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
-        timer.Stop()
-        timer.Dispose()
+
         Me.Close()
+
+
     End Sub
 End Class
 

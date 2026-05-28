@@ -5,7 +5,6 @@ Public Class MessagePrive
     Private userService As New UserService()
     Private selectedContactId As Integer = -1
     Private logger As New LogService()
-    Private timer As New System.Windows.Forms.Timer
 
     Private Sub MessagePrive_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If CurrentUser.User IsNot Nothing Then
@@ -14,20 +13,6 @@ Public Class MessagePrive
         RemplirDataGridView()
         logger.PingDB(CurrentUser.User.UserID)
         RefreshOnlineUser()
-
-        ' Démarrer le timer pour rafraîchir tous les 30 secondes
-        timer.Interval = 30000
-        AddHandler timer.Tick, AddressOf TimerTick
-        timer.Start()
-    End Sub
-
-    Private Sub TimerTick(sender As Object, e As EventArgs)
-        Try
-            logger.PingDB(CurrentUser.User.UserID)
-            RefreshOnlineUser()
-            RemplirDataGridView()
-        Catch ex As Exception
-        End Try
     End Sub
 
     Private Sub RefreshOnlineUser()
@@ -124,9 +109,9 @@ Public Class MessagePrive
     ''' </summary>
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
-        timer.Stop()
-        timer.Dispose()
+
         Me.Close()
+
     End Sub
     Private Sub DataGridView1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
         ' Vérifier que c'est bien la colonne ChatStatut (index 1)

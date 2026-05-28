@@ -32,17 +32,6 @@
         CheckMessages()
     End Sub
 
-    Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Try
-            timer.Stop()
-            logger.Logout(CurrentUser.User.UserID)
-            ' Mettre à jour le statut utilisateur à "Hors ligne" dans la base de données
-            Dim userService As New UserService()
-            userService.Logout(CurrentUser.User.UserID)
-        Catch ex As Exception
-        End Try
-    End Sub
-
     Private Sub TimerTick(sender As Object, e As EventArgs)
         Try
             logger.PingDB(CurrentUser.User.UserID)

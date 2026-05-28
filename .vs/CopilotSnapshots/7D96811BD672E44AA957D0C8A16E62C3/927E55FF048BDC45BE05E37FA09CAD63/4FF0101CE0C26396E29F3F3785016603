@@ -160,7 +160,7 @@
     ''' Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
     ''' </summary>
     Private Sub AfficherNomForum()
-        Dim forum As Forums = forumService.GetForumById(forumId)
+        Dim forum As Forums = ForumService.GetForumById(forumId)
         If forum IsNot Nothing Then
             lblNomForum.Text = forum.NomForum
         End If

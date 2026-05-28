@@ -23,7 +23,7 @@ Partial Class MessagePrive
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MessagePrive))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblContactName = New System.Windows.Forms.Label()
         Me.flpMessagesPrives = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnEnvoyer = New System.Windows.Forms.Button()
@@ -34,6 +34,7 @@ Partial Class MessagePrive
         Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAnnuler = New System.Windows.Forms.Button()
+        Me.btnEffacer = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -55,7 +56,7 @@ Partial Class MessagePrive
         Me.flpMessagesPrives.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.flpMessagesPrives.Location = New System.Drawing.Point(348, 122)
         Me.flpMessagesPrives.Name = "flpMessagesPrives"
-        Me.flpMessagesPrives.Size = New System.Drawing.Size(680, 374)
+        Me.flpMessagesPrives.Size = New System.Drawing.Size(680, 371)
         Me.flpMessagesPrives.TabIndex = 5
         '
         'btnEnvoyer
@@ -108,14 +109,14 @@ Partial Class MessagePrive
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.ColumnHeadersVisible = False
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Username, Me.Status})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaptionText
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.InactiveCaptionText
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.DataGridView1.Location = New System.Drawing.Point(87, 84)
         Me.DataGridView1.MultiSelect = False
@@ -156,6 +157,19 @@ Partial Class MessagePrive
         Me.btnAnnuler.Text = "Retour"
         Me.btnAnnuler.UseVisualStyleBackColor = False
         '
+        'btnEffacer
+        '
+        Me.btnEffacer.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnEffacer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEffacer.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEffacer.ForeColor = System.Drawing.Color.BlueViolet
+        Me.btnEffacer.Location = New System.Drawing.Point(926, 559)
+        Me.btnEffacer.Name = "btnEffacer"
+        Me.btnEffacer.Size = New System.Drawing.Size(102, 32)
+        Me.btnEffacer.TabIndex = 16
+        Me.btnEffacer.Text = "Effacer"
+        Me.btnEffacer.UseVisualStyleBackColor = False
+        '
         'MessagePrive
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -163,6 +177,7 @@ Partial Class MessagePrive
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1120, 615)
+        Me.Controls.Add(Me.btnEffacer)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.lblPresentation)
@@ -191,4 +206,5 @@ Partial Class MessagePrive
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents Username As DataGridViewTextBoxColumn
     Friend WithEvents Status As DataGridViewTextBoxColumn
+    Friend WithEvents btnEffacer As Button
 End Class
