@@ -263,4 +263,24 @@ Public Class MessagePrive
         ' Rafraîchir l'interface
         ChargerConversation(selectedContactId)
     End Sub
+
+
+
+    Private Sub btnRefresh_Click_1(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        Try
+            logger.PingDB(CurrentUser.User.UserID)
+            Dim userServiceLocal As New UserService()
+            Dim lstActiveUsers As List(Of Integer) = logger.isActive()
+
+            ' Mettre à jour les statuts dans la base pour tous les utilisateurs
+            UpdateUserStatuses(lstActiveUsers)
+
+            ' Recharger l'affichage
+            RemplirDataGridView()
+
+            MessageBox.Show("✓ Statuts des utilisateurs rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du rafraîchissement: " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

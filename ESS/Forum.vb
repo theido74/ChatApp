@@ -183,6 +183,25 @@
         Me.Close()
     End Sub
 
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        ' Rafraîchir manuellement les statuts des utilisateurs
+        Try
+            logger.PingDB(CurrentUser.User.UserID)
+            Dim userService As New UserService()
+            Dim lstActiveUsers As List(Of Integer) = logger.isActive()
+
+            ' Mettre à jour les statuts dans la base pour tous les utilisateurs
+            UpdateUserStatuses(lstActiveUsers)
+
+            ' Recharger l'affichage
+            ChargerEleves()
+
+            MessageBox.Show("✓ Statuts des utilisateurs rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du rafraîchissement: " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     ''' <summary>
     ''' Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
     ''' </summary>

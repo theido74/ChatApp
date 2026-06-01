@@ -36,6 +36,7 @@ Partial Class Forum
         Me.Username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAnnuler = New System.Windows.Forms.Button()
+        Me.btnRefresh = New System.Windows.Forms.Button()
         CType(Me.dgvUtilisateursForum, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -169,6 +170,19 @@ Partial Class Forum
         Me.btnAnnuler.Text = "Retour"
         Me.btnAnnuler.UseVisualStyleBackColor = False
         '
+        'btnRefresh
+        '
+        Me.btnRefresh.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRefresh.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRefresh.ForeColor = System.Drawing.Color.BlueViolet
+        Me.btnRefresh.Location = New System.Drawing.Point(66, 515)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(29, 23)
+        Me.btnRefresh.TabIndex = 17
+        Me.btnRefresh.Text = "🔄"
+        Me.btnRefresh.UseVisualStyleBackColor = False
+        '
         'Forum
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -176,6 +190,7 @@ Partial Class Forum
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(923, 598)
+        Me.Controls.Add(Me.btnRefresh)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.dgvUtilisateursForum)
         Me.Controls.Add(Me.lblUtilisateurs)
@@ -204,6 +219,7 @@ Partial Class Forum
     Friend WithEvents lblUsername As Label
     Friend WithEvents dgvUtilisateursForum As DataGridView
     Friend WithEvents btnAnnuler As Button
+    Friend WithEvents btnRefresh As Button
     Friend WithEvents Username As DataGridViewTextBoxColumn
     Friend WithEvents Status As DataGridViewTextBoxColumn
 End Class
