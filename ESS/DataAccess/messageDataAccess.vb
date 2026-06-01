@@ -68,12 +68,13 @@ Public Class messageDataAccess
     End Function
 
     ''' <summary>
-    ''' Permet de récupérer les messges à partir de l'id du destinataire
+    ''' Permet de récupérer les messges d'un chat.
     ''' </summary>
     ''' <auteur> Damien </auteur>
-    ''' <param name="reveiverId"></param>
+    ''' <param name="userId"></param>
+    ''' <param name="contactId"></param>
     ''' <returns></returns>
-    Public Function GetMessageByRecipientId(reveiverId As Integer) As List(Of Message)
+    Public Function GetMessageByContactId(contactId As Integer, userId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
         Try
@@ -81,12 +82,13 @@ Public Class messageDataAccess
                 conn.Open()
 
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
-                    "FROM ess_message " &
-                    "WHERE mes_estsupprime = 0 AND mes_per_id_rec = :receiver " &
-                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
+                                    "FROM ess_message " &
+                                    "WHERE mes_estsupprime = 0 AND ((mes_per_id_rec = :userId AND mes_per_id_emm = :contactId) OR (mes_per_id_rec = :contactId AND mes_per_id_emm = :userId))" &
+                                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
 
                 Using cmd As New OracleCommand(sql, conn)
-                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = reveiverId
+                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = userId
+                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = contactId
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 

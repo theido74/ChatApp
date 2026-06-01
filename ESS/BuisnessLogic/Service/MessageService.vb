@@ -83,6 +83,25 @@
         End Try
     End Function
 
+    ''' <summary>
+    ''' Retourne une conversation à partir de l'id du contact.
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="contactId"></param>
+    ''' <param name="userId"></param>
+    ''' <returns></returns>
+    Public Function GetMessagesByContactId(contactId As Integer, Optional userId As Integer? = -1) As List(Of Message)
+        If userId = -1 Then
+            userId = CurrentUser.User.UserID
+        End If
+
+        Try
+            Return dbAccess.GetMessageByContactId(contactId, userId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du comptage")
+            Return Nothing
+        End Try
+    End Function
 
     ' Message PRIVÉ : entre deux utilisateurs
     Public Function CreatePrivateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String) As Integer

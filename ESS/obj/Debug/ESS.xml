@@ -22,6 +22,137 @@ ESS
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:ESS.AuthenticationService.Authenticate(System.String,System.String)">
+ <summary>
+ Auteur : Arnaud
+ Gestion de l'authentification, et écriture dans la table ESS_LOGS
+ </summary>
+ <param name="username"></param>
+ <param name="password"></param>
+ <returns>Boolean</returns>
+</member>
+<member name="M:ESS.AuthenticationService.GetEleveByUsername(System.String)">
+ <summary>
+ Auteur: Arnaud
+ Récupération de l'Objet élève grâce au username, appel la fonction dbAccess et retourne un Objet élève
+ </summary>
+ <param name="username"></param>
+ <returns>Eleve</returns>
+</member>
+<member name="M:ESS.DatabaseConnection.GetConnection">
+ <summary>
+ Auteur: Arnaud
+ Connexion à la DB
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:ESS.ForumDataAccess.GetAllForums">
+ <summary>
+ Retourne une liste de tous les forums.
+ </summary>
+ <auteur> Damien </auteur>
+ <returns></returns>
+</member>
+<member name="M:ESS.ForumDataAccess.GetForumById(System.Int32)">
+ <summary>
+ Retourne le forum dont l'id est spécifié dans le paramètre s'il existe.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="id"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.ForumDataAccess.CreateForum(System.String,System.String)">
+ <summary>
+ Insère un forum dans la bdd après avoir vérifier que le forum à insérer respècte certaines conditions.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="name"></param>
+ <param name="description"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.ForumDataAccess.DisableForumById(System.Int32)">
+ <summary>
+ Passer le paramètre estActif de forum à 0.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="id"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.LogService.AjoutLog(System.Int32,System.String)">
+ <summary>
+ Auteur: Arnaud
+ Ajout un ligne dans la table ESS_LOGS grâce dbAccess.Ajoutlog
+ </summary>
+ <param name="id"></param>
+ <param name="message"></param>
+ <returns>Integer Id</returns>
+</member>
+<member name="M:ESS.LogService.PingDB(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Ajout ligne dans la table ESS_LOGS
+ </summary>
+ <param name="id"></param>
+ <returns>Integer Id</returns>
+</member>
+<member name="M:ESS.LogService.Logout(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Ajout ligne dans la table ESS_LOGS
+ </summary>
+ <param name="id"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.LogService.isActive">
+ <summary>
+ Auteur: Arnaud
+ Retourne la liste des Id's des utilisateur qui ont un ping dans ESS_LOGS de moins de 30 sec.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.ChatHasUnreadMessages(System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ Vérifier si un chat 1:1 possède des messages non lu par l'utilisateur.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="senderId"></param>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.GetChatById(System.Nullable{System.Int32})">
+ <summary>
+ Retrouver les conversation qui possèdent des messages non lu
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.GetNbUnreadMessagesById(System.Nullable{System.Int32})">
+ <summary>
+ Compter le nombre de messages non lu de l'utilisateur connecté
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.MarkAsReadById(System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ Marquer les messages d'une conversation comme lu.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="sender"></param>
+ <param name="receiver"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.GetMessagesByContactId(System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ Retourne une conversation à partir de l'id du contact.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="contactId"></param>
+ <param name="userId"></param>
+ <returns></returns>
+</member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
  Author: Ayman
@@ -63,6 +194,119 @@ ESS
  Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
  </summary>
 </member>
+<member name="M:ESS.LogsDataAccess.AjoutLog(System.Nullable{System.Int32},System.String)">
+ <summary>
+ Auteur: Arnaud
+ Ajoute une entrée dans la table des logs et retourne l'identifiant
+ généré par la base de données.
+ </summary>
+ <param name="id">Identifiant de l'utilisateur associé à l'action.</param>
+ <param name="message">Type ou description de l'action à enregistrer.</param>
+ <returns>
+ Identifiant du log créé ; Nothing en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.LogsDataAccess.isActive">
+ <summary>
+ Auteur: Arnaud
+ Récupère la liste des utilisateurs considérés comme actifs
+ à partir des logs de type "PING".
+ </summary>
+ <remarks>
+ Un utilisateur est considéré actif selon l'horodatage de son
+ dernier message PING enregistré dans la table des logs.
+ </remarks>
+ <returns>
+ Liste des identifiants des utilisateurs actifs.
+ </returns>
+</member>
+<member name="M:ESS.messageDataAccess.CreateMessage(System.Int32,System.Int32,System.String,System.Nullable{System.Int32})">
+ <summary>
+ Permet d'insérer des messages dans la base de donnée.
+ </summary>
+ <auteur> Arnaud </auteur>
+ <param name="idEnvoyeur"></param>
+ <param name="idReceveur"></param>
+ <param name="contenu"></param>
+ <param name="forum"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.GetMessageByContactId(System.Int32,System.Int32)">
+ <summary>
+ Permet de récupérer les messges d'un chat.
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="userId"></param>
+ <param name="contactId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.GetMessageByForumId(System.Int32)">
+ <summary>
+ Permet de récupérer les message à partir de l'id du forum
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="forumIdPar"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.DeleteMessageById(System.Int32,System.Int32)">
+ <summary>
+ Permet la supression logique d'un message (set mes_estSupprime à 1) à partir de l'id de ce dernier
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="senderId"></param>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.CountUnreadMessagesByReceiverId(System.Int32)">
+ <summary>
+ Permet de compter le nombre de message non lu d'un contact à partir de l'id du destinataire
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.GetChatById(System.Int32)">
+ <summary>
+ Permet d'initier des classe Chat pour l'affichage d'un fil de conversation
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="receiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.MarkAsReadByChat(System.Int32,System.Int32)">
+ <summary>
+ Permet de passer l'attribu "estLu" d'un message à 1
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="senderId"></param>
+ <param name="reveiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.ChatHasUnreadMessages(System.Int32,System.Int32)">
+ <summary>
+ Permet de savoir si un chat possède des messages non lu
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="senderId"></param>
+ <param name="reveiverId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.GetRecentConversations(System.Int32)">
+ <summary>
+ 
+ </summary>
+ <auteur> Ayman </auteur>
+ <param name="currentUserId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.messageDataAccess.GetPrivateConversation(System.Int32,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <auteur> Ayman </auteur>
+ <param name="currentUserId"></param>
+ <returns></returns>
+</member>
 <member name="M:ESS.MessagePrive.ChargerConversation(System.Int32)">
  <summary>
  Author: Ayman
@@ -101,6 +345,187 @@ ESS
  Lorsque l'utilisateur clique sur une cellule, cette méthode vérifie si la ligne est valide, puis récupère l'ID de l'utilisateur sélectionné à partir de la propriété Tag de la ligne.
  Ensuite, elle charge la conversation privée correspondante et met à jour le label pour afficher le nom de l'utilisateur avec lequel la conversation est en cours.
  </summary>
+</member>
+<member name="M:ESS.MessagePrive.RemplirDataGridView2">
+ <summary>
+ Permet de récupérer le fil des discussions [non utilisée]
+ </summary>
+ <auteur> Damien </auteur>
+</member>
+<member name="M:ESS.UserDateAccess.GetEleveByUsername(System.String)">
+ <summary>
+ Auteur: Arnaud
+ Récupère les informations complètes d'un élève à partir de son
+ nom d'utilisateur.
+ </summary>
+ <param name="username">Nom d'utilisateur recherché.</param>
+ <returns>
+ Objet Eleve correspondant ; Nothing si aucun résultat n'est trouvé
+ ou en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.UserDateAccess.GetEleveByID(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Récupère les informations principales d'un élève à partir de son
+ identifiant.
+ </summary>
+ <param name="userID">Identifiant de l'élève.</param>
+ <returns>
+ Objet Eleve correspondant ; Nothing en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.UserDateAccess.GetUsernameById(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Récupère le nom d'utilisateur associé à un identifiant.
+ </summary>
+ <param name="userId">Identifiant de l'utilisateur.</param>
+ <returns>
+ Nom d'utilisateur correspondant ; "Utilisateur" si aucun résultat
+ n'est trouvé ou en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.UserDateAccess.CreateEleve(System.String,System.String,System.String,System.DateTime,System.String,System.String,System.Int32,System.Int32,System.String)">
+ <summary>
+ Auteur: Arnaud
+ Crée un nouvel élève dans la base de données.
+ Les informations sont enregistrées dans les tables ESS_PERSONNE
+ et ESS_ELEVE au sein d'une même transaction.
+ </summary>
+ <param name="username">Nom d'utilisateur unique.</param>
+ <param name="nom">Nom de famille.</param>
+ <param name="prenom">Prénom.</param>
+ <param name="dateDeNaissance">Date de naissance.</param>
+ <param name="email">Adresse e-mail.</param>
+ <param name="mdp">Mot de passe hashé.</param>
+ <param name="niveau">Niveau initial de l'élève.</param>
+ <param name="nbPoint">Nombre de points initial.</param>
+ <param name="classe">Classe de l'élève.</param>
+ <returns>
+ Identifiant généré pour le nouvel élève.
+ </returns>
+ <exception cref="T:Oracle.ManagedDataAccess.Client.OracleException">
+ Levée lors d'une erreur Oracle pendant la transaction.
+ </exception>
+</member>
+<member name="M:ESS.UserDateAccess.GetAllUsers">
+ <summary>
+ Auteur: Arnaud
+ Récupère la liste des utilisateurs actifs à l'exception
+ de l'utilisateur actuellement connecté.
+ </summary>
+ <returns>
+ Liste des utilisateurs actifs contenant leur identifiant,
+ leur nom d'utilisateur et leur statut de discussion ;
+ Nothing en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.PasswordHasher.HashMotdePasse(System.String)">
+ <summary>
+ Auteur: Arnaud
+ Hache un mot de passe avec un salt aléatoire (PBKDF2-SHA256) PBKDF2 = S'occupe du Hash + salt + itérations
+ Paramètre de la fonction = mot de passe en clair
+ Retourne String (base64)
+ Base64 pratique pour le stockage car uniquement du texte pas de risque d'erreur
+ </summary>
+ <param name="motDePasse"></param>
+ <returns>String HashedMotdePasse</returns>
+</member>
+<member name="M:ESS.PasswordHasher.VerifierMotDePasse(System.String,System.String)">
+ <summary>
+ Vérifie qu'un mot de passe en clair correspond à un hash PBKDF2 stocké.
+ Le hash fourni doit être encodé en Base64 et contenir le SALT suivi du hash.
+ </summary>
+ <param name="motdepasse">Mot de passe saisi par l'utilisateur.</param>
+ <param name="hash">Hash stocké en Base64 (SALT + hash PBKDF2).</param>
+ <returns>
+ True si le mot de passe correspond au hash stocké ;
+ False si la vérification échoue ou en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.PasswordHasher.CompareHashes(System.Byte[],System.Byte[])">
+ <summary>
+ Compare deux tableaux d'octets représentant des hash cryptographiques.
+ La comparaison est effectuée en temps constant afin de limiter les
+ attaques par analyse temporelle (timing attacks).
+ </summary>
+ <param name="hash1">Premier hash à comparer.</param>
+ <param name="hash2">Second hash à comparer.</param>
+ <returns>
+ True si les deux hash sont identiques ;
+ False dans le cas contraire.
+ </returns>
+</member>
+<member name="M:ESS.UserService.CreateEleve(System.String,System.String,System.String,System.DateTime,System.String,System.String,System.Int32,System.Int32,System.String)">
+ <summary>
+ Crée un nouvel élève dans le système.
+ </summary>
+ Auteur: Arnaud
+ <param name="username">Nom d'utilisateur unique de l'élève.</param>
+ <param name="nom">Nom de famille de l'élève.</param>
+ <param name="prenom">Prénom de l'élève.</param>
+ <param name="dateDeNaissance">Date de naissance de l'élève.</param>
+ <param name="email">Adresse e-mail de l'élève.</param>
+ <param name="mdp">Mot de passe de l'élève.</param>
+ <param name="niveau">Niveau actuel de l'élève.</param>
+ <param name="nbPoint">Nombre de points de l'élève.</param>
+ <param name="classe">Classe de l'élève.</param>
+ <returns>
+ Identifiant de l'élève créé ; Nothing si la création échoue.
+ </returns>
+</member>
+<member name="M:ESS.UserService.CheckIsActive(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Vérifie si un utilisateur est actuellement connecté.
+ </summary>
+ <param name="id">Identifiant de l'utilisateur.</param>
+ <returns>
+ True si l'utilisateur est connecté ; False sinon.
+ </returns>
+</member>
+<member name="M:ESS.UserService.GetEleveByUsername(System.String)">
+ <summary>
+ Auteur: Arnaud
+ Récupère les informations d'un élève à partir de son nom d'utilisateur.
+ </summary>
+ <param name="username">Nom d'utilisateur recherché.</param>
+ <returns>
+ L'objet Eleve correspondant ; Nothing si aucun élève n'est trouvé
+ ou en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.UserService.GetAllEleve">
+ <summary>
+ Auteur: Arnaud
+ Récupère la liste de tous les élèves enregistrés.
+ </summary>
+ <returns>
+ Liste des élèves ; Nothing en cas d'erreur.
+ </returns>
+</member>
+<member name="M:ESS.UserService.GetUsernameById(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Récupère le nom d'utilisateur associé à un identifiant.
+ </summary>
+ <param name="userId">Identifiant de l'utilisateur.</param>
+ <returns>
+ Nom d'utilisateur correspondant ; Nothing en cas d'erreur.
+ </returns>
+ 
+</member>
+<member name="M:ESS.UserService.GetEleveById(System.Int32)">
+ <summary>
+ Auteur: Arnaud
+ Récupère les informations d'un élève à partir de son identifiant.
+ </summary>
+ <param name="userId">Identifiant de l'élève.</param>
+ <returns>
+ L'objet Eleve correspondant ; Nothing si aucun élève n'est trouvé
+ ou en cas d'erreur.
+ </returns>
 </member>
 <member name="M:ESS.TrouverForum.ChargerTousLesForums">
  <summary>
