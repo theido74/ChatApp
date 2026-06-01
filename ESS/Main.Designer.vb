@@ -123,7 +123,7 @@ Partial Class Main
         Me.lblNotification.AutoSize = True
         Me.lblNotification.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblNotification.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNotification.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.lblNotification.ForeColor = System.Drawing.Color.BlueViolet
         Me.lblNotification.Location = New System.Drawing.Point(469, 553)
         Me.lblNotification.Name = "lblNotification"
         Me.lblNotification.Size = New System.Drawing.Size(11, 16)

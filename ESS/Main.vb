@@ -6,13 +6,15 @@
     Private Sub CheckMessages()
         Dim messageServ As New MessageService
         Dim nbUnreadMessages As Integer = messageServ.GetNbUnreadMessagesById()
+
         If nbUnreadMessages > 0 Then
             lblNotification.Text = "Vous avez " & nbUnreadMessages.ToString() & " message(s) non lu(s)."
-            lblNotification.Visible = True
+
         Else
-            lblNotification.Visible = False
-            lblNotification.Text = "-"
+
+            lblNotification.Text = "Pas nouveau message"
         End If
+        lblNotification.Visible = True
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -97,4 +99,6 @@
         trouverForumForm.ShowDialog()
         Me.Show()
     End Sub
+
+
 End Class
