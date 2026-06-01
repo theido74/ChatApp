@@ -3,7 +3,17 @@ Imports Oracle.ManagedDataAccess.Client
 
 Public Class LogsDataAccess
 
-    Public Function AjoutLog(id As Integer?, message As String) As Integer 'A TESTER AVEC CONSTANTE
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Ajoute une entrée dans la table des logs et retourne l'identifiant
+    ''' généré par la base de données.
+    ''' </summary>
+    ''' <param name="id">Identifiant de l'utilisateur associé à l'action.</param>
+    ''' <param name="message">Type ou description de l'action à enregistrer.</param>
+    ''' <returns>
+    ''' Identifiant du log créé ; Nothing en cas d'erreur.
+    ''' </returns>
+    Public Function AjoutLog(id As Integer?, message As String) As Integer
         Dim newId As Integer = 0
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -35,7 +45,18 @@ Public Class LogsDataAccess
         Return Nothing
     End Function
 
-
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupère la liste des utilisateurs considérés comme actifs
+    ''' à partir des logs de type "PING".
+    ''' </summary>
+    ''' <remarks>
+    ''' Un utilisateur est considéré actif selon l'horodatage de son
+    ''' dernier message PING enregistré dans la table des logs.
+    ''' </remarks>
+    ''' <returns>
+    ''' Liste des identifiants des utilisateurs actifs.
+    ''' </returns>
     Public Function isActive() As List(Of Integer)
         Dim IdActive As New List(Of Integer)
         Try
@@ -58,7 +79,7 @@ Public Class LogsDataAccess
                                 Dim timeNow = DateTime.UtcNow()
                                 Dim ts As Date = CDate(reader("log_timeStamp"))
                                 Dim tsMinus30Sec As Date = timeNow.AddSeconds(-30)
-                                If ts < tsMinus30Sec Then
+                                If ts >= tsMinus30Sec Then
                                     IdActive.Add(userId)
                                 End If
                             End While
@@ -72,7 +93,6 @@ Public Class LogsDataAccess
         Return IdActive
     End Function
 
-    ' Mettre à jour le statut utilisateur à "Hors ligne" lors de la déconnexion
     Public Function SetUserOffline(userId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()

@@ -5,6 +5,11 @@ Imports System.Configuration
 Public Class DatabaseConnection
     Private Shared ReadOnly _connectionString As String = ConfigurationManager.ConnectionStrings("OracleConnectionString")?.ConnectionString
 
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Connexion à la DB
+    ''' </summary>
+    ''' <returns></returns>
     Public Shared Function GetConnection() As OracleConnection
             If String.IsNullOrEmpty(_connectionString) Then
                 Throw New InvalidOperationException("Chaîne de connexion 'OracleConnectionString' introuvable dans App.config.")

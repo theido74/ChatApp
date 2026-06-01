@@ -3,13 +3,23 @@ Imports Oracle.ManagedDataAccess.Client
 
 Public Class UserDateAccess
 
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupère les informations complètes d'un élève à partir de son
+    ''' nom d'utilisateur.
+    ''' </summary>
+    ''' <param name="username">Nom d'utilisateur recherché.</param>
+    ''' <returns>
+    ''' Objet Eleve correspondant ; Nothing si aucun résultat n'est trouvé
+    ''' ou en cas d'erreur.
+    ''' </returns>
     Public Function GetEleveByUsername(username As String) As Eleve
         Dim e As New Eleve()
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT p.per_id, p.per_username, p.per_nom, p.per_prenom, " & _ 'PUREMENT DE LA FRIME!!!!
+                Dim sql As String = "SELECT p.per_id, p.per_username, p.per_nom, p.per_prenom, " &
                         "p.per_dateNaissance, p.per_email, p.per_mdpHashed, " &
                         "p.per_dateCreation, p.per_isActive, p.per_chatStatut, " &
                         "e.ele_niveau, e.ele_nbPoints, e.ele_classe " &
@@ -66,6 +76,15 @@ Public Class UserDateAccess
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupère les informations principales d'un élève à partir de son
+    ''' identifiant.
+    ''' </summary>
+    ''' <param name="userID">Identifiant de l'élève.</param>
+    ''' <returns>
+    ''' Objet Eleve correspondant ; Nothing en cas d'erreur.
+    ''' </returns>
     Public Function GetEleveByID(userID As Integer) As Eleve
         Dim e As New Eleve()
         Try
@@ -93,6 +112,16 @@ Public Class UserDateAccess
         End Try
         Return Nothing
     End Function
+
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupère le nom d'utilisateur associé à un identifiant.
+    ''' </summary>
+    ''' <param name="userId">Identifiant de l'utilisateur.</param>
+    ''' <returns>
+    ''' Nom d'utilisateur correspondant ; "Utilisateur" si aucun résultat
+    ''' n'est trouvé ou en cas d'erreur.
+    ''' </returns>
     Public Function GetUsernameById(userId As Integer) As String
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -117,6 +146,28 @@ Public Class UserDateAccess
         End Try
         Return "Utilisateur"
     End Function
+
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Crée un nouvel élève dans la base de données.
+    ''' Les informations sont enregistrées dans les tables ESS_PERSONNE
+    ''' et ESS_ELEVE au sein d'une même transaction.
+    ''' </summary>
+    ''' <param name="username">Nom d'utilisateur unique.</param>
+    ''' <param name="nom">Nom de famille.</param>
+    ''' <param name="prenom">Prénom.</param>
+    ''' <param name="dateDeNaissance">Date de naissance.</param>
+    ''' <param name="email">Adresse e-mail.</param>
+    ''' <param name="mdp">Mot de passe hashé.</param>
+    ''' <param name="niveau">Niveau initial de l'élève.</param>
+    ''' <param name="nbPoint">Nombre de points initial.</param>
+    ''' <param name="classe">Classe de l'élève.</param>
+    ''' <returns>
+    ''' Identifiant généré pour le nouvel élève.
+    ''' </returns>
+    ''' <exception cref="OracleException">
+    ''' Levée lors d'une erreur Oracle pendant la transaction.
+    ''' </exception>
     Public Function CreateEleve(username As String, nom As String, prenom As String, dateDeNaissance As DateTime, email As String, mdp As String, niveau As Integer, nbPoint As Integer, classe As String) As Integer
         Dim newId As Integer = 0
 
@@ -157,7 +208,6 @@ Public Class UserDateAccess
                             cmd.ExecuteNonQuery()
                         End Using
 
-                        ' Insert dans ess_eleve lié à per_id
                         Using cmd2 As New OracleCommand(sqlEleve, conn)
                             cmd2.Transaction = tx
                             cmd2.BindByName = True
@@ -195,6 +245,16 @@ Public Class UserDateAccess
         End Try
     End Function
 
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupère la liste des utilisateurs actifs à l'exception
+    ''' de l'utilisateur actuellement connecté.
+    ''' </summary>
+    ''' <returns>
+    ''' Liste des utilisateurs actifs contenant leur identifiant,
+    ''' leur nom d'utilisateur et leur statut de discussion ;
+    ''' Nothing en cas d'erreur.
+    ''' </returns>
     Public Function GetAllUsers() As List(Of Eleve)
         Dim users As New List(Of Eleve)()
 

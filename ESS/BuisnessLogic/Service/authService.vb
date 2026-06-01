@@ -5,7 +5,13 @@
     Private Const MESSAGEOK As String = "LOGGED"
     Private Const MESSAGENOTOK As String = "LOGERROR"
 
-
+    ''' <summary>
+    ''' Auteur : Arnaud
+    ''' Gestion de l'authentification, et écriture dans la table ESS_LOGS
+    ''' </summary>
+    ''' <param name="username"></param>
+    ''' <param name="password"></param>
+    ''' <returns>Boolean</returns>
     Public Function Authenticate(username As String, password As String) As Boolean
 
         username = username.Trim()
@@ -39,7 +45,12 @@
 
     End Function
 
-
+    ''' <summary>
+    ''' Auteur: Arnaud
+    ''' Récupération de l'Objet élève grâce au username, appel la fonction dbAccess et retourne un Objet élève
+    ''' </summary>
+    ''' <param name="username"></param>
+    ''' <returns>Eleve</returns>
     Public Function GetEleveByUsername(username As String) As Eleve
         If String.IsNullOrEmpty(username) Then
             Return Nothing
