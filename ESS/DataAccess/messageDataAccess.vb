@@ -270,7 +270,7 @@ Public Class messageDataAccess
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                Dim sql As String = "SELECT ess_message.mes_per_id_rec, " &
+                Dim sql As String = "SELECT ess_message.mes_per_id_emm, " &
                                     "ess_personne.per_nom, " &
                                     "MAX(ess_message.mes_timestamp) AS mes_timestamp, " &
                                     "SUM(CASE WHEN ess_message.mes_estlu = 0 THEN 1 ELSE 0 END) AS unread_count, " &
@@ -290,10 +290,9 @@ Public Class messageDataAccess
 
                     Using reader As OracleDataReader = cmd.ExecuteReader()
                         While reader.Read()
-
                             Dim cha As New Chat With {
                             .UserId = receiverId,
-                            .ContactId = CInt(reader("mes_per_id_rec")),
+                            .ContactId = CInt(reader("mes_per_id_emm")),
                             .ContactNom = reader("per_nom").ToString(),
                             .DateDernierMessage = CDate(reader("mes_timestamp")),
                             .NbOfUnreadMessages = CInt(reader("unread_count")),

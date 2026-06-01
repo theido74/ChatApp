@@ -34,6 +34,7 @@ Partial Class Main
         Me.MessagesPrivésToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblNotification = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -130,6 +131,15 @@ Partial Class Main
         Me.lblNotification.TabIndex = 10
         Me.lblNotification.Text = "-"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(592, 191)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Label1"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -137,6 +147,7 @@ Partial Class Main
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(755, 584)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblNotification)
         Me.Controls.Add(Me.lblClasse)
         Me.Controls.Add(Me.lblUsername2)
@@ -164,4 +175,5 @@ Partial Class Main
     Friend WithEvents CréerUnForumToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TrouverUnForumToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents lblNotification As Label
+    Friend WithEvents Label1 As Label
 End Class
