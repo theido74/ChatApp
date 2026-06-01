@@ -283,4 +283,30 @@ Public Class MessagePrive
             MessageBox.Show("Erreur lors du rafraîchissement: " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub txtMessagePrive_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMessagePrive.KeyPress
+
+        ' Vérifier si la touche pressée est Enter (code ASCII 13)
+        If e.KeyChar = Chr(13) Then
+            ' Empêcher le comportement par défaut (bip sonore)
+            e.Handled = True
+            If selectedContactId = -1 Then
+                MessageBox.Show("Sélectionnez un utilisateur d'abord !")
+                Return
+            End If
+
+            If String.IsNullOrEmpty(txtMessagePrive.Text) Then
+                MessageBox.Show("Écrivez un message !")
+                Return
+            End If
+
+            messageService.CreatePrivateMessage(CurrentUser.User.UserID, selectedContactId, txtMessagePrive.Text)
+            txtMessagePrive.Clear()
+
+            ' Rafraîchir
+            ChargerConversation(selectedContactId)
+
+        End If
+    End Sub
+
 End Class

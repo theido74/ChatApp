@@ -228,5 +228,23 @@
         Catch ex As Exception
         End Try
     End Sub
+
+    Private Sub txtMessge_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMessge.KeyPress
+        ' Vérifier si la touche pressée est Enter (code ASCII 13)
+        If e.KeyChar = Chr(13) Then
+            ' Empêcher le comportement par défaut (bip sonore)
+            e.Handled = True
+
+            If String.IsNullOrEmpty(txtMessge.Text) Then
+                MessageBox.Show("Écrivez un message !")
+                Return
+            End If
+
+            messageService.CreateForumMessage(CurrentUser.User.UserID, forumId, txtMessge.Text)
+            txtMessge.Clear()
+            ChargerMessages()
+
+        End If
+    End Sub
 End Class
 

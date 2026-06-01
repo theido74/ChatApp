@@ -218,6 +218,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BuisnessLogic\Service\MessageControlEnvoye.resx">
+      <DependentUpon>MessageControlEnvoye.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateForum.resx">
       <DependentUpon>CreateForum.vb</DependentUpon>
     </EmbeddedResource>

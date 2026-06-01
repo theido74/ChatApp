@@ -10,4 +10,14 @@ Public Class MessageControlEnvoye
         lblContenu.Text = Contenu
         lblTime.Text = TimeStamp.ToString("HH:mm")
     End Sub
+
+    Private Sub InitializeComponent()
+        Me.SuspendLayout()
+        '
+        'MessageControlEnvoye
+        '
+        Me.Name = "MessageControlEnvoye"
+        Me.ResumeLayout(False)
+
+    End Sub
 End Class

@@ -23,8 +23,8 @@ Partial Class Forum
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Forum))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblNomForum = New System.Windows.Forms.Label()
         Me.txtMessge = New System.Windows.Forms.TextBox()
         Me.btnEnvoyer = New System.Windows.Forms.Button()
@@ -119,25 +119,25 @@ Partial Class Forum
         Me.dgvUtilisateursForum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUtilisateursForum.ColumnHeadersVisible = False
         Me.dgvUtilisateursForum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Username, Me.Status})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuText
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvUtilisateursForum.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.MenuText
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvUtilisateursForum.DefaultCellStyle = DataGridViewCellStyle7
         Me.dgvUtilisateursForum.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvUtilisateursForum.Location = New System.Drawing.Point(66, 113)
         Me.dgvUtilisateursForum.Name = "dgvUtilisateursForum"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.BlueViolet
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvUtilisateursForum.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.BlueViolet
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvUtilisateursForum.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgvUtilisateursForum.RowHeadersVisible = False
         Me.dgvUtilisateursForum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvUtilisateursForum.Size = New System.Drawing.Size(194, 389)
@@ -163,9 +163,9 @@ Partial Class Forum
         Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAnnuler.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAnnuler.ForeColor = System.Drawing.Color.BlueViolet
-        Me.btnAnnuler.Location = New System.Drawing.Point(101, 515)
+        Me.btnAnnuler.Location = New System.Drawing.Point(161, 513)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(116, 23)
+        Me.btnAnnuler.Size = New System.Drawing.Size(85, 23)
         Me.btnAnnuler.TabIndex = 16
         Me.btnAnnuler.Text = "Retour"
         Me.btnAnnuler.UseVisualStyleBackColor = False
@@ -176,11 +176,11 @@ Partial Class Forum
         Me.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefresh.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRefresh.ForeColor = System.Drawing.Color.BlueViolet
-        Me.btnRefresh.Location = New System.Drawing.Point(66, 515)
+        Me.btnRefresh.Location = New System.Drawing.Point(78, 513)
         Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(29, 23)
+        Me.btnRefresh.Size = New System.Drawing.Size(77, 23)
         Me.btnRefresh.TabIndex = 17
-        Me.btnRefresh.Text = "🔄"
+        Me.btnRefresh.Text = "Refresh"
         Me.btnRefresh.UseVisualStyleBackColor = False
         '
         'Forum
