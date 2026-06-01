@@ -117,4 +117,29 @@ Public Class LogsDataAccess
             Return False
         End Try
     End Function
+
+    Public Function SetUserOnline(userId As Integer) As Boolean
+        Try
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
+                conn.Open()
+
+                Dim sql As String = "UPDATE ess_personne " &
+                                    "SET per_chatstatut = :statut " &
+                                    "WHERE per_id = :userId"
+
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
+                    cmd.CommandType = CommandType.Text
+                    cmd.Parameters.Add("userId", OracleDbType.Int32).Value = userId
+                    cmd.Parameters.Add("statut", OracleDbType.Varchar2).Value = "En ligne"
+
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    Return rowsAffected > 0
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Erreur BD: " & ex.Message)
+            Return False
+        End Try
+    End Function
 End Class

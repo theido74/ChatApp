@@ -23,6 +23,10 @@
         End If
 
         logger.PingDB(CurrentUser.User.UserID)
+        ' Mettre l'utilisateur en ligne
+        Dim userService As New UserService()
+        userService.SetOnline(CurrentUser.User.UserID)
+
         RefreshOnlineUser()
         timer.Interval = 30000
         AddHandler timer.Tick, AddressOf TimerTick

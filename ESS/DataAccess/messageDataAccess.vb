@@ -29,7 +29,13 @@ Public Class messageDataAccess
                         Dim isPrivate = 1
 
                         cmd.Parameters.Add("idEnvoyeur", OracleDbType.Int32).Value = idEnvoyeur
-                        cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
+
+                        ' Pour les messages de forum, idReceveur est NULL
+                        If forum.HasValue Then
+                            cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = DBNull.Value
+                        Else
+                            cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
+                        End If
 
                         If forum.HasValue Then
                             cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = forum.Value

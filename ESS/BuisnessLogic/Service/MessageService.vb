@@ -124,10 +124,11 @@
         If String.IsNullOrEmpty(contenu) Then
             Return Nothing
         End If
-        ' Poser question a Arneaud pour logique BD pour l'id passer en parametre de createMessage : idReceveur ou forumId ? (pour l'instant on met forumId dans les deux champs)
+
         Try
             logger.AjoutLog(idEnvoyeur, MESSAGE)
-            Return dbAccess.CreateMessage(idEnvoyeur, forumId, contenu, forumId)
+            ' Passer 0 comme idReceveur placeholder - la fonction CreateMessage gérera NULL pour les messages de forum
+            Return dbAccess.CreateMessage(idEnvoyeur, 0, contenu, forumId)
         Catch ex As Exception
             logger.AjoutLog(idEnvoyeur, MESSAGENOTOK)
             MessageBox.Show("Erreur lors de l'envoi du message au forum")

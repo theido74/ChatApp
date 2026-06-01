@@ -13,6 +13,9 @@ Public Class MessagePrive
         End If
         RemplirDataGridView()
         logger.PingDB(CurrentUser.User.UserID)
+        ' Mettre l'utilisateur en ligne
+        Dim userService As New UserService()
+        userService.SetOnline(CurrentUser.User.UserID)
         RefreshOnlineUser()
 
         ' Démarrer le timer pour rafraîchir tous les 30 secondes
@@ -24,6 +27,13 @@ Public Class MessagePrive
     Private Sub TimerTick(sender As Object, e As EventArgs)
         Try
             logger.PingDB(CurrentUser.User.UserID)
+            ' Mettre à jour le statut des utilisateurs
+            Dim userService As New UserService()
+            Dim lstActiveUsers As List(Of Integer) = logger.isActive()
+
+            ' Mettre à jour les statuts dans la base pour tous les utilisateurs
+            UpdateUserStatuses(lstActiveUsers)
+
             RefreshOnlineUser()
             RemplirDataGridView()
         Catch ex As Exception
@@ -38,6 +48,34 @@ Public Class MessagePrive
 
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+    ''' </summary>
+    Private Sub UpdateUserStatuses(lstActiveUsers As List(Of Integer))
+        Try
+            Dim userService As New UserService()
+            Dim allUsers As List(Of Eleve) = userService.GetAllEleve()
+
+            If allUsers IsNot Nothing Then
+                For Each user In allUsers
+                    If lstActiveUsers.Contains(user.UserID) Then
+                        ' L'utilisateur est actif
+                        If user.ChatStatut <> "En ligne" Then
+                            userService.SetOnline(user.UserID)
+                        End If
+                    Else
+                        ' L'utilisateur n'est pas actif
+                        If user.ChatStatut <> "Hors ligne" Then
+                            userService.Logout(user.UserID)
+                        End If
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+        End Try
+    End Sub
+
     ''' <summary>
     ''' Author: Ayman
     ''' Charge la conversation privée entre l'utilisateur actuel et un autre utilisateur spécifié par son ID.

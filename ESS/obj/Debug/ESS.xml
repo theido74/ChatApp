@@ -194,6 +194,11 @@ ESS
  Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
  </summary>
 </member>
+<member name="M:ESS.Forum.UpdateUserStatuses(System.Collections.Generic.List{System.Int32})">
+ <summary>
+ Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+ </summary>
+</member>
 <member name="M:ESS.LogsDataAccess.AjoutLog(System.Nullable{System.Int32},System.String)">
  <summary>
  Auteur: Arnaud
@@ -306,6 +311,11 @@ ESS
  <auteur> Ayman </auteur>
  <param name="currentUserId"></param>
  <returns></returns>
+</member>
+<member name="M:ESS.MessagePrive.UpdateUserStatuses(System.Collections.Generic.List{System.Int32})">
+ <summary>
+ Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+ </summary>
 </member>
 <member name="M:ESS.MessagePrive.ChargerConversation(System.Int32)">
  <summary>

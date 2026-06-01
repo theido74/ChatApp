@@ -129,4 +129,13 @@
             Return False
         End Try
     End Function
+
+    Public Function SetOnline(userId As Integer) As Boolean
+        Try
+            Return logger.SetUserOnline(userId)
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors de la mise en ligne")
+            Return False
+        End Try
+    End Function
 End Class

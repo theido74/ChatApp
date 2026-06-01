@@ -53,6 +53,11 @@ Public Class LogService
         Return dbAccess.SetUserOffline(id)
     End Function
 
+    Public Function SetUserOnline(id As Integer) As Boolean
+        Return dbAccess.SetUserOnline(id)
+    End Function
+
+
     ''' <summary>
     ''' Auteur: Arnaud
     ''' Retourne la liste des Id's des utilisateur qui ont un ping dans ESS_LOGS de moins de 30 sec.
