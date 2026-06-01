@@ -153,6 +153,13 @@ ESS
  <param name="userId"></param>
  <returns></returns>
 </member>
+<member name="M:ESS.Form1.TestGetFilDeDiscussion">
+ <summary>
+ Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
+ </summary>
+ <auteur> Damien </auteur>
+ <returns></returns>
+</member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
  Author: Ayman
@@ -224,6 +231,12 @@ ESS
  <returns>
  Liste des identifiants des utilisateurs actifs.
  </returns>
+</member>
+<member name="M:ESS.Main.CheckMessages">
+ <summary>
+ Vérifier si l'utilisateur à des messages non lu
+ </summary>
+ <auteur> Damien </auteur>
 </member>
 <member name="M:ESS.messageDataAccess.CreateMessage(System.Int32,System.Int32,System.String,System.Nullable{System.Int32})">
  <summary>
