@@ -1,16 +1,21 @@
-﻿' ExecuteNonQuery() → INSERT / UPDATE / DELETE (pas de résultats)
-' ExecuteScalar() → une seule valeur
-' ExecuteReader() → Select avec plusieurs lignes
-
-Imports Oracle.ManagedDataAccess.Client
+﻿Imports Oracle.ManagedDataAccess.Client
 
 Public Class messageDataAccess
 
+    ''' <summary>
+    ''' Permet d'insérer des messages dans la base de donnée.
+    ''' </summary>
+    ''' <auteur> Arnaud </auteur>
+    ''' <param name="idEnvoyeur"></param>
+    ''' <param name="idReceveur"></param>
+    ''' <param name="contenu"></param>
+    ''' <param name="forum"></param>
+    ''' <returns></returns>
     Public Function CreateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String, Optional forum As Integer? = Nothing) As Integer
         Dim newId As Integer = 0
 
         Try
-            Using conn As OracleConnection = DatabaseConnection.GetConnection() ' Using -> à la fin la variable "conn" se ferme; GetConnection() -> retourne une connexion oracle configurée.
+            Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
                 Using tx = conn.BeginTransaction()
 
@@ -62,12 +67,18 @@ Public Class messageDataAccess
         End Try
     End Function
 
+    ''' <summary>
+    ''' Permet de récupérer les messges à partir de l'id du destinataire
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="reveiverId"></param>
+    ''' <returns></returns>
     Public Function GetMessageByRecipientId(reveiverId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
-                conn.Open() ' Rend la connexion active.
+                conn.Open()
 
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                     "FROM ess_message " &
@@ -115,13 +126,18 @@ Public Class messageDataAccess
         Return messages
     End Function
 
-
+    ''' <summary>
+    ''' Permet de récupérer les message à partir de l'id du forum
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="forumIdPar"></param>
+    ''' <returns></returns>
     Public Function GetMessageByForumId(forumIdPar As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
-                conn.Open() ' Rend la connexion active.
+                conn.Open()
 
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                     "FROM ess_message " &
@@ -168,13 +184,18 @@ Public Class messageDataAccess
         Return messages
     End Function
 
-
+    ''' <summary>
+    ''' Permet la supression logique d'un message (set mes_estSupprime à 1) à partir de l'id de ce dernier
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="senderId"></param>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
     Public Function DeleteMessageById(senderId As Integer, receiverId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
                 conn.Open()
 
-                ' Efface tous les messages entre deux personnes (dans les deux sens)
                 Dim sql As String = "UPDATE ess_message " &
                                     "SET mes_estsupprime = 1 " &
                                     "WHERE (mes_per_id_emm = :sender AND mes_per_id_rec = :receiver) OR " &
@@ -186,7 +207,6 @@ Public Class messageDataAccess
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
-                    ' rowsAffected contient le nombre de lignes modifiées
                     Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
                     Return rowsAffected > 0
                 End Using
@@ -198,7 +218,12 @@ Public Class messageDataAccess
         End Try
     End Function
 
-
+    ''' <summary>
+    ''' Permet de compter le nombre de message non lu d'un contact à partir de l'id du destinataire
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
     Public Function CountUnreadMessagesByReceiverId(receiverId As Integer) As Integer
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -211,7 +236,7 @@ Public Class messageDataAccess
 
                 Using checkCmd As New OracleCommand(sql, conn)
                     checkCmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
-                    Dim count = CInt(checkCmd.ExecuteScalar()) ' Récupère le résultat de COUNT(*) (une seule valeur : le nombre total de correspondances)
+                    Dim count = CInt(checkCmd.ExecuteScalar())
                     Return count
                 End Using
             End Using
@@ -223,8 +248,13 @@ Public Class messageDataAccess
     End Function
 
 
-    ' Récupérer les discussions 1:1 dont minimum un message est non lu
-    Public Function GetChatById(receiverId As Integer) As List(Of Chat) '' NOUVEAU
+    ''' <summary>
+    ''' Permet d'initier des classe Chat pour l'affichage d'un fil de conversation
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
+    Public Function GetChatById(receiverId As Integer) As List(Of Chat)
 
         Dim chatLst As New List(Of Chat)
 
@@ -274,7 +304,13 @@ Public Class messageDataAccess
         Return chatLst
     End Function
 
-
+    ''' <summary>
+    ''' Permet de passer l'attribu "estLu" d'un message à 1
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="senderId"></param>
+    ''' <param name="reveiverId"></param>
+    ''' <returns></returns>
     Public Function MarkAsReadByChat(senderId As Integer, reveiverId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -301,8 +337,13 @@ Public Class messageDataAccess
         End Try
     End Function
 
-
-    '' Permet de savoir si un chat possède des messages non lu
+    ''' <summary>
+    ''' Permet de savoir si un chat possède des messages non lu
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="senderId"></param>
+    ''' <param name="reveiverId"></param>
+    ''' <returns></returns>
     Public Function ChatHasUnreadMessages(senderId As Integer, reveiverId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -328,7 +369,13 @@ Public Class messageDataAccess
             Return False
         End Try
     End Function
-    '---
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <auteur> Ayman </auteur>
+    ''' <param name="currentUserId"></param>
+    ''' <returns></returns>
     Public Function GetRecentConversations(currentUserId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
@@ -375,6 +422,12 @@ Public Class messageDataAccess
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <auteur> Ayman </auteur>
+    ''' <param name="currentUserId"></param>
+    ''' <returns></returns>
     Public Function GetPrivateConversation(currentUserId As Integer, otherUserId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
@@ -419,7 +472,5 @@ Public Class messageDataAccess
         End Try
         Return Nothing
     End Function
-
-
 
 End Class

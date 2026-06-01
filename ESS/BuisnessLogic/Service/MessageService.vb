@@ -1,14 +1,17 @@
 ﻿Public Class MessageService
 
     Private dbAccess As New messageDataAccess()
-    'Private userDataAccess As New UserDateAccess()
     Private logger As New LogService()
     Private Const MESSAGE As String = "Message Envoyé"
     Private Const MESSAGENOTOK As String = "Message Non Envoyé"
 
-
-
-    ' Vérifier si un chat 1:1 possède des messages non lu par l'utilisateur [DAMIEN]
+    ''' <summary>
+    ''' Vérifier si un chat 1:1 possède des messages non lu par l'utilisateur.
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="senderId"></param>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
     Public Function ChatHasUnreadMessages(senderId As Integer, Optional receiverId As Integer? = -1) As Integer
         If receiverId = -1 Then
             receiverId = CurrentUser.User.UserID
@@ -22,8 +25,12 @@
         End Try
     End Function
 
-
-    ' Retrouver les conversation qui possèdent des messages non lu [DAMIEN]
+    ''' <summary>
+    ''' Retrouver les conversation qui possèdent des messages non lu
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
     Public Function GetChatById(Optional receiverId As Integer? = -1) As List(Of Chat)
         If receiverId = -1 Then
             receiverId = CurrentUser.User.UserID
@@ -37,8 +44,12 @@
         End Try
     End Function
 
-
-    ' Compter le nombre de messages non lu de l'utilisateur connecté [DAMIEN]
+    ''' <summary>
+    ''' Compter le nombre de messages non lu de l'utilisateur connecté
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="receiverId"></param>
+    ''' <returns></returns>
     Public Function GetNbUnreadMessagesById(Optional receiverId As Integer? = -1) As Integer
         If receiverId = -1 Then
             receiverId = CurrentUser.User.UserID
@@ -52,8 +63,13 @@
         End Try
     End Function
 
-
-    ' Marquer les messages d'une conversation comme lu [DAMIEN]
+    ''' <summary>
+    ''' Marquer les messages d'une conversation comme lu.
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="sender"></param>
+    ''' <param name="receiver"></param>
+    ''' <returns></returns>
     Public Function MarkAsReadById(sender As Integer, Optional receiver As Integer? = -1) As Integer
         If receiver = -1 Then
             receiver = CurrentUser.User.UserID

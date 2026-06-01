@@ -175,6 +175,10 @@ Public Class MessagePrive
 
     End Sub
 
+    ''' <summary>
+    ''' Permet de récupérer le fil des discussions [non utilisée]
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
     Private Sub RemplirDataGridView2()
 
         DataGridView1.AllowUserToAddRows = False
@@ -184,7 +188,7 @@ Public Class MessagePrive
         If chats IsNot Nothing AndAlso chats.Count > 0 Then
 
             For Each chat As Chat In chats
-                Dim col1 As String = chat.UserId & "-" & chat.ContactNom '& "[" & chat.DateDernierMessage.ToString() & "]"
+                Dim col1 As String = chat.UserId & "-" & chat.ContactNom & "[" & chat.DateDernierMessage.ToString() & "]"
                 Dim col2 As String = ""
                 If chat.NbOfUnreadMessages > 0 Then
                     col2 += " " & chat.NbOfUnreadMessages.ToString() & " nouveau m."
@@ -194,9 +198,7 @@ Public Class MessagePrive
                 End If
 
                 Dim index As Integer = DataGridView1.Rows.Add(col1, col2)
-
                 DataGridView1.Rows(index).Tag = chat.UserId
-
             Next
 
         End If
