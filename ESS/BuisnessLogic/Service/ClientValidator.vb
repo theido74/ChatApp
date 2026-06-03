@@ -1,6 +1,11 @@
 ﻿
 Public Class ClientValidator
 
+    ''' <summary>
+    ''' Valide le nom d'utilisateur en vérifiant s'il n'est pas vide, s'il contient au moins 4 caractères et s'il ne dépasse pas 20 caractères.
+    ''' </summary>
+    ''' <param name="username"></param>
+    ''' <returns></returns>
     Public Function ValidateUsername(username As String) As Boolean
         If String.IsNullOrWhiteSpace(username) Then
 
