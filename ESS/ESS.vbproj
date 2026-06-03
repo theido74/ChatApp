@@ -176,12 +176,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataAccess\messageDataAccess.vb" />
-    <Compile Include="BuisnessLogic\Service\MessageControl.Designer.vb">
-      <DependentUpon>MessageControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BuisnessLogic\Service\MessageControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="MessagePrive.Designer.vb">
       <DependentUpon>MessagePrive.vb</DependentUpon>
     </Compile>

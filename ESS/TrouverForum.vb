@@ -21,11 +21,13 @@ Public Class TrouverForum
         End Try
     End Sub
 
+
     ''' <summary>
-    ''' Author: Ayman
-    ''' Remplit le DataGridView avec la liste des forums.
-    ''' Prend une liste de forums en paramètre et ajoute chaque forum comme une ligne dans le DataGridView.
+    ''' Authors : Ayman
+    ''' Remplie la DataGridView avec la liste des forums fournie en paramètre.
+    ''' Si la liste est vide ou nulle, le DataGridView sera vidé.
     ''' </summary>
+    ''' <param name="forums">La liste des forums à afficher dans le DataGridView.</param>
     Private Sub RemplirDataGridView(forums As List(Of Forums))
         dgvForums.DataSource = Nothing
         dgvForums.Rows.Clear()
@@ -58,7 +60,7 @@ Public Class TrouverForum
         If e.RowIndex < 0 Then
             Return
         End If
-        Dim forumId As Integer = CInt(dgvForums.Rows(e.RowIndex).Cells(2).Value)
+        Dim forumId As Integer = CInt(dgvForums.Rows(e.RowIndex).Cells("ForumId").Value)
         Dim forumForm As New Forum With {.SelectedForumId = forumId}
         Me.Hide()
         forumForm.ShowDialog()
@@ -84,13 +86,12 @@ Public Class TrouverForum
         Dim recherche As String = txtForum.Text.Trim().ToLower()
 
         If String.IsNullOrEmpty(recherche) Then
-            ' Si la recherche est vide, afficher tous les forums
+            ' Aucune recherche : afficher tous les forums
             RemplirDataGridView(allForums)
         Else
-            ' Filtrer sur le nom ET la description avec une "Boucle for each" version (LINQ)'
-            'Function(f) est une expression qui représente une fonction anonyme utilisée pour filtrer les forums.
-            '.Contains verifie caractere par caractere si la chaine de recherche est presente 
-            'dans le nom ou la description du forum, et retourne true ou false
+            ' Filtrer les forums dont le nom ou la description contient le texte recherché
+            ' f représente chaque forum parcouru un à un dans allForums (lambda LINQ (Language Integrated Query))
+            'Function(f) C'est une fonction anonyme (sans nom) définie à la volée. Au lieu d'écrire une vraie fonction séparée 
             Dim forumsFiltres As List(Of Forums) = allForums.Where(
             Function(f) f.NomForum.ToLower().Contains(recherche) OrElse
                         f.Description.ToLower().Contains(recherche)

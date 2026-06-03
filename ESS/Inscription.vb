@@ -15,7 +15,10 @@ Public Class Inscription
     Private UserService As New UserService()
     Private passwordHash As New PasswordHasher()
 
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
+    ''' </summary>
     Private placeholderNom As String = "Entrez votre nom"
     Private placeholderPrenom As String = "Entrez votre prénom"
     Private placeholderAge As String = "Ex: 30/05/2006"
@@ -232,6 +235,7 @@ Public Class Inscription
         End If
 
         ' Vérifier unicité du username via le service existant
+        ' Cette vérification utilise le service d'authentification pour s'assurer qu'aucun utilisateur existant n'a le même nom d'utilisateur.
         Try
             Dim existingUser = authService.GetEleveByUsername(username)
             If existingUser IsNot Nothing Then
@@ -247,8 +251,7 @@ Public Class Inscription
         UserService.CreateEleve(username, nom, prenom, dateDeNaissance, email, passwordHash.HashMotdePasse(password), niveau, 0, classe)
 
         AfficherSucces("Inscription prête. Les données sont stockées en mémoire pour insertion en base.")
-        ' Option : appeler directement le service d'enregistrement ici si disponible,
-        ' sinon rediriger vers le Login et insérer depuis là en récupérant PendingRegistration.
+
         Dim loginform As New Login()
         Me.Hide()
         loginform.ShowDialog()

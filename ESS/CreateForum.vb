@@ -10,6 +10,13 @@ Public Class CreateForum
         txtNomForum.Focus()
     End Sub
 
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Click du bouton "Créer Forum".
+    ''' Valide les entrées de l'utilisateur, crée un nouveau forum via le service, et ouvre le forum fraîchement créé.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnCreerForum_Click(sender As Object, e As EventArgs) Handles btnCreerForum.Click
         ' Validation du nom
         If String.IsNullOrWhiteSpace(txtNomForum.Text) Then
@@ -51,6 +58,13 @@ Public Class CreateForum
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Click du bouton "Annuler".
+    ''' Ferme le formulaire de création de forum et retourne à la page principale.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
 
         Dim mainForm As New Main()

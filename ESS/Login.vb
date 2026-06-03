@@ -16,6 +16,14 @@ Public Class Login
     Private placeholderUsername As String = "Entrez votre Username"
     Private placeholderPassword As String = "Entrez votre mot de passe"
 
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Enter pour les TextBox de username et password.
+    ''' Si le texte actuel est le placeholder, il est effacé et la couleur du texte est changée.
+    ''' </summary>
+    ''' <param name="tb">Le TextBox concerné</param>
+    ''' <param name="placeholder">Le texte placeholder à vérifier</param>
+    ''' <param name="isPassword">Indique si le TextBox est pour un mot de passe</param>
     Private Sub HandleEnter(tb As TextBox, placeholder As String, isPassword As Boolean)
         If tb.Text = placeholder Then
             tb.Text = ""
@@ -23,21 +31,45 @@ Public Class Login
             If isPassword Then tb.UseSystemPasswordChar = True
         End If
     End Sub
+
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Initialise un TextBox avec les propriétés de style et le texte placeholder.
+    ''' </summary>
+    ''' <param name="tb">Le TextBox à initialiser</param>
+    ''' <param name="placeholder">Le texte placeholder à afficher</param>
     Private Sub InitTextBox(tb As TextBox, placeholder As String)
         tb.BackColor = Color.Black
         tb.ForeColor = Color.Gray
         tb.BorderStyle = BorderStyle.None
         tb.Text = placeholder
     End Sub
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Enter pour le TextBox de username.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtUsername_Enter(sender As Object, e As EventArgs) Handles txtUsername.Enter
         HandleEnter(txtUsername, placeholderUsername, False)
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Enter pour le TextBox de mot de passe.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtMDP_Enter(sender As Object, e As EventArgs) Handles txtMDP.Enter
         HandleEnter(txtMDP, placeholderPassword, True)
 
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement KeyPress pour le TextBox de mot de passe.
+    ''' Si l'utilisateur appuie sur la touche Enter, cela déclenche la tentative de connexion.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtMDP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMDP.KeyPress
         ' Vérifier si la touche pressée est Enter (code ASCII 13)
         If e.KeyChar = Chr(13) Then
@@ -53,7 +85,13 @@ Public Class Login
         txtMDP.UseSystemPasswordChar = False
 
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement LinkClicked pour le LinkLabel de création de compte.
+    ''' Ouvre le formulaire d'inscription et masque le formulaire de connexion.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub lblCreeCompteClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblCreeCompte.LinkClicked
         Dim inscriptionForm As New Inscription()
         Me.Hide()
@@ -64,6 +102,12 @@ Public Class Login
     Private Sub BtnConnexion_Click(sender As Object, e As EventArgs) Handles btnConnexion.Click
         PerformLogin()
     End Sub
+
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Affiche un message d'erreur dans le label de message s'il existe, sinon affiche une MessageBox.
+    ''' </summary>
+    ''' <param name="message"></param>
     Public Sub AfficherErreur(message As String)
         If Me.lblMessage IsNot Nothing Then
             lblMessage.ForeColor = Color.FromArgb(220, 53, 69)
@@ -72,6 +116,12 @@ Public Class Login
             MessageBox.Show(message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Affiche un message de succès dans le label de message s'il existe, sinon affiche une MessageBox.
+    ''' </summary>
+    ''' <param name="message"></param>
     Private Sub AfficherSucces(message As String)
         If Me.lblMessage IsNot Nothing Then
             lblMessage.ForeColor = Color.FromArgb(40, 167, 69)
@@ -80,7 +130,10 @@ Public Class Login
             MessageBox.Show(message, "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Effectue la tentative de connexion en validant les entrées, en appelant le service d'authentification et en gérant les différentes exceptions possibles.
+    ''' </summary>
     Private Sub PerformLogin()
         Try
 
@@ -156,6 +209,12 @@ Public Class Login
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement Click pour le bouton de voir/masquer le mot de passe.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnVoirMDP_Click(sender As Object, e As EventArgs) Handles btnVoirMDP.Click
         If (txtMDP.UseSystemPasswordChar) Then
             txtMDP.UseSystemPasswordChar = False

@@ -49,7 +49,12 @@
         AddHandler timer.Tick, AddressOf TimerTick
         timer.Start()
     End Sub
-
+    ''' <summary>
+    ''' Author: Arnaud
+    ''' Gère l'événement de tick du timer pour rafraîchir les statuts des utilisateurs et les messages du forum.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub TimerTick(sender As Object, e As EventArgs)
         Try
             logger.PingDB(CurrentUser.User.UserID)
@@ -65,10 +70,13 @@
         Catch ex As Exception
         End Try
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Rafraîchit la liste des utilisateurs en ligne en récupérant la liste des utilisateurs actifs depuis le service de log et en mettant à jour l'affichage dans le DataGridView.
+    ''' </summary>
     Private Sub RefreshOnlineUser()
         Try
-            Dim lstUser = logger.isActive()
+            Dim lstUser = logger.isActive() 'Authors : Arnaud
 
         Catch ex As Exception
 
@@ -100,7 +108,7 @@
     ''' </summary>
     Private Sub dgvUtilisateursForum_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvUtilisateursForum.CellFormatting
         ' Vérifier que c'est bien la colonne ChatStatut (index 1)
-        'Select Case marche comme un if else if, mais plus adapté pour comparer une même variable à plusieurs valeurs différentes
+
         If e.ColumnIndex = 1 AndAlso e.Value IsNot Nothing Then
             If e.Value.ToString() = "En ligne" Then
                 e.CellStyle.ForeColor = Color.Green
@@ -176,13 +184,24 @@
             lblNomForum.Text = forum.NomForum
         End If
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement de clic sur le bouton "Annuler" pour fermer le formulaire du forum.
+    ''' Avant de fermer, il arrête et libère les ressources du timer utilisé pour rafraîchir les statuts des utilisateurs.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
         timer.Stop()
         timer.Dispose()
         Me.Close()
     End Sub
-
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement de clic sur le bouton "Rafraîchir" pour mettre à jour manuellement les statuts des utilisateurs.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         ' Rafraîchir manuellement les statuts des utilisateurs
         Try
@@ -193,7 +212,6 @@
             ' Mettre à jour les statuts dans la base pour tous les utilisateurs
             UpdateUserStatuses(lstActiveUsers)
 
-            ' Recharger l'affichage
             ChargerEleves()
 
             MessageBox.Show("✓ Statuts des utilisateurs rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -203,8 +221,10 @@
     End Sub
 
     ''' <summary>
-    ''' Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+    ''' Author: Ayman
+    ''' Met à jour les statuts de tous les utilisateurs basé sur la liste des utilisateurs actifs.
     ''' </summary>
+    ''' <param name="lstActiveUsers">Liste des IDs des utilisateurs actifs</param>
     Private Sub UpdateUserStatuses(lstActiveUsers As List(Of Integer))
         Try
             Dim userService As New UserService()
@@ -229,6 +249,12 @@
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Gère l'événement de pression d'une touche dans le champ de message pour permettre l'envoi du message en appuyant sur la touche "Enter".
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtMessge_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMessge.KeyPress
         ' Vérifier si la touche pressée est Enter (code ASCII 13)
         If e.KeyChar = Chr(13) Then

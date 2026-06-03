@@ -39,6 +39,38 @@ ESS
  <param name="username"></param>
  <returns>Eleve</returns>
 </member>
+<member name="M:ESS.MessageControlEnvoye.MessageControlEnvoye_Load(System.Object,System.EventArgs)">
+ <summary>
+ Affiche les détails du message envoyé, y compris le nom de l'émetteur, le contenu du message et l'heure d'envoi.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.MessageControlRecu.MessageControlRecu_Load(System.Object,System.EventArgs)">
+ <summary>
+ Affiche les détails du message reçu, y compris le nom de l'émetteur, le contenu du message et l'heure de réception.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.CreateForum.btnCreerForum_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Click du bouton "Créer Forum".
+ Valide les entrées de l'utilisateur, crée un nouveau forum via le service, et ouvre le forum fraîchement créé.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.CreateForum.btnAnnuler_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Click du bouton "Annuler".
+ Ferme le formulaire de création de forum et retourne à la page principale.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
 <member name="M:ESS.DatabaseConnection.GetConnection">
  <summary>
  Auteur: Arnaud
@@ -153,6 +185,41 @@ ESS
  <param name="userId"></param>
  <returns></returns>
 </member>
+<member name="M:ESS.MessageService.CreatePrivateMessage(System.Int32,System.Int32,System.String)">
+ <summary>
+ Authors : Ayman
+ Crée un message privé entre deux utilisateurs.
+ </summary>
+ <param name="idEnvoyeur">ID de l'utilisateur envoyant le message</param>
+ <param name="idReceveur">ID de l'utilisateur recevant le message</param>
+ <param name="contenu">Contenu du message</param>
+ <returns>ID du message créé ou Nothing en cas d'erreur</returns>
+</member>
+<member name="M:ESS.MessageService.CreateForumMessage(System.Int32,System.Int32,System.String)">
+ <summary>
+ Authors : Ayman
+ Crée un message dans un forum spécifique. Le champ idReceveur est laissé à 0 ou NULL pour indiquer qu'il s'agit d'un message de forum.
+ </summary>
+ <param name="idEnvoyeur">ID de l'utilisateur envoyant le message</param>
+ <param name="forumId">ID du forum où le message sera publié</param>
+ <param name="contenu">Contenu du message</param>
+ <returns>ID du message créé ou Nothing en cas d'erreur</returns>
+</member>
+<member name="M:ESS.MessageService.GetMessagesByForumId(System.Int32)">
+ <summary>
+ Authors : Ayman
+ Récupère tous les messages d'un forum spécifique à partir de son ID. Les messages de forum ont idReceveur à NULL ou 0, et sont filtrés par forumId.
+ </summary>
+ <param name="forumId">ID du forum dont les messages doivent être récupérés</param>
+ <returns>Liste des messages du forum ou Nothing en cas d'erreur</returns>
+</member>
+<member name="M:ESS.MessageService.GetAllUsers">
+ <summary>
+ Authors : Ayman
+ Récupère la liste de tous les utilisateurs (élèves) pour permettre à l'utilisateur de sélectionner un destinataire pour les messages privés.
+ </summary>
+ <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
+</member>
 <member name="M:ESS.Form1.TestGetFilDeDiscussion">
  <summary>
  Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
@@ -165,6 +232,20 @@ ESS
  Author: Ayman
  Propriété pour stocker et accéder à l'ID du forum sélectionné. Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
  Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, et l'utiliser pour charger les messages et les informations du forum correspondant.
+ </summary>
+</member>
+<member name="M:ESS.Forum.TimerTick(System.Object,System.EventArgs)">
+ <summary>
+ Author: Arnaud
+ Gère l'événement de tick du timer pour rafraîchir les statuts des utilisateurs et les messages du forum.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Forum.RefreshOnlineUser">
+ <summary>
+ Author: Ayman
+ Rafraîchit la liste des utilisateurs en ligne en récupérant la liste des utilisateurs actifs depuis le service de log et en mettant à jour l'affichage dans le DataGridView.
  </summary>
 </member>
 <member name="M:ESS.Forum.ChargerEleves">
@@ -201,10 +282,123 @@ ESS
  Récupère le nom du forum à partir de la base de données en utilisant le service de forum et l'affiche dans le label lblNomForum.
  </summary>
 </member>
+<member name="M:ESS.Forum.btnAnnuler_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de clic sur le bouton "Annuler" pour fermer le formulaire du forum.
+ Avant de fermer, il arrête et libère les ressources du timer utilisé pour rafraîchir les statuts des utilisateurs.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Forum.btnRefresh_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de clic sur le bouton "Rafraîchir" pour mettre à jour manuellement les statuts des utilisateurs.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
 <member name="M:ESS.Forum.UpdateUserStatuses(System.Collections.Generic.List{System.Int32})">
  <summary>
- Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+ Author: Ayman
+ Met à jour les statuts de tous les utilisateurs basé sur la liste des utilisateurs actifs.
  </summary>
+ <param name="lstActiveUsers">Liste des IDs des utilisateurs actifs</param>
+</member>
+<member name="M:ESS.Forum.txtMessge_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement de pression d'une touche dans le champ de message pour permettre l'envoi du message en appuyant sur la touche "Enter".
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="F:ESS.Inscription.placeholderNom">
+ <summary>
+ Author: Ayman
+ Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
+ </summary>
+</member>
+<member name="M:ESS.Login.HandleEnter(System.Windows.Forms.TextBox,System.String,System.Boolean)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Enter pour les TextBox de username et password.
+ Si le texte actuel est le placeholder, il est effacé et la couleur du texte est changée.
+ </summary>
+ <param name="tb">Le TextBox concerné</param>
+ <param name="placeholder">Le texte placeholder à vérifier</param>
+ <param name="isPassword">Indique si le TextBox est pour un mot de passe</param>
+</member>
+<member name="M:ESS.Login.InitTextBox(System.Windows.Forms.TextBox,System.String)">
+ <summary>
+ Author: Ayman
+ Initialise un TextBox avec les propriétés de style et le texte placeholder.
+ </summary>
+ <param name="tb">Le TextBox à initialiser</param>
+ <param name="placeholder">Le texte placeholder à afficher</param>
+</member>
+<member name="M:ESS.Login.txtUsername_Enter(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Enter pour le TextBox de username.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Login.txtMDP_Enter(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Enter pour le TextBox de mot de passe.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Login.txtMDP_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement KeyPress pour le TextBox de mot de passe.
+ Si l'utilisateur appuie sur la touche Enter, cela déclenche la tentative de connexion.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Login.lblCreeCompteClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement LinkClicked pour le LinkLabel de création de compte.
+ Ouvre le formulaire d'inscription et masque le formulaire de connexion.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.Login.AfficherErreur(System.String)">
+ <summary>
+ Author: Ayman
+ Affiche un message d'erreur dans le label de message s'il existe, sinon affiche une MessageBox.
+ </summary>
+ <param name="message"></param>
+</member>
+<member name="M:ESS.Login.AfficherSucces(System.String)">
+ <summary>
+ Author: Ayman
+ Affiche un message de succès dans le label de message s'il existe, sinon affiche une MessageBox.
+ </summary>
+ <param name="message"></param>
+</member>
+<member name="M:ESS.Login.PerformLogin">
+ <summary>
+ Author: Ayman
+ Effectue la tentative de connexion en validant les entrées, en appelant le service d'authentification et en gérant les différentes exceptions possibles.
+ </summary>
+</member>
+<member name="M:ESS.Login.btnVoirMDP_Click(System.Object,System.EventArgs)">
+ <summary>
+ Author: Ayman
+ Gère l'événement Click pour le bouton de voir/masquer le mot de passe.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 <member name="M:ESS.LogsDataAccess.AjoutLog(System.Nullable{System.Int32},System.String)">
  <summary>
@@ -558,10 +752,11 @@ ESS
 </member>
 <member name="M:ESS.TrouverForum.RemplirDataGridView(System.Collections.Generic.List{ESS.Forums})">
  <summary>
- Author: Ayman
- Remplit le DataGridView avec la liste des forums.
- Prend une liste de forums en paramètre et ajoute chaque forum comme une ligne dans le DataGridView.
+ Authors : Ayman
+ Remplie la DataGridView avec la liste des forums fournie en paramètre.
+ Si la liste est vide ou nulle, le DataGridView sera vidé.
  </summary>
+ <param name="forums">La liste des forums à afficher dans le DataGridView.</param>
 </member>
 <member name="M:ESS.TrouverForum.btnCreerForum_Click(System.Object,System.EventArgs)">
  <summary>

@@ -103,7 +103,14 @@
         End Try
     End Function
 
-    ' Message PRIVÉ : entre deux utilisateurs
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Crée un message privé entre deux utilisateurs.
+    ''' </summary>
+    ''' <param name="idEnvoyeur">ID de l'utilisateur envoyant le message</param>
+    ''' <param name="idReceveur">ID de l'utilisateur recevant le message</param>
+    ''' <param name="contenu">Contenu du message</param>
+    ''' <returns>ID du message créé ou Nothing en cas d'erreur</returns>
     Public Function CreatePrivateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String) As Integer
         If String.IsNullOrEmpty(contenu) Then
             Return Nothing
@@ -119,7 +126,14 @@
         End Try
     End Function
 
-    ' Message PUBLIC : au forum
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Crée un message dans un forum spécifique. Le champ idReceveur est laissé à 0 ou NULL pour indiquer qu'il s'agit d'un message de forum.
+    ''' </summary>
+    ''' <param name="idEnvoyeur">ID de l'utilisateur envoyant le message</param>
+    ''' <param name="forumId">ID du forum où le message sera publié</param>
+    ''' <param name="contenu">Contenu du message</param>
+    ''' <returns>ID du message créé ou Nothing en cas d'erreur</returns>
     Public Function CreateForumMessage(idEnvoyeur As Integer, forumId As Integer, contenu As String) As Integer
         If String.IsNullOrEmpty(contenu) Then
             Return Nothing
@@ -136,6 +150,12 @@
         End Try
     End Function
 
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Récupère tous les messages d'un forum spécifique à partir de son ID. Les messages de forum ont idReceveur à NULL ou 0, et sont filtrés par forumId.
+    ''' </summary>
+    ''' <param name="forumId">ID du forum dont les messages doivent être récupérés</param>
+    ''' <returns>Liste des messages du forum ou Nothing en cas d'erreur</returns>
     Public Function GetMessagesByForumId(forumId As Integer) As List(Of Message)
         Try
             Return dbAccess.GetMessageByForumId(forumId)
@@ -144,7 +164,11 @@
             Return Nothing
         End Try
     End Function
-
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Récupère la liste de tous les utilisateurs (élèves) pour permettre à l'utilisateur de sélectionner un destinataire pour les messages privés.
+    ''' </summary>
+    ''' <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
     Public Function GetAllUsers() As List(Of Eleve)
         Dim userAccess As New UserDateAccess()
         Return userAccess.GetAllUsers()
