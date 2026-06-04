@@ -23,15 +23,15 @@ Partial Class FormTest
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvDiscussion = New System.Windows.Forms.DataGridView()
-        Me.cbbOtherUser = New System.Windows.Forms.ComboBox()
-        Me.lblFilDiscussion = New System.Windows.Forms.Label()
-        Me.lblAutreContact = New System.Windows.Forms.Label()
-        Me.lblSelectedUser = New System.Windows.Forms.Label()
         Me.ColUserId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColTimeStamp = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColNewMess = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cbbOtherUser = New System.Windows.Forms.ComboBox()
+        Me.lblFilDiscussion = New System.Windows.Forms.Label()
+        Me.lblAutreContact = New System.Windows.Forms.Label()
+        Me.lblSelectedUser = New System.Windows.Forms.Label()
         CType(Me.dgvDiscussion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -52,41 +52,6 @@ Partial Class FormTest
         Me.dgvDiscussion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvDiscussion.Size = New System.Drawing.Size(425, 276)
         Me.dgvDiscussion.TabIndex = 1
-        '
-        'cbbOtherUser
-        '
-        Me.cbbOtherUser.FormattingEnabled = True
-        Me.cbbOtherUser.Location = New System.Drawing.Point(443, 54)
-        Me.cbbOtherUser.Name = "cbbOtherUser"
-        Me.cbbOtherUser.Size = New System.Drawing.Size(121, 21)
-        Me.cbbOtherUser.TabIndex = 2
-        '
-        'lblFilDiscussion
-        '
-        Me.lblFilDiscussion.AutoSize = True
-        Me.lblFilDiscussion.Location = New System.Drawing.Point(12, 38)
-        Me.lblFilDiscussion.Name = "lblFilDiscussion"
-        Me.lblFilDiscussion.Size = New System.Drawing.Size(84, 13)
-        Me.lblFilDiscussion.TabIndex = 3
-        Me.lblFilDiscussion.Text = "Fil de discussion"
-        '
-        'lblAutreContact
-        '
-        Me.lblAutreContact.AutoSize = True
-        Me.lblAutreContact.Location = New System.Drawing.Point(440, 38)
-        Me.lblAutreContact.Name = "lblAutreContact"
-        Me.lblAutreContact.Size = New System.Drawing.Size(66, 13)
-        Me.lblAutreContact.TabIndex = 4
-        Me.lblAutreContact.Text = "Autre élèves"
-        '
-        'lblSelectedUser
-        '
-        Me.lblSelectedUser.AutoSize = True
-        Me.lblSelectedUser.Location = New System.Drawing.Point(12, 9)
-        Me.lblSelectedUser.Name = "lblSelectedUser"
-        Me.lblSelectedUser.Size = New System.Drawing.Size(109, 13)
-        Me.lblSelectedUser.TabIndex = 5
-        Me.lblSelectedUser.Text = "Selected User : None"
         '
         'ColUserId
         '
@@ -135,6 +100,42 @@ Partial Class FormTest
         Me.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ColStatus.Width = 60
         '
+        'cbbOtherUser
+        '
+        Me.cbbOtherUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbbOtherUser.FormattingEnabled = True
+        Me.cbbOtherUser.Location = New System.Drawing.Point(443, 54)
+        Me.cbbOtherUser.Name = "cbbOtherUser"
+        Me.cbbOtherUser.Size = New System.Drawing.Size(121, 21)
+        Me.cbbOtherUser.TabIndex = 2
+        '
+        'lblFilDiscussion
+        '
+        Me.lblFilDiscussion.AutoSize = True
+        Me.lblFilDiscussion.Location = New System.Drawing.Point(12, 38)
+        Me.lblFilDiscussion.Name = "lblFilDiscussion"
+        Me.lblFilDiscussion.Size = New System.Drawing.Size(84, 13)
+        Me.lblFilDiscussion.TabIndex = 3
+        Me.lblFilDiscussion.Text = "Fil de discussion"
+        '
+        'lblAutreContact
+        '
+        Me.lblAutreContact.AutoSize = True
+        Me.lblAutreContact.Location = New System.Drawing.Point(440, 38)
+        Me.lblAutreContact.Name = "lblAutreContact"
+        Me.lblAutreContact.Size = New System.Drawing.Size(66, 13)
+        Me.lblAutreContact.TabIndex = 4
+        Me.lblAutreContact.Text = "Autre élèves"
+        '
+        'lblSelectedUser
+        '
+        Me.lblSelectedUser.AutoSize = True
+        Me.lblSelectedUser.Location = New System.Drawing.Point(12, 9)
+        Me.lblSelectedUser.Name = "lblSelectedUser"
+        Me.lblSelectedUser.Size = New System.Drawing.Size(130, 13)
+        Me.lblSelectedUser.TabIndex = 5
+        Me.lblSelectedUser.Text = "UserId sélectionné : None"
+        '
         'FormTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -153,7 +154,6 @@ Partial Class FormTest
 
     End Sub
     Friend WithEvents dgvDiscussion As DataGridView
-    Friend WithEvents cbbOtherUser As ComboBox
     Friend WithEvents lblFilDiscussion As Label
     Friend WithEvents lblAutreContact As Label
     Friend WithEvents lblSelectedUser As Label
@@ -162,4 +162,5 @@ Partial Class FormTest
     Friend WithEvents ColTimeStamp As DataGridViewTextBoxColumn
     Friend WithEvents ColNewMess As DataGridViewTextBoxColumn
     Friend WithEvents ColStatus As DataGridViewTextBoxColumn
+    Protected Friend WithEvents cbbOtherUser As ComboBox
 End Class

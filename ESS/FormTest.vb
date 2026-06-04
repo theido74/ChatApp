@@ -1,4 +1,6 @@
-﻿Public Class FormTest
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class FormTest
     Private passwordHasher As New PasswordHasher()
 
     Dim mesServ As MessageService = New MessageService
@@ -7,25 +9,28 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbbOtherUser.DisplayMember = "Value"
         cbbOtherUser.ValueMember = "Key"
+        ' cbbOtherUser.DropDownStyle = ComboBoxStyle.DropDownList
 
+        TestChargerFilDiscussion()
         dgvDiscussion.ClearSelection()
-        TestFilDeDiscussion()
     End Sub
 
     ''' <summary>
     ''' Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
     ''' </summary>
     ''' <auteur> Damien </auteur>
-    Private Sub TestFilDeDiscussion()
+    Private Sub TestChargerFilDiscussion()
         Dim userSelected As Integer = 1
-        Dim chats As List(Of Chat) = mesServ.GetChatById(userSelected)
 
+        Dim chats As List(Of Chat) = mesServ.GetChatById(userSelected)
         Dim eleves As List(Of Eleve) = useServ.GetAllEleve(userSelected)
+
         eleves.RemoveAll(Function(e) chats.Any(Function(c) c.ContactId = e.UserID))
+        eleves.RemoveAll(Function(x) x.UserID = userSelected)
 
         For Each chat As Chat In chats
             dgvDiscussion.Rows.Add(
-                chat.UserId,
+                chat.ContactId,
                 chat.ContactNom.ToString(),
                 "[" & chat.DateDernierMessage.ToShortTimeString() & "]",
                 chat.NbOfUnreadMessages,
@@ -50,24 +55,28 @@
     ''' <auteur> Damien </auteur>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub dgvDiscussion_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDiscussion.CellContentClick
+    Private Sub dgvDiscussion_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDiscussion.CellClick
         If e.RowIndex < 0 Then Exit Sub
 
-        Dim userId As Integer = CInt(dgvDiscussion.Rows(e.RowIndex).Cells("UserId").Value)
-        lblSelectedUser.Text = "Selected User : " & userId.ToString()
+        Dim userId As Integer = Convert.ToInt32(dgvDiscussion.Rows(e.RowIndex).Cells("ColUserId").Value)
+        lblSelectedUser.Text = "UserId sélectionné : " & userId.ToString()
 
         cbbOtherUser.SelectedIndex = -1
-        cbbOtherUser.Text = ""
+        cbbOtherUser.Text = "-"
     End Sub
 
+    ''' <summary>
+    ''' Actualiser le label Id sélectionné
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub cbbOtherUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbOtherUser.SelectedIndexChanged
         If cbbOtherUser.SelectedIndex < 0 Then Exit Sub
 
-        Dim kvp As KeyValuePair(Of Integer, String) =
-        CType(cbbOtherUser.SelectedItem, KeyValuePair(Of Integer, String))
-
+        Dim kvp As KeyValuePair(Of Integer, String) = CType(cbbOtherUser.SelectedItem, KeyValuePair(Of Integer, String))
         Dim userId As Integer = kvp.Key
-        lblSelectedUser.Text = "Selected User : " & userId.ToString()
+        lblSelectedUser.Text = "UserId sélectionné : " & userId.ToString()
 
         dgvDiscussion.ClearSelection()
     End Sub

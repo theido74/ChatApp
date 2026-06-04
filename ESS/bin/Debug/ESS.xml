@@ -227,15 +227,23 @@ ESS
  </summary>
  <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
 </member>
-<member name="M:ESS.FormTest.TestFilDeDiscussion">
+<member name="M:ESS.FormTest.TestChargerFilDiscussion">
  <summary>
  Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
  </summary>
  <auteur> Damien </auteur>
 </member>
-<member name="M:ESS.FormTest.dgvDiscussion_CellContentClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+<member name="M:ESS.FormTest.dgvDiscussion_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
  <summary>
  Récupère les index de la sélection dans l'événement pour aller chercher la valeur de la collone id puis actualise le label qui indique la sélection
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:ESS.FormTest.cbbOtherUser_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ Actualiser le label Id sélectionné
  </summary>
  <auteur> Damien </auteur>
  <param name="sender"></param>
