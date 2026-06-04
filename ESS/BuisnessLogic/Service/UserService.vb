@@ -75,9 +75,13 @@
     ''' <returns>
     ''' Liste des élèves ; Nothing en cas d'erreur.
     ''' </returns>
-    Public Function GetAllEleve() As List(Of Eleve)
+    Public Function GetAllEleve(Optional userSelected As Integer? = Nothing) As List(Of Eleve)
         Try
-            Return dbAccess.GetAllUsers()
+            If userSelected.HasValue Then
+                Return dbAccess.GetAllUsers(userSelected)
+            Else
+                Return dbAccess.GetAllUsers()
+            End If
         Catch ex As Exception
             MessageBox.Show("Erreur Fonction GetallEleve")
             Return Nothing
@@ -138,4 +142,5 @@
             Return False
         End Try
     End Function
+
 End Class

@@ -1,64 +1,75 @@
 ﻿Public Class FormTest
     Private passwordHasher As New PasswordHasher()
 
+    Dim mesServ As MessageService = New MessageService
+    Dim useServ As UserService = New UserService
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' TestOracleConnection()
-        ' TestGetMessages()
-        lblTest.Text = TestGetFilDeDiscussion()
+        cbbOtherUser.DisplayMember = "Value"
+        cbbOtherUser.ValueMember = "Key"
+
+        dgvDiscussion.ClearSelection()
+        TestFilDeDiscussion()
     End Sub
 
     ''' <summary>
     ''' Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
     ''' </summary>
     ''' <auteur> Damien </auteur>
-    ''' <returns></returns>
-    Private Function TestGetFilDeDiscussion() As String
-        Dim mesServ As MessageService = New MessageService
-        Dim chats As List(Of Chat) = mesServ.GetChatById(1)
-        Dim separation = " - "
-        Dim text = ""
-        Dim line = ""
-        For Each chat As Chat In chats
-            line = chat.ContactNom & separation & "Id" & chat.ContactId.ToString()
-            If chat.NbOfUnreadMessages > 0 Then
-                line = line & separation & chat.NbOfUnreadMessages.ToString() & " Message(s)"
-            End If
-            If chat.Statut IsNot Nothing And chat.Statut <> "" Then
-                line = line & separation & chat.Statut
-            End If
-            line = line & Environment.NewLine
-            text = text & line
-        Next
-        Return text
-    End Function
+    Private Sub TestFilDeDiscussion()
+        Dim userSelected As Integer = 1
+        Dim chats As List(Of Chat) = mesServ.GetChatById(userSelected)
 
-    Private Sub TestGetForums()
-        Dim forumDataAccess = New ForumDataAccess
-        Dim forums As List(Of Forums) = forumDataAccess.GetAllForums
-        For Each forum As Forums In forums
-            Console.WriteLine("ID: " & forum.ForumId)
-            Console.WriteLine("Nom: " & forum.NomForum)
-            Console.WriteLine("Description: ")
-            Console.WriteLine("DateCreation: ")
-            Console.WriteLine("Supprimé: ")
-            Console.WriteLine("-----------------------------")
+        Dim eleves As List(Of Eleve) = useServ.GetAllEleve(userSelected)
+        eleves.RemoveAll(Function(e) chats.Any(Function(c) c.ContactId = e.UserID))
+
+        For Each chat As Chat In chats
+            dgvDiscussion.Rows.Add(
+                chat.UserId,
+                chat.ContactNom.ToString(),
+                "[" & chat.DateDernierMessage.ToShortTimeString() & "]",
+                chat.NbOfUnreadMessages,
+                chat.Statut
+            )
+        Next
+
+        cbbOtherUser.Items.Clear()
+        For Each eleve As Eleve In eleves
+            cbbOtherUser.Items.Add(
+                New KeyValuePair(Of Integer, String)(
+                    eleve.UserID,
+                    eleve.UserName
+                )
+            )
         Next
     End Sub
 
-    Private Sub TestGetMessages()
-        Dim messageDataAccess As New messageDataAccess()
-        Dim userMessages As List(Of Message) = messageDataAccess.GetMessageByForumId(2)
-        For Each msg As Message In userMessages
-            Console.WriteLine("ID: " & msg.MessageId)
-            Console.WriteLine("Expéditeur: " & msg.EmmeteurId)
-            Console.WriteLine("Destinataire: " & msg.ReceveurId)
-            Console.WriteLine("Forum: " & msg.ForumId)
-            Console.WriteLine("Contenu: " & msg.Contenu)
-            Console.WriteLine("Date: " & msg.TimeStamp)
-            Console.WriteLine("Privé: " & msg.EstPrive)
-            Console.WriteLine("Supprimé: " & msg.EstSupprime)
-            Console.WriteLine("-----------------------------")
-        Next
+    ''' <summary>
+    ''' Récupère les index de la sélection dans l'événement pour aller chercher la valeur de la collone id puis actualise le label qui indique la sélection
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub dgvDiscussion_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDiscussion.CellContentClick
+        If e.RowIndex < 0 Then Exit Sub
+
+        Dim userId As Integer = CInt(dgvDiscussion.Rows(e.RowIndex).Cells("UserId").Value)
+        lblSelectedUser.Text = "Selected User : " & userId.ToString()
+
+        cbbOtherUser.SelectedIndex = -1
+        cbbOtherUser.Text = ""
+    End Sub
+
+    Private Sub cbbOtherUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbOtherUser.SelectedIndexChanged
+        If cbbOtherUser.SelectedIndex < 0 Then Exit Sub
+
+        Dim kvp As KeyValuePair(Of Integer, String) =
+        CType(cbbOtherUser.SelectedItem, KeyValuePair(Of Integer, String))
+
+        Dim userId As Integer = kvp.Key
+        lblSelectedUser.Text = "Selected User : " & userId.ToString()
+
+        dgvDiscussion.ClearSelection()
     End Sub
 
     Private Sub TestOracleConnection()
@@ -86,4 +97,5 @@
             MessageBox.Show("Erreur: " & ex.Message, "Erreur")
         End Try
     End Sub
+
 End Class

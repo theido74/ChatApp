@@ -227,12 +227,19 @@ ESS
  </summary>
  <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
 </member>
-<member name="M:ESS.FormTest.TestGetFilDeDiscussion">
+<member name="M:ESS.FormTest.TestFilDeDiscussion">
  <summary>
  Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
  </summary>
  <auteur> Damien </auteur>
- <returns></returns>
+</member>
+<member name="M:ESS.FormTest.dgvDiscussion_CellContentClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ Récupère les index de la sélection dans l'événement pour aller chercher la valeur de la collone id puis actualise le label qui indique la sélection
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
@@ -633,7 +640,7 @@ ESS
  Levée lors d'une erreur Oracle pendant la transaction.
  </exception>
 </member>
-<member name="M:ESS.UserDateAccess.GetAllUsers">
+<member name="M:ESS.UserDateAccess.GetAllUsers(System.Nullable{System.Int32})">
  <summary>
  Auteur: Arnaud
  Récupère la liste des utilisateurs actifs à l'exception
@@ -720,7 +727,7 @@ ESS
  ou en cas d'erreur.
  </returns>
 </member>
-<member name="M:ESS.UserService.GetAllEleve">
+<member name="M:ESS.UserService.GetAllEleve(System.Nullable{System.Int32})">
  <summary>
  Auteur: Arnaud
  Récupère la liste de tous les élèves enregistrés.

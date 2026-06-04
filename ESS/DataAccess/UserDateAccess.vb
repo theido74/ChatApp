@@ -255,7 +255,7 @@ Public Class UserDateAccess
     ''' leur nom d'utilisateur et leur statut de discussion ;
     ''' Nothing en cas d'erreur.
     ''' </returns>
-    Public Function GetAllUsers() As List(Of Eleve)
+    Public Function GetAllUsers(Optional userSelected As Integer? = Nothing) As List(Of Eleve)
         Dim users As New List(Of Eleve)()
 
         Try
@@ -266,8 +266,11 @@ Public Class UserDateAccess
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.BindByName = True
-                    cmd.Parameters.Add("currentUserId", OracleDbType.Int32).Value = CurrentUser.User.UserID
-
+                    If userSelected.HasValue Then
+                        cmd.Parameters.Add("currentUserId", OracleDbType.Int32).Value = userSelected
+                    Else
+                        cmd.Parameters.Add("currentUserId", OracleDbType.Int32).Value = CurrentUser.User.UserID
+                    End If
                     Using reader As OracleDataReader = cmd.ExecuteReader()
                         While reader.Read()
                             Dim user As New Eleve With {
@@ -286,4 +289,5 @@ Public Class UserDateAccess
         End Try
         Return Nothing
     End Function
+
 End Class
