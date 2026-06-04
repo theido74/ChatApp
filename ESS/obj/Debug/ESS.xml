@@ -39,6 +39,13 @@ ESS
  <param name="username"></param>
  <returns>Eleve</returns>
 </member>
+<member name="M:ESS.ClientValidator.ValidateUsername(System.String)">
+ <summary>
+ Valide le nom d'utilisateur en vérifiant s'il n'est pas vide, s'il contient au moins 4 caractères et s'il ne dépasse pas 20 caractères.
+ </summary>
+ <param name="username"></param>
+ <returns></returns>
+</member>
 <member name="M:ESS.MessageControlEnvoye.MessageControlEnvoye_Load(System.Object,System.EventArgs)">
  <summary>
  Affiche les détails du message envoyé, y compris le nom de l'émetteur, le contenu du message et l'heure d'envoi.
@@ -220,7 +227,7 @@ ESS
  </summary>
  <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
 </member>
-<member name="M:ESS.Form1.TestGetFilDeDiscussion">
+<member name="M:ESS.FormTest.TestGetFilDeDiscussion">
  <summary>
  Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
  </summary>
