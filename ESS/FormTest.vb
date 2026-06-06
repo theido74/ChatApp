@@ -1,33 +1,62 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
-Public Class FormTest
+﻿Public Class FormTest
     Private passwordHasher As New PasswordHasher()
 
     Dim mesServ As MessageService = New MessageService
     Dim useServ As UserService = New UserService
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cbbOtherUser.DisplayMember = "Value"
-        cbbOtherUser.ValueMember = "Key"
-        ' cbbOtherUser.DropDownStyle = ComboBoxStyle.DropDownList
 
-        TestChargerFilDiscussion()
+    Private Sub FormTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SetObjectProperties()
+        ChargerDonnées(1)
         dgvDiscussion.ClearSelection()
     End Sub
 
+
     ''' <summary>
-    ''' Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
+    ''' Configurer certaines propriétés d'objets, en l'occurence de la combo box.
     ''' </summary>
     ''' <auteur> Damien </auteur>
-    Private Sub TestChargerFilDiscussion()
-        Dim userSelected As Integer = 1
+    Private Sub SetObjectProperties()
+        cbbOtherUser.DisplayMember = "Value"
+        cbbOtherUser.ValueMember = "Key"
+        cbbOtherUser.DropDownStyle = ComboBoxStyle.DropDownList
+    End Sub
 
-        Dim chats As List(Of Chat) = mesServ.GetChatById(userSelected)
-        Dim eleves As List(Of Eleve) = useServ.GetAllEleve(userSelected)
 
-        eleves.RemoveAll(Function(e) chats.Any(Function(c) c.ContactId = e.UserID))
-        eleves.RemoveAll(Function(x) x.UserID = userSelected)
+    ''' <summary>
+    ''' Tester la fonction permettant de récupérer le fil de discussion et d'afficher les données.
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    Private Sub ChargerDonnées(currentUserId As Integer)
+        Dim currentUser As Eleve = useServ.GetEleveById(currentUserId)
+        lblCurrentUser.Text = "ID : " & currentUser.UserID.ToString() & " " & currentUser.UserName
 
+        Dim chats As List(Of Chat) = mesServ.GetChatById(currentUserId)
+        Dim eleves As List(Of Eleve) = useServ.GetAllEleve(currentUserId)
+
+        cbbOtherUser.Items.Clear()
+        For Each eleve As Eleve In eleves
+            If eleve.UserID <> currentUserId Then
+                Dim dejaDansChat As Boolean = False
+                For Each chat As Chat In chats
+                    If chat.ContactId = eleve.UserID Then
+                        dejaDansChat = True
+                        Exit For
+                    End If
+                Next
+
+                If Not dejaDansChat Then
+                    cbbOtherUser.Items.Add(
+                        New KeyValuePair(Of Integer, String)(
+                            eleve.UserID,
+                            eleve.UserName
+                        )
+                    )
+                End If
+            End If
+        Next
+
+        dgvDiscussion.Rows.Clear()
         For Each chat As Chat In chats
             dgvDiscussion.Rows.Add(
                 chat.ContactId,
@@ -37,17 +66,18 @@ Public Class FormTest
                 chat.Statut
             )
         Next
-
-        cbbOtherUser.Items.Clear()
-        For Each eleve As Eleve In eleves
-            cbbOtherUser.Items.Add(
-                New KeyValuePair(Of Integer, String)(
-                    eleve.UserID,
-                    eleve.UserName
-                )
-            )
-        Next
     End Sub
+
+
+    ''' <summary>
+    ''' Afficher l'id donné en paramètre dans lblIdSelected
+    ''' </summary>
+    ''' <auteur> Damien </auteur>
+    ''' <param name="selectedId"></param>
+    Private Sub actualiserLblIdSelected(selectedId As Integer)
+        lblIdSelected.Text = "ID sélectionnée : " & selectedId.ToString()
+    End Sub
+
 
     ''' <summary>
     ''' Récupère les index de la sélection dans l'événement pour aller chercher la valeur de la collone id puis actualise le label qui indique la sélection
@@ -59,11 +89,12 @@ Public Class FormTest
         If e.RowIndex < 0 Then Exit Sub
 
         Dim userId As Integer = Convert.ToInt32(dgvDiscussion.Rows(e.RowIndex).Cells("ColUserId").Value)
-        lblSelectedUser.Text = "UserId sélectionné : " & userId.ToString()
+        actualiserLblIdSelected(userId)
 
         cbbOtherUser.SelectedIndex = -1
         cbbOtherUser.Text = "-"
     End Sub
+
 
     ''' <summary>
     ''' Actualiser le label Id sélectionné
@@ -76,12 +107,13 @@ Public Class FormTest
 
         Dim kvp As KeyValuePair(Of Integer, String) = CType(cbbOtherUser.SelectedItem, KeyValuePair(Of Integer, String))
         Dim userId As Integer = kvp.Key
-        lblSelectedUser.Text = "UserId sélectionné : " & userId.ToString()
+        actualiserLblIdSelected(userId)
 
         dgvDiscussion.ClearSelection()
     End Sub
 
-    Private Sub TestOracleConnection()
+
+    Private Sub TestConnectionOracle()
         Try
             MessageBox.Show("Test de connexion en cours...", "Info")
 

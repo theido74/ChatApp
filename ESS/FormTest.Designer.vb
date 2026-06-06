@@ -31,7 +31,9 @@ Partial Class FormTest
         Me.cbbOtherUser = New System.Windows.Forms.ComboBox()
         Me.lblFilDiscussion = New System.Windows.Forms.Label()
         Me.lblAutreContact = New System.Windows.Forms.Label()
-        Me.lblSelectedUser = New System.Windows.Forms.Label()
+        Me.lblIdSelected = New System.Windows.Forms.Label()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.lblCurrentUser = New System.Windows.Forms.Label()
         CType(Me.dgvDiscussion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,16 +43,19 @@ Partial Class FormTest
         Me.dgvDiscussion.AllowUserToDeleteRows = False
         Me.dgvDiscussion.AllowUserToResizeColumns = False
         Me.dgvDiscussion.AllowUserToResizeRows = False
+        Me.dgvDiscussion.ColumnHeadersHeight = 40
         Me.dgvDiscussion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvDiscussion.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColUserId, Me.ColName, Me.ColTimeStamp, Me.ColNewMess, Me.ColStatus})
-        Me.dgvDiscussion.Location = New System.Drawing.Point(12, 54)
+        Me.dgvDiscussion.Location = New System.Drawing.Point(22, 100)
+        Me.dgvDiscussion.Margin = New System.Windows.Forms.Padding(6)
         Me.dgvDiscussion.MultiSelect = False
         Me.dgvDiscussion.Name = "dgvDiscussion"
         Me.dgvDiscussion.ReadOnly = True
         Me.dgvDiscussion.RowHeadersVisible = False
+        Me.dgvDiscussion.RowHeadersWidth = 72
         Me.dgvDiscussion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.dgvDiscussion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDiscussion.Size = New System.Drawing.Size(425, 276)
+        Me.dgvDiscussion.Size = New System.Drawing.Size(779, 510)
         Me.dgvDiscussion.TabIndex = 1
         '
         'ColUserId
@@ -58,35 +63,40 @@ Partial Class FormTest
         Me.ColUserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ColUserId.Frozen = True
         Me.ColUserId.HeaderText = "UserId"
+        Me.ColUserId.MinimumWidth = 9
         Me.ColUserId.Name = "ColUserId"
         Me.ColUserId.ReadOnly = True
         Me.ColUserId.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ColUserId.Visible = False
+        Me.ColUserId.Width = 175
         '
         'ColName
         '
         Me.ColName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ColName.Frozen = True
         Me.ColName.HeaderText = "Nom"
+        Me.ColName.MinimumWidth = 9
         Me.ColName.Name = "ColName"
         Me.ColName.ReadOnly = True
         Me.ColName.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColName.Width = 54
+        Me.ColName.Width = 94
         '
         'ColTimeStamp
         '
         Me.ColTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ColTimeStamp.Frozen = True
         Me.ColTimeStamp.HeaderText = "Dernier mess."
+        Me.ColTimeStamp.MinimumWidth = 9
         Me.ColTimeStamp.Name = "ColTimeStamp"
         Me.ColTimeStamp.ReadOnly = True
         Me.ColTimeStamp.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColTimeStamp.Width = 96
+        Me.ColTimeStamp.Width = 173
         '
         'ColNewMess
         '
         Me.ColNewMess.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ColNewMess.HeaderText = "Message(s)"
+        Me.ColNewMess.MinimumWidth = 9
         Me.ColNewMess.Name = "ColNewMess"
         Me.ColNewMess.ReadOnly = True
         Me.ColNewMess.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -95,57 +105,74 @@ Partial Class FormTest
         '
         Me.ColStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ColStatus.HeaderText = "Statut"
+        Me.ColStatus.MinimumWidth = 9
         Me.ColStatus.Name = "ColStatus"
         Me.ColStatus.ReadOnly = True
         Me.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ColStatus.Width = 60
+        Me.ColStatus.Width = 104
         '
         'cbbOtherUser
         '
         Me.cbbOtherUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbbOtherUser.FormattingEnabled = True
-        Me.cbbOtherUser.Location = New System.Drawing.Point(443, 54)
+        Me.cbbOtherUser.Location = New System.Drawing.Point(812, 100)
+        Me.cbbOtherUser.Margin = New System.Windows.Forms.Padding(6)
         Me.cbbOtherUser.Name = "cbbOtherUser"
-        Me.cbbOtherUser.Size = New System.Drawing.Size(121, 21)
+        Me.cbbOtherUser.Size = New System.Drawing.Size(218, 32)
         Me.cbbOtherUser.TabIndex = 2
         '
         'lblFilDiscussion
         '
         Me.lblFilDiscussion.AutoSize = True
-        Me.lblFilDiscussion.Location = New System.Drawing.Point(12, 38)
+        Me.lblFilDiscussion.Location = New System.Drawing.Point(22, 70)
+        Me.lblFilDiscussion.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblFilDiscussion.Name = "lblFilDiscussion"
-        Me.lblFilDiscussion.Size = New System.Drawing.Size(84, 13)
+        Me.lblFilDiscussion.Size = New System.Drawing.Size(156, 25)
         Me.lblFilDiscussion.TabIndex = 3
         Me.lblFilDiscussion.Text = "Fil de discussion"
         '
         'lblAutreContact
         '
         Me.lblAutreContact.AutoSize = True
-        Me.lblAutreContact.Location = New System.Drawing.Point(440, 38)
+        Me.lblAutreContact.Location = New System.Drawing.Point(807, 70)
+        Me.lblAutreContact.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblAutreContact.Name = "lblAutreContact"
-        Me.lblAutreContact.Size = New System.Drawing.Size(66, 13)
+        Me.lblAutreContact.Size = New System.Drawing.Size(121, 25)
         Me.lblAutreContact.TabIndex = 4
         Me.lblAutreContact.Text = "Autre élèves"
         '
-        'lblSelectedUser
+        'lblIdSelected
         '
-        Me.lblSelectedUser.AutoSize = True
-        Me.lblSelectedUser.Location = New System.Drawing.Point(12, 9)
-        Me.lblSelectedUser.Name = "lblSelectedUser"
-        Me.lblSelectedUser.Size = New System.Drawing.Size(130, 13)
-        Me.lblSelectedUser.TabIndex = 5
-        Me.lblSelectedUser.Text = "UserId sélectionné : None"
+        Me.lblIdSelected.AutoSize = True
+        Me.lblIdSelected.Location = New System.Drawing.Point(22, 17)
+        Me.lblIdSelected.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lblIdSelected.Name = "lblIdSelected"
+        Me.lblIdSelected.Size = New System.Drawing.Size(209, 25)
+        Me.lblIdSelected.TabIndex = 5
+        Me.lblIdSelected.Text = "ID sélectionnée : None"
+        '
+        'lblCurrentUser
+        '
+        Me.lblCurrentUser.AutoSize = True
+        Me.lblCurrentUser.Location = New System.Drawing.Point(854, 17)
+        Me.lblCurrentUser.Name = "lblCurrentUser"
+        Me.lblCurrentUser.Size = New System.Drawing.Size(176, 25)
+        Me.lblCurrentUser.TabIndex = 6
+        Me.lblCurrentUser.Text = "ID : None NoName"
+        Me.lblCurrentUser.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'FormTest
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(577, 342)
-        Me.Controls.Add(Me.lblSelectedUser)
+        Me.ClientSize = New System.Drawing.Size(1058, 631)
+        Me.Controls.Add(Me.lblCurrentUser)
+        Me.Controls.Add(Me.lblIdSelected)
         Me.Controls.Add(Me.lblAutreContact)
         Me.Controls.Add(Me.lblFilDiscussion)
         Me.Controls.Add(Me.cbbOtherUser)
         Me.Controls.Add(Me.dgvDiscussion)
+        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "FormTest"
         Me.Text = "Form1"
         CType(Me.dgvDiscussion, System.ComponentModel.ISupportInitialize).EndInit()
@@ -156,11 +183,13 @@ Partial Class FormTest
     Friend WithEvents dgvDiscussion As DataGridView
     Friend WithEvents lblFilDiscussion As Label
     Friend WithEvents lblAutreContact As Label
-    Friend WithEvents lblSelectedUser As Label
+    Friend WithEvents lblIdSelected As Label
     Friend WithEvents ColUserId As DataGridViewTextBoxColumn
     Friend WithEvents ColName As DataGridViewTextBoxColumn
     Friend WithEvents ColTimeStamp As DataGridViewTextBoxColumn
     Friend WithEvents ColNewMess As DataGridViewTextBoxColumn
     Friend WithEvents ColStatus As DataGridViewTextBoxColumn
     Protected Friend WithEvents cbbOtherUser As ComboBox
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents lblCurrentUser As Label
 End Class
