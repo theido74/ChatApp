@@ -13,64 +13,67 @@ Public Class messageDataAccess
     ''' <param name="forum"></param>
     ''' <returns></returns>
     Public Function CreateMessage(idEnvoyeur As Integer, idReceveur As Integer, contenu As String, Optional forum As Integer? = Nothing) As Integer
-        Dim newId As Integer = 0
+    Dim newId As Integer = 0
 
-        Try
-            Using conn As OracleConnection = DatabaseConnection.GetConnection()
-                conn.Open()
-                Using tx As OracleTransaction = conn.BeginTransaction()
-                    Try
-                        Dim sql As String = "INSERT INTO ess_message(mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timeStamp, mes_estLu, mes_estPrive, mes_estSupprime) " &
-                                        "VALUES(seq_message.NEXTVAL, :idEnvoyeur, :idReceveur, :forumId, :contenu, :timeStamp, :estLu, :estPrive, :supprime) " &
-                                        "RETURNING mes_id INTO :newId"
+    Try
+        Using conn As OracleConnection = DatabaseConnection.GetConnection()
+            conn.Open()
+            Using tx = conn.BeginTransaction()
 
-                        Using cmd As New OracleCommand(sql, conn)
-                            cmd.BindByName = True
-                            cmd.Transaction = tx
+                Dim sql As String = "INSERT INTO ess_message(mes_id,mes_per_id_emm,mes_per_id_rec,mes_for_id,mes_contenu,mes_timeStamp,mes_estLu,mes_estPrive,mes_estSupprime) " &
+                                    "VALUES(seq_message.NEXTVAL, :idEnvoyeur, :idReceveur, :forumId, :contenu, :timeStamp, :estLu, :estPrive ,:supprime) " &
+                                    "RETURNING mes_id INTO :newId"
 
-                            Dim isPrivate As Int16 = 1
+                Using cmd As New OracleCommand(sql, conn)
+                    cmd.Transaction = tx
+                    cmd.BindByName = True
+                    Dim isPrivate = 1
 
-                            cmd.Parameters.Add("idEnvoyeur", OracleDbType.Int32).Value = idEnvoyeur
-                            cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
-                            cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
-                            cmd.Parameters.Add("estLu", OracleDbType.Int16).Value = 0
-                            cmd.Parameters.Add("supprime", OracleDbType.Int16).Value = 0
+                    cmd.Parameters.Add("idEnvoyeur", OracleDbType.Int32).Value = idEnvoyeur
+                    cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
 
-                            If forum.HasValue Then
-                                cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = DBNull.Value
-                                cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = forum.Value
-                                isPrivate = 0
-                            Else
-                                cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
-                                cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = DBNull.Value
-                            End If
+                    ' Pour les messages de forum, idReceveur est NULL
+                    If forum.HasValue Then
+                        cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = DBNull.Value
+                    Else
+                        cmd.Parameters.Add("idReceveur", OracleDbType.Int32).Value = idReceveur
+                    End If
 
-                            cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = isPrivate
+                    If forum.HasValue Then
+                        cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = forum.Value
+                        isPrivate = 0
+                    Else
+                        cmd.Parameters.Add("forumId", OracleDbType.Int32).Value = DBNull.Value
+                    End If
 
-                            Dim prmNewId As New OracleParameter("newId", OracleDbType.Int32)
-                            prmNewId.Direction = ParameterDirection.Output
-                            prmNewId.Size = 10 ' Sécurise l'allocation de mémoire pour ODP.NET
-                            cmd.Parameters.Add(prmNewId)
+                    cmd.Parameters.Add("contenu", OracleDbType.Varchar2).Value = contenu
+                    cmd.Parameters.Add("timeStamp", OracleDbType.Date).Value = DateTime.Now
+                    cmd.Parameters.Add("estLu", OracleDbType.Int16).Value = 0
+                    cmd.Parameters.Add("estPrive", OracleDbType.Int16).Value = isPrivate
+                    cmd.Parameters.Add("supprime", OracleDbType.Int16).Value = 0
 
-                            cmd.ExecuteNonQuery()
-                            newId = Convert.ToInt32(prmNewId.Value)
-                            tx.Commit()
+                    Dim prmNewId = cmd.Parameters.Add("newId", OracleDbType.Int32)
+                    prmNewId.Direction = ParameterDirection.Output
 
-                            Return newId
-                        End Using
+                    cmd.ExecuteNonQuery()
 
-                    Catch ex As Exception
-                        tx.Rollback()
-                        Throw
-                    End Try
+                    newId = Convert.ToInt32(prmNewId.Value.ToString())
+
+                    tx.Commit()
+
+                    Return newId
                 End Using
             End Using
 
-        Catch ex As Exception
-            MessageBox.Show("Erreur BD (CreateMessage) : " & ex.Message)
-            Return -1
-        End Try
-    End Function
+        End Using
+
+    Catch ex As Exception
+        MessageBox.Show("Erreur BD: " & ex.Message)
+
+        Return -1
+
+    End Try
+End Function
 
 
     ''' <summary>
