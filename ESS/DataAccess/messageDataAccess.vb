@@ -150,7 +150,7 @@ Public Class messageDataAccess
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                     "FROM ess_message " &
                     "WHERE mes_estsupprime = 0 AND mes_for_id = :forum " &
-                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
+ "ORDER BY mes_timestamp ASC"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.Parameters.Add("forum", OracleDbType.Int32).Value = forumIdPar
@@ -169,16 +169,16 @@ Public Class messageDataAccess
                             End If
 
                             Dim message As New Message With {
-                                .MessageId = CInt(reader("mes_id")),
-                                .EmmeteurId = CInt(reader("mes_per_id_emm")),
-                                .ReceveurId = ReceveurId,
-                                .ForumId = forumId,
-                                .Contenu = reader("mes_contenu").ToString(),
-                                .TimeStamp = CDate(reader("mes_timestamp")),
-                                .EstLu = CBool(reader("mes_estlu")),
-                                .EstPrive = CBool(reader("mes_estprive")),
-                                .EstSupprime = CBool(reader("mes_estsupprime"))
-                            }
+          .MessageId = CInt(reader("mes_id")),
+              .EmmeteurId = CInt(reader("mes_per_id_emm")),
+   .ReceveurId = ReceveurId,
+       .ForumId = forumId,
+     .Contenu = reader("mes_contenu").ToString(),
+          .TimeStamp = CDate(reader("mes_timestamp")),
+         .EstLu = CBool(reader("mes_estlu")),
+      .EstPrive = CBool(reader("mes_estprive")),
+          .EstSupprime = CBool(reader("mes_estsupprime"))
+            }
                             messages.Add(message)
                         End While
                     End Using

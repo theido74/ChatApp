@@ -278,7 +278,12 @@ Public Class MessagePrive
             ' Recharger l'affichage
             RemplirDataGridView()
 
-            MessageBox.Show("✓ Statuts des utilisateurs rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ' Rafraîchir aussi les messages de la conversation privée en cours
+            If selectedContactId <> -1 Then
+                ChargerConversation(selectedContactId)
+            End If
+
+            MessageBox.Show("✓ Statuts des utilisateurs et messages rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show("Erreur lors du rafraîchissement: " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

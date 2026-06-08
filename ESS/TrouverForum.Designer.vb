@@ -73,6 +73,10 @@ Partial Class TrouverForum
         '
         'dgvForums
         '
+        Me.dgvForums.AllowUserToAddRows = False
+        Me.dgvForums.AllowUserToDeleteRows = False
+        Me.dgvForums.AllowUserToResizeColumns = False
+        Me.dgvForums.AllowUserToResizeRows = False
         Me.dgvForums.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvForums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvForums.ColumnHeadersVisible = False
@@ -88,6 +92,7 @@ Partial Class TrouverForum
         Me.dgvForums.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.dgvForums.Location = New System.Drawing.Point(262, 138)
         Me.dgvForums.Name = "dgvForums"
+        Me.dgvForums.ReadOnly = True
         Me.dgvForums.RowHeadersVisible = False
         Me.dgvForums.Size = New System.Drawing.Size(562, 394)
         Me.dgvForums.TabIndex = 6

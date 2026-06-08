@@ -153,6 +153,21 @@
 
             flpFenetreMessage.Controls.Add(ctrl)
         Next
+
+        ' Scroll automatiquement vers le bas après que tous les contrôles soient rendus
+        Me.BeginInvoke(New MethodInvoker(Sub()
+            Try
+                ' Forcer la disposition des contrôles
+                flpFenetreMessage.PerformLayout()
+
+                ' Définir la position du scroll au maximum (bas)
+                If flpFenetreMessage.VerticalScroll.Maximum > 0 Then
+                    flpFenetreMessage.VerticalScroll.Value = flpFenetreMessage.VerticalScroll.Maximum
+                End If
+            Catch ex As Exception
+                ' Silencieusement ignorer les erreurs
+            End Try
+        End Sub))
     End Sub
 
     ''' <summary>
@@ -213,8 +228,10 @@
             UpdateUserStatuses(lstActiveUsers)
 
             ChargerEleves()
+            ' Rafraîchir aussi les messages du forum
+            ChargerMessages()
 
-            MessageBox.Show("✓ Statuts des utilisateurs rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("✓ Statuts des utilisateurs et messages rafraîchis !", "Rafraîchissement", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show("Erreur lors du rafraîchissement: " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
