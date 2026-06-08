@@ -227,11 +227,24 @@ ESS
  </summary>
  <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
 </member>
-<member name="M:ESS.FormTest.TestChargerFilDiscussion">
+<member name="M:ESS.FormTest.SetObjectProperties">
  <summary>
- Tester la fonction permettant de récupérer les discussion et la classe Chat en retournant un texte récupéré en les utilisant.
+ Configurer certaines propriétés d'objets, en l'occurence de la combo box.
  </summary>
  <auteur> Damien </auteur>
+</member>
+<member name="M:ESS.FormTest.ChargerDonnées(System.Int32)">
+ <summary>
+ Tester la fonction permettant de récupérer le fil de discussion et d'afficher les données.
+ </summary>
+ <auteur> Damien </auteur>
+</member>
+<member name="M:ESS.FormTest.actualiserLblIdSelected(System.Int32)">
+ <summary>
+ Afficher l'id donné en paramètre dans lblIdSelected
+ </summary>
+ <auteur> Damien </auteur>
+ <param name="selectedId"></param>
 </member>
 <member name="M:ESS.FormTest.dgvDiscussion_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
  <summary>
