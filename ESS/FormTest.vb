@@ -7,7 +7,7 @@
 
     Private Sub FormTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetObjectProperties()
-        ChargerDonnées(1)
+        ChargerDonnées(11)
         dgvDiscussion.ClearSelection()
     End Sub
 
@@ -61,7 +61,7 @@
             dgvDiscussion.Rows.Add(
                 chat.ContactId,
                 chat.ContactNom.ToString(),
-                "[" & chat.DateDernierMessage.ToShortTimeString() & "]",
+                chat.DateDernierMessage.ToString(),
                 chat.NbOfUnreadMessages,
                 chat.Statut
             )
