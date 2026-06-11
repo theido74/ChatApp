@@ -90,11 +90,12 @@ Public Class messageDataAccess
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
                                     "FROM ess_message " &
                                     "WHERE mes_estsupprime = 0 AND ((mes_per_id_rec = :userId AND mes_per_id_emm = :contactId) OR (mes_per_id_rec = :contactId AND mes_per_id_emm = :userId))" &
-                                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
+                                    "ORDER BY mes_timestamp ASC"
 
                 Using cmd As New OracleCommand(sql, conn)
-                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = userId
-                    cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = contactId
+                    cmd.BindByName = True
+                    cmd.Parameters.Add("userId", OracleDbType.Int32).Value = userId
+                    cmd.Parameters.Add("contactId", OracleDbType.Int32).Value = contactId
                     cmd.CommandType = CommandType.Text
                     cmd.CommandTimeout = 30
 
@@ -108,7 +109,6 @@ Public Class messageDataAccess
                             If Not IsDBNull(reader("mes_per_id_rec")) Then
                                 ReceveurId = CInt(reader("mes_per_id_rec"))
                             End If
-
 
                             Dim message As New Message With {
                                 .MessageId = CInt(reader("mes_id")),
@@ -134,6 +134,7 @@ Public Class messageDataAccess
         Return messages
     End Function
 
+
     ''' <summary>
     ''' Permet de récupérer les message à partir de l'id du forum
     ''' </summary>
@@ -148,9 +149,9 @@ Public Class messageDataAccess
                 conn.Open()
 
                 Dim sql As String = "SELECT mes_id, mes_per_id_emm, mes_per_id_rec, mes_for_id, mes_contenu, mes_timestamp, mes_estlu, mes_estprive, mes_estsupprime " &
-                    "FROM ess_message " &
-                    "WHERE mes_estsupprime = 0 AND mes_for_id = :forum " &
- "ORDER BY mes_timestamp ASC"
+                                    "FROM ess_message " &
+                                    "WHERE mes_estsupprime = 0 AND mes_for_id = :forum " &
+                                    "ORDER BY mes_timestamp ASC"
 
                 Using cmd As New OracleCommand(sql, conn)
                     cmd.Parameters.Add("forum", OracleDbType.Int32).Value = forumIdPar
@@ -169,16 +170,16 @@ Public Class messageDataAccess
                             End If
 
                             Dim message As New Message With {
-          .MessageId = CInt(reader("mes_id")),
-              .EmmeteurId = CInt(reader("mes_per_id_emm")),
-   .ReceveurId = ReceveurId,
-       .ForumId = forumId,
-     .Contenu = reader("mes_contenu").ToString(),
-          .TimeStamp = CDate(reader("mes_timestamp")),
-         .EstLu = CBool(reader("mes_estlu")),
-      .EstPrive = CBool(reader("mes_estprive")),
-          .EstSupprime = CBool(reader("mes_estsupprime"))
-            }
+                                .MessageId = CInt(reader("mes_id")),
+                                .EmmeteurId = CInt(reader("mes_per_id_emm")),
+                                .ReceveurId = ReceveurId,
+                                .ForumId = forumId,
+                                .Contenu = reader("mes_contenu").ToString(),
+                                .TimeStamp = CDate(reader("mes_timestamp")),
+                                .EstLu = CBool(reader("mes_estlu")),
+                                .EstPrive = CBool(reader("mes_estprive")),
+                                .EstSupprime = CBool(reader("mes_estsupprime"))
+                            }
                             messages.Add(message)
                         End While
                     End Using
@@ -191,6 +192,7 @@ Public Class messageDataAccess
         End Try
         Return messages
     End Function
+
 
     ''' <summary>
     ''' Permet la supression logique d'un message (set mes_estSupprime à 1) à partir de l'id de ce dernier
@@ -210,6 +212,7 @@ Public Class messageDataAccess
                                     "(mes_per_id_emm = :receiver AND mes_per_id_rec = :sender)"
 
                 Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
                     cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
                     cmd.CommandType = CommandType.Text
@@ -226,6 +229,7 @@ Public Class messageDataAccess
         End Try
     End Function
 
+
     ''' <summary>
     ''' Permet de compter le nombre de message non lu d'un contact à partir de l'id du destinataire
     ''' </summary>
@@ -239,8 +243,7 @@ Public Class messageDataAccess
 
                 Dim sql As String = "SELECT COUNT(*) " &
                                     "FROM ess_message " &
-                                    "WHERE mes_estsupprime = 0 AND mes_estlu = 0 AND mes_per_id_rec = :receiver " &
-                                    "ORDER BY mes_for_id ASC, mes_per_id_emm ASC, mes_timestamp DESC"
+                                    "WHERE mes_estsupprime = 0 AND mes_estlu = 0 AND mes_per_id_rec = :receiver "
 
                 Using checkCmd As New OracleCommand(sql, conn)
                     checkCmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
@@ -262,8 +265,7 @@ Public Class messageDataAccess
     ''' <auteur> Damien </auteur>
     ''' <param name="receiverId"></param>
     ''' <returns></returns>
-    Public Function GetChatById(receiverId As Integer) As List(Of Chat)
-
+    Public Function GetChatByIdBis(receiverId As Integer) As List(Of Chat)
         Dim chatLst As New List(Of Chat)
 
         Try
@@ -286,6 +288,7 @@ Public Class messageDataAccess
                                     "ORDER BY MAX(ess_message.mes_timestamp) DESC"
 
                 Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = receiverId
 
                     Using reader As OracleDataReader = cmd.ExecuteReader()
@@ -311,6 +314,7 @@ Public Class messageDataAccess
         Return chatLst
     End Function
 
+
     ''' <summary>
     ''' Permet de passer l'attribu "estLu" d'un message à 1
     ''' </summary>
@@ -328,6 +332,7 @@ Public Class messageDataAccess
                                     "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver AND mes_estlu = 0"
 
                 Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
                     cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = reveiverId
                     cmd.CommandType = CommandType.Text
@@ -344,6 +349,7 @@ Public Class messageDataAccess
         End Try
     End Function
 
+
     ''' <summary>
     ''' Permet de savoir si un chat possède des messages non lu
     ''' </summary>
@@ -358,9 +364,10 @@ Public Class messageDataAccess
 
                 Dim sql As String = "SELECT COUNT(*) " &
                                     "FROM ess_message " &
-                                    "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver"
+                                    "WHERE mes_per_id_emm = :sender AND mes_per_id_rec = :receiver AND mes_estlu = 0"
 
                 Using cmd As New OracleCommand(sql, conn)
+                    cmd.BindByName = True
                     cmd.Parameters.Add("sender", OracleDbType.Int32).Value = senderId
                     cmd.Parameters.Add("receiver", OracleDbType.Int32).Value = reveiverId
                     cmd.CommandType = CommandType.Text
@@ -376,6 +383,7 @@ Public Class messageDataAccess
             Return False
         End Try
     End Function
+
 
     ''' <summary>
     ''' 
