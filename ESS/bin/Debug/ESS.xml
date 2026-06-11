@@ -520,14 +520,6 @@ ESS
  <param name="receiverId"></param>
  <returns></returns>
 </member>
-<member name="M:ESS.messageDataAccess.GetChatById(System.Int32)">
- <summary>
- Permet d'initier des classe Chat pour l'affichage d'un fil de conversation
- </summary>
- <auteur> Damien </auteur>
- <param name="currentUserId"></param>
- <returns></returns>
-</member>
 <member name="M:ESS.messageDataAccess.MarkAsReadByChat(System.Int32,System.Int32)">
  <summary>
  Permet de passer l'attribu "estLu" d'un message à 1

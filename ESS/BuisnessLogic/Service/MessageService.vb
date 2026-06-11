@@ -37,7 +37,7 @@
         End If
 
         Try
-            Return dbAccess.GetChatById(receiverId)
+            Return dbAccess.GetChatByIdBis(receiverId)
         Catch ex As Exception
             MessageBox.Show("Erreur lors du comptage")
             Return Nothing
