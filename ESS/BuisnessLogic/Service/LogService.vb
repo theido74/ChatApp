@@ -48,11 +48,22 @@ Public Class LogService
 
         Return newID
     End Function
-
+    ''' <summary>
+    ''' Autheur: Ayman
+    ''' Appel fonction dbAccess.SetUserOffline pour mettre un utilisateur hors ligne dans la base de données.
+    ''' </summary>
+    ''' <param name="id"></param>
+    ''' <returns></returns>
     Public Function SetUserOffline(id As Integer) As Boolean
         Return dbAccess.SetUserOffline(id)
     End Function
 
+    ''' <summary>
+    ''' Autheur: Ayman
+    ''' Appel fonction dbAccess.SetUserOnline pour mettre un utilisateur en ligne dans la base de données.
+    ''' </summary>
+    ''' <param name="id"></param>
+    ''' <returns></returns>
     Public Function SetUserOnline(id As Integer) As Boolean
         Return dbAccess.SetUserOnline(id)
     End Function

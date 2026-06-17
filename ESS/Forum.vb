@@ -6,6 +6,16 @@
     Private logger As New LogService()
     Private timer As New System.Windows.Forms.Timer
 
+
+
+
+
+    ''' <summary>
+    ''' Author: Ayman
+    ''' Récupère le nom de l'émetteur d'un message à partir de son ID utilisateur.
+    ''' </summary>
+    ''' <param name="userId">ID de l'utilisateur.</param>
+    ''' <returns>Nom de l'utilisateur.</returns>
     Private Function GetEmmeteurName(userId As Integer) As String
         Return userDataAccess.GetUsernameById(userId)
     End Function
@@ -13,8 +23,10 @@
 
     ''' <summary>
     ''' Author: Ayman
-    ''' Propriété pour stocker et accéder à l'ID du forum sélectionné. Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
-    ''' Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, et l'utiliser pour charger les messages et les informations du forum correspondant.
+    ''' Propriété pour stocker et accéder à l'ID du forum sélectionné. 
+    ''' Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
+    ''' Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, 
+    ''' et l'utiliser pour charger les messages et les informations du forum correspondant.
     ''' </summary>
 
     Public Property SelectedForumId As Integer
@@ -33,12 +45,9 @@
         End If
 
         logger.PingDB(CurrentUser.User.UserID)
-        ' Mettre l'utilisateur en ligne
+
         Dim userService As New UserService()
         userService.SetOnline(CurrentUser.User.UserID)
-
-        RefreshOnlineUser()
-
 
         AfficherNomForum()
         ChargerMessages()
@@ -65,23 +74,11 @@
             ' Mettre à jour les statuts dans la base pour tous les utilisateurs
             UpdateUserStatuses(lstActiveUsers)
 
-            RefreshOnlineUser()
             ChargerEleves()
         Catch ex As Exception
         End Try
     End Sub
-    ''' <summary>
-    ''' Author: Ayman
-    ''' Rafraîchit la liste des utilisateurs en ligne en récupérant la liste des utilisateurs actifs depuis le service de log et en mettant à jour l'affichage dans le DataGridView.
-    ''' </summary>
-    Private Sub RefreshOnlineUser()
-        Try
-            Dim lstUser = logger.isActive() 'Authors : Arnaud
 
-        Catch ex As Exception
-
-        End Try
-    End Sub
     ''' <summary>
     ''' Author: Ayman
     ''' Charge la liste des élèves (utilisateurs) depuis la base de données et les affiche dans le DataGridView.
@@ -104,7 +101,8 @@
     End Sub
     ''' <summary>
     ''' Author: Ayman
-    ''' Gère l'événement de formatage des cellules du DataGridView pour appliquer une coloration conditionnelle en fonction du statut de chat de chaque utilisateur.
+    ''' Gère l'événement de formatage des cellules du DataGridView 
+    ''' pour appliquer une coloration conditionnelle en fonction du statut de chat de chaque utilisateur.
     ''' </summary>
     Private Sub dgvUtilisateursForum_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvUtilisateursForum.CellFormatting
         ' Vérifier que c'est bien la colonne ChatStatut (index 1)
@@ -151,7 +149,7 @@
                 ctrl = ctrlRecu
             End If
 
-            flpFenetreMessage.Controls.Add(ctrl)
+            flpFenetreMessage.Controls.Add(ctrl) 'ajouter le contrôle au FlowLayoutPanel
         Next
 
         ' Scroll automatiquement vers le bas après que tous les contrôles soient rendus
@@ -165,7 +163,7 @@
                     flpFenetreMessage.VerticalScroll.Value = flpFenetreMessage.VerticalScroll.Maximum
                 End If
             Catch ex As Exception
-                ' Silencieusement ignorer les erreurs
+
             End Try
         End Sub))
     End Sub
@@ -176,7 +174,6 @@
     ''' Il vérifie d'abord que le champ de message n'est pas vide, puis utilise le service de messagerie pour créer un nouveau message dans le forum.
     ''' Après l'envoi, il efface le champ de message et recharge les messages du forum pour afficher le nouveau message envoyé.
     ''' </summary>
-
 
     Private Sub btnEnvoyer_Click(sender As Object, e As EventArgs) Handles btnEnvoyer.Click
         If String.IsNullOrEmpty(txtMessge.Text) Then

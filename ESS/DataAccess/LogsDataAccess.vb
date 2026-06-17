@@ -93,6 +93,13 @@ Public Class LogsDataAccess
         Return IdActive
     End Function
 
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' cet fonction met à jour le statut de l'utilisateur dans la base de données 
+    ''' pour le marquer comme "Hors ligne".
+    ''' </summary>
+    ''' <param name="userId"></param>
+    ''' <returns></returns>
     Public Function SetUserOffline(userId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()
@@ -118,6 +125,13 @@ Public Class LogsDataAccess
         End Try
     End Function
 
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' cet fonction met à jour le statut de l'utilisateur dans la base de données 
+    ''' pour le marquer comme "En ligne".
+    ''' </summary>
+    ''' <param name="userId"></param>
+    ''' <returns></returns>
     Public Function SetUserOnline(userId As Integer) As Boolean
         Try
             Using conn As OracleConnection = DatabaseConnection.GetConnection()

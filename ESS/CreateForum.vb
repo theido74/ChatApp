@@ -18,7 +18,7 @@ Public Class CreateForum
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub btnCreerForum_Click(sender As Object, e As EventArgs) Handles btnCreerForum.Click
-        ' Validation du nom
+
         If String.IsNullOrWhiteSpace(txtNomForum.Text) Then
             MessageBox.Show("Le nom du forum est obligatoire !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -33,15 +33,15 @@ Public Class CreateForum
         Dim description As String = If(String.IsNullOrWhiteSpace(txtDescription.Text), "", txtDescription.Text)
 
         Try
-            ' Créer le forum
+
             Dim newForumId As Integer = forumService.CreateForum(nomForum, description)
 
             If newForumId > 0 Then
                 MessageBox.Show("Forum créé avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                ' Ouvrir le forum fraîchement créé
+
                 Dim forumForm As New Forum With {.SelectedForumId = newForumId}
-                ' Fermer la fenêtre de création
+
                 Me.Hide()
                 forumForm.ShowDialog()
 

@@ -386,11 +386,12 @@ Public Class messageDataAccess
 
 
     ''' <summary>
-    ''' 
+    ''' Auteur : Ayman
+    ''' Permet de récupérer le dernier message de chaque conversation privée d'un utilisateur 
+    ''' à partir de son id.
     ''' </summary>
-    ''' <auteur> Ayman </auteur>
     ''' <param name="currentUserId"></param>
-    ''' <returns></returns>
+    ''' <returns>La liste des derniers messages de chaque conversation privée de l'utilisateur.</returns>
     Public Function GetRecentConversations(currentUserId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 
@@ -438,11 +439,13 @@ Public Class messageDataAccess
     End Function
 
     ''' <summary>
-    ''' 
+    ''' Auteur : Ayman
+    ''' Permet de récupérer tous les messages d'une conversation privée entre deux utilisateurs 
+    ''' à partir de leurs id.
     ''' </summary>
-    ''' <auteur> Ayman </auteur>
-    ''' <param name="currentUserId"></param>
-    ''' <returns></returns>
+    ''' <param name="currentUserId">L'ID de l'utilisateur actuel.</param>
+    ''' <param name="otherUserId">L'ID de l'autre utilisateur.</param>
+    ''' <returns>La liste des messages de la conversation privée entre les deux utilisateurs.</returns>
     Public Function GetPrivateConversation(currentUserId As Integer, otherUserId As Integer) As List(Of Message)
         Dim messages As New List(Of Message)()
 

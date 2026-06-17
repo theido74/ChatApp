@@ -86,7 +86,7 @@ Public Class TrouverForum
         Dim recherche As String = txtForum.Text.Trim().ToLower()
 
         If String.IsNullOrEmpty(recherche) Then
-            ' Aucune recherche : afficher tous les forums
+
             RemplirDataGridView(allForums)
         Else
             ' Filtrer les forums dont le nom ou la description contient le texte recherché

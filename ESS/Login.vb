@@ -73,9 +73,9 @@ Public Class Login
     Private Sub txtMDP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMDP.KeyPress
         ' Vérifier si la touche pressée est Enter (code ASCII 13)
         If e.KeyChar = Chr(13) Then
-            ' Empêcher le comportement par défaut (bip sonore)
+
             e.Handled = True
-            ' Lancer la connexion
+
             PerformLogin()
         End If
     End Sub
@@ -132,7 +132,8 @@ Public Class Login
     End Sub
     ''' <summary>
     ''' Author: Ayman
-    ''' Effectue la tentative de connexion en validant les entrées, en appelant le service d'authentification et en gérant les différentes exceptions possibles.
+    ''' Effectue la tentative de connexion en validant les entrées, 
+    ''' en appelant le service d'authentification et en gérant les différentes exceptions possibles.
     ''' </summary>
     Private Sub PerformLogin()
         Try
@@ -184,7 +185,7 @@ Public Class Login
                 Me.Hide()
 
                 mainForm.ShowDialog()
-                Me.Close() ' Si le formulaire principal se ferme, fermer aussi la connexion
+                Me.Close()
             End If
 
         Catch ex As UnauthorizedAccessException

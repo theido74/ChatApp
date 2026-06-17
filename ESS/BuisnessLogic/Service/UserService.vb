@@ -125,6 +125,12 @@
         End Try
     End Function
 
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Met à jour le statut de l'utilisateur pour indiquer qu'il est hors ligne.
+    ''' </summary>
+    ''' <param name="userId">Identifiant de l'utilisateur.</param>
+    ''' <returns>True si la mise à jour a réussi ; False sinon.</returns>
     Public Function Logout(userId As Integer) As Boolean
         Try
             Return logger.SetUserOffline(userId)
@@ -134,6 +140,12 @@
         End Try
     End Function
 
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Met à jour le statut de l'utilisateur pour indiquer qu'il est en ligne.
+    ''' </summary>
+    ''' <param name="userId">Identifiant de l'utilisateur.</param>
+    ''' <returns>True si la mise à jour a réussi ; False sinon.</returns>
     Public Function SetOnline(userId As Integer) As Boolean
         Try
             Return logger.SetUserOnline(userId)

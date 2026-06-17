@@ -48,14 +48,20 @@ ESS
 </member>
 <member name="M:ESS.MessageControlEnvoye.MessageControlEnvoye_Load(System.Object,System.EventArgs)">
  <summary>
- Affiche les détails du message envoyé, y compris le nom de l'émetteur, le contenu du message et l'heure d'envoi.
+ Auteur : Ayman
+ Cette méthode est appelée lorsque le contrôle est chargé. 
+ Elle initialise les labels du contrôle avec les valeurs des propriétés EmmeteurNom,
+ Contenu et TimeStamp.
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
 </member>
 <member name="M:ESS.MessageControlRecu.MessageControlRecu_Load(System.Object,System.EventArgs)">
  <summary>
- Affiche les détails du message reçu, y compris le nom de l'émetteur, le contenu du message et l'heure de réception.
+ Auteur : Ayman
+ Cette méthode est appelée lorsque le contrôle est chargé. 
+ Elle initialise les labels du contrôle avec les valeurs des propriétés EmmeteurNom,
+ Contenu et TimeStamp.
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
@@ -138,6 +144,22 @@ ESS
  <summary>
  Auteur: Arnaud
  Ajout ligne dans la table ESS_LOGS
+ </summary>
+ <param name="id"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.LogService.SetUserOffline(System.Int32)">
+ <summary>
+ Autheur: Ayman
+ Appel fonction dbAccess.SetUserOffline pour mettre un utilisateur hors ligne dans la base de données.
+ </summary>
+ <param name="id"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.LogService.SetUserOnline(System.Int32)">
+ <summary>
+ Autheur: Ayman
+ Appel fonction dbAccess.SetUserOnline pour mettre un utilisateur en ligne dans la base de données.
  </summary>
  <param name="id"></param>
  <returns></returns>
@@ -227,6 +249,26 @@ ESS
  </summary>
  <returns>Liste de tous les utilisateurs ou Nothing en cas d'erreur</returns>
 </member>
+<member name="M:ESS.MessageService.GetPrivateConversation(System.Int32,System.Int32)">
+ <summary>
+ Authors : Ayman
+ Récupère tous les messages d'une conversation privée entre deux utilisateurs 
+ à partir de leurs IDs. Les messages sont triés par date d'envoi.
+ </summary>
+ <param name="currentUserId"></param>
+ <param name="otherUserId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.MessageService.DeleteConversation(System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ Authors : Ayman
+ Supprime tous les messages d'une conversation privée entre deux utilisateurs 
+ à partir de leurs IDs. Cette action est irréversible et supprimera tous les messages échangés entre les deux utilisateurs.
+ </summary>
+ <param name="senderId">L'ID de l'utilisateur qui envoie la demande de suppression.</param>
+ <param name="receiverId">L'ID de l'autre utilisateur de la conversation.</param>
+ <returns>True si la suppression a réussi, False sinon.</returns>
+</member>
 <member name="M:ESS.FormTest.SetObjectProperties">
  <summary>
  Configurer certaines propriétés d'objets, en l'occurence de la combo box.
@@ -262,11 +304,21 @@ ESS
  <param name="sender"></param>
  <param name="e"></param>
 </member>
+<member name="M:ESS.Forum.GetEmmeteurName(System.Int32)">
+ <summary>
+ Author: Ayman
+ Récupère le nom de l'émetteur d'un message à partir de son ID utilisateur.
+ </summary>
+ <param name="userId">ID de l'utilisateur.</param>
+ <returns>Nom de l'utilisateur.</returns>
+</member>
 <member name="P:ESS.Forum.SelectedForumId">
  <summary>
  Author: Ayman
- Propriété pour stocker et accéder à l'ID du forum sélectionné. Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
- Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, et l'utiliser pour charger les messages et les informations du forum correspondant.
+ Propriété pour stocker et accéder à l'ID du forum sélectionné. 
+ Cette propriété est utilisée pour identifier quel forum doit être affiché et géré dans ce formulaire.
+ Property pour recevoir le forumId depuis le formulaire TrouverForum ou CreateForum, 
+ et l'utiliser pour charger les messages et les informations du forum correspondant.
  </summary>
 </member>
 <member name="M:ESS.Forum.TimerTick(System.Object,System.EventArgs)">
@@ -277,12 +329,6 @@ ESS
  <param name="sender"></param>
  <param name="e"></param>
 </member>
-<member name="M:ESS.Forum.RefreshOnlineUser">
- <summary>
- Author: Ayman
- Rafraîchit la liste des utilisateurs en ligne en récupérant la liste des utilisateurs actifs depuis le service de log et en mettant à jour l'affichage dans le DataGridView.
- </summary>
-</member>
 <member name="M:ESS.Forum.ChargerEleves">
  <summary>
  Author: Ayman
@@ -292,7 +338,8 @@ ESS
 <member name="M:ESS.Forum.dgvUtilisateursForum_CellFormatting(System.Object,System.Windows.Forms.DataGridViewCellFormattingEventArgs)">
  <summary>
  Author: Ayman
- Gère l'événement de formatage des cellules du DataGridView pour appliquer une coloration conditionnelle en fonction du statut de chat de chaque utilisateur.
+ Gère l'événement de formatage des cellules du DataGridView 
+ pour appliquer une coloration conditionnelle en fonction du statut de chat de chaque utilisateur.
  </summary>
 </member>
 <member name="M:ESS.Forum.ChargerMessages">
@@ -349,11 +396,74 @@ ESS
  <param name="sender"></param>
  <param name="e"></param>
 </member>
+<member name="M:ESS.ForumService.GetAllForums">
+ <summary>
+ Auteur: Ayman
+ Récupère tous les forums disponibles.
+ </summary>
+ <returns>Liste de tous les forums disponibles ou Nothing en cas d'erreur</returns>
+</member>
+<member name="M:ESS.ForumService.GetForumById(System.Int32)">
+ <summary>
+ Auteur: Ayman
+ Récupère un forum par son identifiant.
+ </summary>
+ <param name="forumId">ID du forum à récupérer</param>
+ <returns>Le forum correspondant à l'ID ou Nothing en cas d'erreur</returns>
+</member>
+<member name="M:ESS.ForumService.CreateForum(System.String,System.String)">
+ <summary>
+ Auteur: Ayman
+ Crée un nouveau forum avec le nom et la description fournis.
+ </summary>
+ <param name="name">Nom du forum à créer</param>
+ <param name="description">Description du forum à créer</param>
+ <returns>ID du forum créé ou Nothing en cas d'erreur</returns>
+</member>
 <member name="F:ESS.Inscription.placeholderNom">
  <summary>
  Author: Ayman
- Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
+ Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair 
+ lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
  </summary>
+</member>
+<member name="M:ESS.Inscription.InitTextBox(System.Windows.Forms.TextBox,System.String)">
+ <summary>
+ Auteur: Ayman
+ Initialise un TextBox avec un placeholder et des styles spécifiques.
+ </summary>
+ <param name="tb"></param>
+ <param name="placeholder"></param>
+</member>
+<member name="M:ESS.Inscription.HandleEnter(System.Windows.Forms.TextBox,System.String,System.Boolean)">
+ <summary>
+ Auteur: Ayman
+ Gère l'événement Enter d'un TextBox. Si le texte actuel est le placeholder, 
+ il est effacé et la couleur du texte devient blanche.
+ </summary>
+ <param name="tb"></param>
+ <param name="placeholder"></param>
+ <param name="isPassword"></param>
+</member>
+<member name="M:ESS.Inscription.HandleLeave(System.Windows.Forms.TextBox,System.String,System.Boolean)">
+ <summary>
+ Auteur: Ayman
+ Gère l'événement Leave d'un TextBox. Si le texte est vide, 
+ le placeholder est réaffiché et la couleur du texte devient grise.
+ </summary>
+ <param name="tb"></param>
+ <param name="placeholder"></param>
+ <param name="isPassword"></param>
+</member>
+<member name="M:ESS.Inscription.btnInscription_Click(System.Object,System.EventArgs)">
+ <summary>
+ Auteur: Ayman
+ Gère l'événement Click du bouton "Inscription".
+ Valide les entrées de l'utilisateur, crée un nouvel élève via le service, 
+ et ouvre le formulaire de connexion.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 <member name="M:ESS.Login.HandleEnter(System.Windows.Forms.TextBox,System.String,System.Boolean)">
  <summary>
@@ -424,7 +534,8 @@ ESS
 <member name="M:ESS.Login.PerformLogin">
  <summary>
  Author: Ayman
- Effectue la tentative de connexion en validant les entrées, en appelant le service d'authentification et en gérant les différentes exceptions possibles.
+ Effectue la tentative de connexion en validant les entrées, 
+ en appelant le service d'authentification et en gérant les différentes exceptions possibles.
  </summary>
 </member>
 <member name="M:ESS.Login.btnVoirMDP_Click(System.Object,System.EventArgs)">
@@ -460,6 +571,44 @@ ESS
  <returns>
  Liste des identifiants des utilisateurs actifs.
  </returns>
+</member>
+<member name="M:ESS.LogsDataAccess.SetUserOffline(System.Int32)">
+ <summary>
+ Authors : Ayman
+ cet fonction met à jour le statut de l'utilisateur dans la base de données 
+ pour le marquer comme "Hors ligne".
+ </summary>
+ <param name="userId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.LogsDataAccess.SetUserOnline(System.Int32)">
+ <summary>
+ Authors : Ayman
+ cet fonction met à jour le statut de l'utilisateur dans la base de données 
+ pour le marquer comme "En ligne".
+ </summary>
+ <param name="userId"></param>
+ <returns></returns>
+</member>
+<member name="M:ESS.Main.Main_Load(System.Object,System.EventArgs)">
+ <summary>
+ Auteur: Ayman
+ Lors du chargement du formulaire principal, cette méthode initialise les informations de l'utilisateur connecté,
+ enregistre une entrée de "PING" dans les logs pour indiquer que l'utilisateur est actif, met à jour son statut en ligne
+ dans la base de données, rafraîchit la liste des utilisateurs en ligne et démarre un timer pour continuer à envoyer des "PING"
+ périodiquement. Elle vérifie également si l'utilisateur a des messages non lus et affiche une notification en conséquence.
+ </summary>
+ <param name="sender">L'objet qui a déclenché l'événement.</param>
+ <param name="e">Les arguments de l'événement de chargement du formulaire.</param>
+</member>
+<member name="M:ESS.Main.Main_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ Auteur: Ayman
+ Arrête le timer, enregistre la déconnexion de l'utilisateur dans les logs
+ et met à jour son statut en ligne dans la base de données lors de la fermeture du formulaire principal.
+ </summary>
+ <param name="sender">L'objet qui a déclenché l'événement.</param>
+ <param name="e">Les arguments de l'événement de fermeture du formulaire.</param>
 </member>
 <member name="M:ESS.Main.CheckMessages">
  <summary>
@@ -540,24 +689,39 @@ ESS
 </member>
 <member name="M:ESS.messageDataAccess.GetRecentConversations(System.Int32)">
  <summary>
- 
+ Auteur : Ayman
+ Permet de récupérer le dernier message de chaque conversation privée d'un utilisateur 
+ à partir de son id.
  </summary>
- <auteur> Ayman </auteur>
  <param name="currentUserId"></param>
- <returns></returns>
+ <returns>La liste des derniers messages de chaque conversation privée de l'utilisateur.</returns>
 </member>
 <member name="M:ESS.messageDataAccess.GetPrivateConversation(System.Int32,System.Int32)">
  <summary>
- 
+ Auteur : Ayman
+ Permet de récupérer tous les messages d'une conversation privée entre deux utilisateurs 
+ à partir de leurs id.
  </summary>
- <auteur> Ayman </auteur>
- <param name="currentUserId"></param>
- <returns></returns>
+ <param name="currentUserId">L'ID de l'utilisateur actuel.</param>
+ <param name="otherUserId">L'ID de l'autre utilisateur.</param>
+ <returns>La liste des messages de la conversation privée entre les deux utilisateurs.</returns>
+</member>
+<member name="M:ESS.MessagePrive.TimerTick(System.Object,System.EventArgs)">
+ <summary>
+ Auteur: Arnaud
+ Cette méthode est appelée à chaque tick du timer. Elle envoie un "ping" à la base de données pour indiquer que l'utilisateur est actif,
+ met à jour le statut des utilisateurs dans la base de données et rafraîchit l'affichage du DataGridView.
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 <member name="M:ESS.MessagePrive.UpdateUserStatuses(System.Collections.Generic.List{System.Int32})">
  <summary>
- Met à jour les statuts de tous les utilisateurs basé sur la liste des actifs
+ Auteur: Ayman
+ Met à jour le statut des utilisateurs dans la base de données en fonction de leur présence 
+ dans la liste des utilisateurs actifs.
  </summary>
+ <param name="lstActiveUsers"></param>
 </member>
 <member name="M:ESS.MessagePrive.ChargerConversation(System.Int32)">
  <summary>
@@ -778,6 +942,22 @@ ESS
  L'objet Eleve correspondant ; Nothing si aucun élève n'est trouvé
  ou en cas d'erreur.
  </returns>
+</member>
+<member name="M:ESS.UserService.Logout(System.Int32)">
+ <summary>
+ Auteur: Ayman
+ Met à jour le statut de l'utilisateur pour indiquer qu'il est hors ligne.
+ </summary>
+ <param name="userId">Identifiant de l'utilisateur.</param>
+ <returns>True si la mise à jour a réussi ; False sinon.</returns>
+</member>
+<member name="M:ESS.UserService.SetOnline(System.Int32)">
+ <summary>
+ Auteur: Ayman
+ Met à jour le statut de l'utilisateur pour indiquer qu'il est en ligne.
+ </summary>
+ <param name="userId">Identifiant de l'utilisateur.</param>
+ <returns>True si la mise à jour a réussi ; False sinon.</returns>
 </member>
 <member name="M:ESS.TrouverForum.ChargerTousLesForums">
  <summary>

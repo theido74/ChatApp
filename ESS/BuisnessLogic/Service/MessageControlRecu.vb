@@ -5,7 +5,10 @@ Public Class MessageControlRecu
     Public Property Contenu As String
     Public Property TimeStamp As DateTime
     ''' <summary>
-    ''' Affiche les détails du message reçu, y compris le nom de l'émetteur, le contenu du message et l'heure de réception.
+    ''' Auteur : Ayman
+    ''' Cette méthode est appelée lorsque le contrôle est chargé. 
+    ''' Elle initialise les labels du contrôle avec les valeurs des propriétés EmmeteurNom,
+    ''' Contenu et TimeStamp.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>

@@ -17,7 +17,8 @@ Public Class Inscription
 
     ''' <summary>
     ''' Author: Ayman
-    ''' Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
+    ''' Placeholders pour les TextBox. Ces valeurs sont affichées en gris clair 
+    ''' lorsque les champs sont vides, et disparaissent lorsque l'utilisateur clique pour entrer du texte.
     ''' </summary>
     Private placeholderNom As String = "Entrez votre nom"
     Private placeholderPrenom As String = "Entrez votre prénom"
@@ -54,7 +55,12 @@ Public Class Inscription
     End Sub
 
 
-
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Initialise un TextBox avec un placeholder et des styles spécifiques.
+    ''' </summary>
+    ''' <param name="tb"></param>
+    ''' <param name="placeholder"></param>
     Private Sub InitTextBox(tb As TextBox, placeholder As String)
         tb.BackColor = Color.Black
         tb.ForeColor = Color.Gray
@@ -62,6 +68,14 @@ Public Class Inscription
         tb.Text = placeholder
     End Sub
 
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Gère l'événement Enter d'un TextBox. Si le texte actuel est le placeholder, 
+    ''' il est effacé et la couleur du texte devient blanche.
+    ''' </summary>
+    ''' <param name="tb"></param>
+    ''' <param name="placeholder"></param>
+    ''' <param name="isPassword"></param>
     Private Sub HandleEnter(tb As TextBox, placeholder As String, isPassword As Boolean)
         If tb.Text = placeholder Then
             tb.Text = ""
@@ -70,6 +84,14 @@ Public Class Inscription
         End If
     End Sub
 
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Gère l'événement Leave d'un TextBox. Si le texte est vide, 
+    ''' le placeholder est réaffiché et la couleur du texte devient grise.
+    ''' </summary>
+    ''' <param name="tb"></param>
+    ''' <param name="placeholder"></param>
+    ''' <param name="isPassword"></param>
     Private Sub HandleLeave(tb As TextBox, placeholder As String, isPassword As Boolean)
         If tb.Text = "" Then
             tb.Text = placeholder
@@ -168,9 +190,17 @@ Public Class Inscription
         End If
     End Sub
 
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Gère l'événement Click du bouton "Inscription".
+    ''' Valide les entrées de l'utilisateur, crée un nouvel élève via le service, 
+    ''' et ouvre le formulaire de connexion.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnInscription_Click(sender As Object, e As EventArgs) Handles btnInscription.Click
 
-        ' Récupérer valeurs
+
         Dim nom = txtNom.Text.Trim()
         Dim prenom = txtPrenom.Text.Trim()
         Dim username = txtUsername.Text.Trim()
@@ -182,7 +212,7 @@ Public Class Inscription
         Dim niveau = CInt(txtNiveau.Text)
         Dim classe = "ESIG1"
 
-        ' Vérifications basiques de présence
+
         If String.IsNullOrEmpty(nom) OrElse String.IsNullOrEmpty(prenom) Then
             AfficherErreur("Le nom et le prénom sont requis.")
             Return
@@ -205,7 +235,7 @@ Public Class Inscription
             AfficherErreur("Date de naissance requis.")
         End If
 
-        ' Vérifier niveau (si présent)
+
         If String.IsNullOrWhiteSpace(CStr(niveau)) Then
             AfficherErreur("Le niveau est requis.")
             Return
@@ -213,11 +243,11 @@ Public Class Inscription
 
         ' Vérifier que les services sont disponibles (runtime)
         If clientValidator Is Nothing OrElse authService Is Nothing Then
-            AfficherErreur("Erreur interne : services non initialisés (mode designer ?).")
+            AfficherErreur("Erreur interne : services non initialisés.")
             Return
         End If
 
-        ' Réutiliser les règles du login pour username et password
+
         If Not clientValidator.ValidateUsername(username) Then
             AfficherErreur("Nom d'utilisateur invalide (respecter les règles).")
             Return
@@ -228,14 +258,12 @@ Public Class Inscription
             Return
         End If
 
-        ' Vérifier confirmation du mot de passe
+
         If Not password.Equals(confirmPassword) Then
             AfficherErreur("Les mots de passe ne correspondent pas.")
             Return
         End If
 
-        ' Vérifier unicité du username via le service existant
-        ' Cette vérification utilise le service d'authentification pour s'assurer qu'aucun utilisateur existant n'a le même nom d'utilisateur.
         Try
             Dim existingUser = authService.GetEleveByUsername(username)
             If existingUser IsNot Nothing Then

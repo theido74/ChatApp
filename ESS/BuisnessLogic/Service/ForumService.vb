@@ -5,7 +5,11 @@ Public Class ForumService
     Private logger As New LogService()
     Private Const FORUM_CREE As String = "Forum Créé"
 
-    ' Récupérer tous les forums actifs
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Récupère tous les forums disponibles.
+    ''' </summary>
+    ''' <returns>Liste de tous les forums disponibles ou Nothing en cas d'erreur</returns>
     Public Function GetAllForums() As List(Of Forums)
         Try
             Return dbAccess.GetAllForums()
@@ -15,7 +19,12 @@ Public Class ForumService
         End Try
     End Function
 
-    ' Récupérer un forum par ID
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Récupère un forum par son identifiant.
+    ''' </summary>
+    ''' <param name="forumId">ID du forum à récupérer</param>
+    ''' <returns>Le forum correspondant à l'ID ou Nothing en cas d'erreur</returns>
     Public Function GetForumById(forumId As Integer) As Forums
         Try
             Return dbAccess.GetForumById(forumId)
@@ -25,7 +34,13 @@ Public Class ForumService
         End Try
     End Function
 
-    ' Créer un nouveau forum
+    ''' <summary>
+    ''' Auteur: Ayman
+    ''' Crée un nouveau forum avec le nom et la description fournis.
+    ''' </summary>
+    ''' <param name="name">Nom du forum à créer</param>
+    ''' <param name="description">Description du forum à créer</param>
+    ''' <returns>ID du forum créé ou Nothing en cas d'erreur</returns>
     Public Function CreateForum(name As String, description As String) As Integer
         ' Validation
         If String.IsNullOrWhiteSpace(name) Then
@@ -36,19 +51,19 @@ Public Class ForumService
         End If
 
         Try
-            ' Log l'action
+
             logger.AjoutLog(CurrentUser.User.UserID, FORUM_CREE)
 
-            ' Créer le forum
+
             Dim newForumId As Integer = dbAccess.CreateForum(name, description)
 
             Return newForumId
 
         Catch ex As InvalidOperationException
-            ' Doublon détecté
+
             Throw New InvalidOperationException(ex.Message)
         Catch ex As ArgumentException
-            ' Erreur de validation
+
             Throw New ArgumentException(ex.Message)
         Catch ex As Exception
             Throw New Exception("Erreur lors de la création du forum: " & ex.Message)

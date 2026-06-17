@@ -183,6 +183,14 @@
         End Try
     End Function
 
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Récupère tous les messages d'une conversation privée entre deux utilisateurs 
+    ''' à partir de leurs IDs. Les messages sont triés par date d'envoi.
+    ''' </summary>
+    ''' <param name="currentUserId"></param>
+    ''' <param name="otherUserId"></param>
+    ''' <returns></returns>
     Public Function GetPrivateConversation(currentUserId As Integer, otherUserId As Integer) As List(Of Message)
         Try
             MarkAsReadById(otherUserId) ' NEW
@@ -193,7 +201,14 @@
         End Try
     End Function
 
-    ' Effacer tous les messages d'une conversation entre deux personnes
+    ''' <summary>
+    ''' Authors : Ayman
+    ''' Supprime tous les messages d'une conversation privée entre deux utilisateurs 
+    ''' à partir de leurs IDs. Cette action est irréversible et supprimera tous les messages échangés entre les deux utilisateurs.
+    ''' </summary>
+    ''' <param name="senderId">L'ID de l'utilisateur qui envoie la demande de suppression.</param>
+    ''' <param name="receiverId">L'ID de l'autre utilisateur de la conversation.</param>
+    ''' <returns>True si la suppression a réussi, False sinon.</returns>
     Public Function DeleteConversation(senderId As Integer, Optional receiverId As Integer? = -1) As Boolean
         If receiverId = -1 Then
             receiverId = CurrentUser.User.UserID
